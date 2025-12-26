@@ -29,7 +29,6 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
   - [Funções Anônimas e Arrow Functions](#funções-anônimas-e-arrow-functions)
 - [Programação Modular](#programação-modular)
   - [Projetos JavaScript](#projetos-javascript)
-  - [Sobre Programação Modular](#sobre-programação-modular)
   - [Programação Modular em JavaScript](#programação-modular-em-javascript)
   - [JavaScript Object Notation (JSON)](#javascript-object-notation-json)
   - [Classes e Objetos em JavaScript](#classes-e-objetos-em-javascript)
@@ -1074,6 +1073,49 @@ console.log(pluralizar("carro")); // "carros"
 
 ## Programação Modular
 
+Esta seção aborda o conceito de modularidade em programação, independentemente da linguagem utilizada, fornecendo as bases teóricas necessárias para entender a importância dos módulos no desenvolvimento de software.
+
+Um dos artigos mais populares na definição de módulo data de 1972 e foi escrito por David Parnas, intitulado "On the Criteria to be Used in Decomposing Systems into Modules" (Sobre os Critérios a Serem Usados na Decomposição de Sistemas em Módulos). Nele, Parnas argumenta que a modularidade deve ser baseada na ocultação de informações e na separação de responsabilidades, permitindo que cada módulo seja desenvolvido, testado e mantido de forma independente. O artigo pode ser encontrado aqui: https://dl.acm.org/doi/10.1145/361598.361623
+
+Bertrand Meyer, em seu livro _Object-Oriented Software Construction_, também discute a importância da modularidade e encapsulamento na construção de softwares orientados a objetos. Segundo ele, a definição de módulo é uma unidade de software que combina dados e procedimentos relacionados, fornecendo uma interface clara para interação com outros módulos. Ele enfatiza que módulos bem definidos ajudam a reduzir a complexidade do sistema, facilitam a reutilização de código e melhoram a manutenção. O livro de Meyer está disponível abertamente no site do autor em: https://bertrandmeyer.com/wp-content/upLoads/OOSC2.pdf A modularidade é discutida no Capítulo 3 do livro.
+
+Grady Booch, em _Object-Oriented Analysis and Design_, também aborda a modularidade como um princípio fundamental na engenharia de software. Booch destaca que a modularidade permite a decomposição de sistemas complexos em partes menores e mais gerenciáveis, facilitando o desenvolvimento colaborativo e a evolução do software ao longo do tempo. Ele enfatiza a importância de definir interfaces claras entre os módulos para garantir a interoperabilidade e a independência dos componentes. O livro é vendido pela Editora O'Reilly e pode ser encontrado em: https://www.oreilly.com/library/view/object-oriented-analysis-and/9780201895513/
+
+Portanto, um módulo pode ser pequeno como uma função, ou um grupo de funções relacionadas escritas em um arquivo, ou até um conjunto de arquivos, com classes e funções, formando um pacote ou até uma biblioteca completa. A seguir uma representação visual simples de como um sistema modular pode ser estruturado:
+
+```plain
++-------------------+      +-------------------+      +-------------------+
+|     Módulo A      |      |     Módulo B      |      |     Módulo C      |
++-------------------+      +-------------------+      +-------------------+
+|  Função 1         |      |  Função 4         |      |  Função 7         |
+|  Função 2         |      |  Função 5         |      |  Função 8         |
+|  Função 3         |      |  Função 6         |      |  Função 9         |
++-------------------+      +-------------------+      +-------------------+
+        ^                           ^                           ^
+        +---------------------------+---------------------------+
+                    |                           |
+            +-------------------+      +-------------------+
+            |   Interface X     |      |   Interface Y     |
+            +-------------------+      +-------------------+
+                    |                           |
+        +---------------------------+---------------------------+
+        |                           |                           |
++-------------------+      +-------------------+      +-------------------+
+| Sistema Principal |      |   Subsistema 1    |      |   Subsistema 2    |
++-------------------+      +-------------------+      +-------------------+
+```
+
+Resumindo, um módulo deve ter as seguintes características:
+
+- **Encapsulamento**: Um módulo deve ocultar seus detalhes internos e expor apenas o necessário através de uma interface pública.
+- **Coesão**: As funcionalidades dentro de um módulo devem estar relacionadas e focadas em uma única responsabilidade ou tarefa.
+- **Baixo Acoplamento**: Um módulo deve ser o mais independente possível de outros módulos, minimizando a interdependência.
+- **Reutilização**: Módulos bem projetados podem ser reutilizados em diferentes partes do sistema ou em outros projetos.
+- **Manutenção Facilitada**: A modularidade facilita a manutenção e atualização do software, permitindo que mudanças em um módulo não afetem outros módulos nem outras partes do sistema.
+
+Nas seções seguintes exploraremos como implementar a programação modular especificamente em JavaScript.
+
+
 ### Projetos JavaScript
 
 Em JavaScript, um projeto geralmente consiste em um conjunto de arquivos e pastas organizados de maneira lógica para desenvolver uma aplicação ou biblioteca. A estrutura do projeto pode variar dependendo do tipo de aplicação (web, Node.js, etc.) e das ferramentas utilizadas. Os projetos JavaScript modernos frequentemente utilizam gerenciadores de pacotes como `npm` (Node Package Manager) ou Yarn para gerenciar dependências e scripts de construção. Neste guia usaremos o `npm` para inicializar um projeto que utiliza módulos ES6.
@@ -1146,52 +1188,6 @@ console.log(`Olá, ${nome}!`);
 ```
 
 Tenha em consideração que você precisará roda o comando `npm install` sempre que clonar um projeto que contenha um arquivo `package.json`, para instalar todas as dependências listadas nele. As dependências são armazenadas na pasta `node_modules`, que não deve ser incluída no controle de versão (como Git), por isso é comum adicionar `node_modules` ao arquivo `.gitignore`.
-
-
-### Sobre Programação Modular
-
-Esta seção aborda o conceito de modularidade em programação, independentemente da linguagem utilizada, fornecendo as bases teóricas necessárias para entender a importância dos módulos no desenvolvimento de software.
-
-Um dos artigos mais populares na definição de módulo data de 1972 e foi escrito por David Parnas, intitulado "On the Criteria to be Used in Decomposing Systems into Modules" (Sobre os Critérios a Serem Usados na Decomposição de Sistemas em Módulos). Nele, Parnas argumenta que a modularidade deve ser baseada na ocultação de informações e na separação de responsabilidades, permitindo que cada módulo seja desenvolvido, testado e mantido de forma independente. O artigo pode ser encontrado aqui: https://dl.acm.org/doi/10.1145/361598.361623
-
-Bertrand Meyer, em seu livro _Object-Oriented Software Construction_, também discute a importância da modularidade e encapsulamento na construção de softwares orientados a objetos. Segundo ele, a definição de módulo é uma unidade de software que combina dados e procedimentos relacionados, fornecendo uma interface clara para interação com outros módulos. Ele enfatiza que módulos bem definidos ajudam a reduzir a complexidade do sistema, facilitam a reutilização de código e melhoram a manutenção. O livro de Meyer está disponível abertamente no site do autor em: https://bertrandmeyer.com/wp-content/upLoads/OOSC2.pdf A modularidade é discutida no Capítulo 3 do livro.
-
-Grady Booch, em _Object-Oriented Analysis and Design_, também aborda a modularidade como um princípio fundamental na engenharia de software. Booch destaca que a modularidade permite a decomposição de sistemas complexos em partes menores e mais gerenciáveis, facilitando o desenvolvimento colaborativo e a evolução do software ao longo do tempo. Ele enfatiza a importância de definir interfaces claras entre os módulos para garantir a interoperabilidade e a independência dos componentes. O livro é vendido pela Editora O'Reilly e pode ser encontrado em: https://www.oreilly.com/library/view/object-oriented-analysis-and/9780201895513/
-
-Portanto, um módulo pode ser pequeno como uma função, ou um grupo de funções relacionadas escritas em um arquivo, ou até um conjunto de arquivos, com classes e funções, formando um pacote ou até uma biblioteca completa. A seguir uma representação visual simples de como um sistema modular pode ser estruturado:
-
-```plain
-+-------------------+      +-------------------+      +-------------------+
-|     Módulo A      |      |     Módulo B      |      |     Módulo C      |
-+-------------------+      +-------------------+      +-------------------+
-|  Função 1         |      |  Função 4         |      |  Função 7         |
-|  Função 2         |      |  Função 5         |      |  Função 8         |
-|  Função 3         |      |  Função 6         |      |  Função 9         |
-+-------------------+      +-------------------+      +-------------------+
-        ^                           ^                           ^
-        +---------------------------+---------------------------+
-                    |                           |
-            +-------------------+      +-------------------+
-            |   Interface X     |      |   Interface Y     |
-            +-------------------+      +-------------------+
-                    |                           |
-        +---------------------------+---------------------------+
-        |                           |                           |
-+-------------------+      +-------------------+      +-------------------+
-| Sistema Principal |      |   Subsistema 1    |      |   Subsistema 2    |
-+-------------------+      +-------------------+      +-------------------+
-```
-
-Resumindo, um módulo deve ter as seguintes características:
-
-- **Encapsulamento**: Um módulo deve ocultar seus detalhes internos e expor apenas o necessário através de uma interface pública.
-- **Coesão**: As funcionalidades dentro de um módulo devem estar relacionadas e focadas em uma única responsabilidade ou tarefa.
-- **Baixo Acoplamento**: Um módulo deve ser o mais independente possível de outros módulos, minimizando a interdependência.
-- **Reutilização**: Módulos bem projetados podem ser reutilizados em diferentes partes do sistema ou em outros projetos.
-- **Manutenção Facilitada**: A modularidade facilita a manutenção e atualização do software, permitindo que mudanças em um módulo não afetem outros módulos nem outras partes do sistema.
-
-
-Na seção seguinte, exploraremos como implementar a programação modular especificamente em JavaScript.
 
 
 ### Programação Modular em JavaScript
