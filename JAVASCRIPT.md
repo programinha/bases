@@ -2,6 +2,32 @@
 
 As linguagens de programação servem para nós expressarmos o que queremos que o computador faça. Como os idiomas humanos, elas são diferentes na escrita (sintaxe) e até na forma de organizar o pensamento (paradigma de programação). Até usando a mesma linguagem podemos encontrar diversas maneiras de resolver um mesmo problema. No entanto, todas essas linguagens compartilham construtos comuns para guardar o estado do programa, decidir o que fazer dada uma condição, realizar um conjunto de tarefas um determinado número de vezes, obter e devolver informações, modularizar uma solução reutilizável, etc. Esse guia apresenta esses construtos usando a linguagem de programação JavaScript.
 
+## Sumário
+
+- [As Bases com JavaScript](#as-bases-com-javascript)
+  - [Sumário](#sumário)
+  - [História do JavaScript](#história-do-javascript)
+  - [Linguagem interpretada](#linguagem-interpretada)
+  - [Linguagem de tipagem dinâmica](#linguagem-de-tipagem-dinâmica)
+  - [Ambiente de Execução](#ambiente-de-execução)
+  - [Instalando o Node.js](#instalando-o-nodejs)
+  - [Valores](#valores)
+  - [Variáveis e Constantes](#variáveis-e-constantes)
+  - [Operadores](#operadores)
+  - [Expressões, Sentenças, Declarações e Blocos](#expressões-sentenças-declarações-e-blocos)
+  - [Estruturas de Controle](#estruturas-de-controle)
+  - [Declaração de Funções](#declaração-de-funções)
+  - [Retorno de Funções](#retorno-de-funções)
+  - [Tratamento de Exceções](#tratamento-de-exceções)
+  - [Composição de Funções](#composição-de-funções)
+  - [Funções Anônimas e Arrow Functions](#funções-anônimas-e-arrow-functions)
+  - [Projetos JavaScript](#projetos-javascript)
+  - [Programação Modular](#programação-modular)
+  - [Programação Modular em JavaScript](#programação-modular-em-javascript)
+  - [Classes e Objetos em JavaScript](#classes-e-objetos-em-javascript)
+  - [Biblioteca Padrão do JavaScript](#biblioteca-padrão-do-javascript)
+
+
 ## História do JavaScript
 
 Em 1995 a web era estática. A Netscape Communications, criadora do navegador dominante Netscape Navigator, queria adicionar interatividade. Eles seguiram dois caminhos: incorporar a complexa linguagem Java para tarefas pesadas e uma linguagem de script leve para tarefas simples do lado do cliente. Brendan Eich foi contratado em abril de 1995 e recebeu a tarefa de criar essa linguagem de script. Sob imensa pressão de prazo, ele desenvolveu um protótipo funcional em apenas dez dias. A linguagem foi inicialmente chamada de "Mocha", depois brevemente "LiveScript". O detalhe crucial "não contado" é a mudança de nome para JavaScript em dezembro de 1995. Isso foi uma jogada puramente de marketing para capitalizar o hype em torno da popular linguagem de programação Java da Sun Microsystems. Apesar do nome, as linguagens são totalmente diferentes, fato que causou (e ainda causa) confusão entre os desenvolvedores.
@@ -764,9 +790,89 @@ Valores `null` não retornam por padrão, a menos que sejam explicitamente retor
 
 ## Tratamento de Exceções
 
-Em JavaScript, o tratamento de exceções é realizado usando as palavras-chave `try`, `catch`, `finally` e `throw`. Essas estruturas permitem que você lide com erros de forma controlada, evitando que o programa falhe abruptamente. As funções podem lançar exceções quando encontram situações inesperadas ou inválidas, e o código que chama essas funções pode capturar e tratar essas exceções.
+Em JavaScript, o tratamento de exceções é realizado usando as palavras-chave `try`, `catch`, `finally` e `throw`. Esses construtos para o tratamento de fluxos excepcionais também é usada por outras linguagens, tais como Java e C#. Eles permitem que você lide com erros de forma controlada, evitando que o programa falhe abruptamente -- exceto se nenhuma exceção for capturada. 
+
+A implementação começa pelas funções que podem lançar exceções usando a instrução `throw`, como `throw new Error("mensagem de erro")`. As exceções são lançadas quando há algum problema que impede a função de computar ou retornar um valor válido. As condições são testadas condicionalmente e podem ocorrer por diversas razões, desde um parâmetro inválido, como informar uma quantidade negativa para um produto, até um estado inconsistente ou impossível de atingir, por exemplo, tentar sacar de uma conta bancária com saldo insuficiente.
+
+Por exemplo, considere uma função para calcular as parcelas acumulando os centavos na última:
+
+```javascript
+function calcularParcelas(valorEmprestimo, numeroParcelas, taxaJuros) {
+    if (typeof valorEmprestimo !== 'number' || typeof numeroParcelas !== 'number' || typeof taxaJuros !== 'number') {
+        throw new Error("Parâmetros inválidos: todos devem ser números.");
+    }
+    if (valorEmprestimo < 100) {
+        throw new Error("O valor do empréstimo deve ser pelo menos 100.");
+    }
+    if (numeroParcelas < 2) {
+        throw new Error("O número de parcelas deve ser pelo menos 2.");
+    }
+    if (taxaJuros < 0) {
+        throw new Error("A taxa de juros não pode ser negativa.");
+    }
+    if (taxaJuros > 1) {
+        throw new Error("A taxa de juros deve ser um valor decimal (por exemplo, 0.05 para 5%).");
+    }
+    // calcular os juros compostos
+    const montante = valorEmprestimo * Math.pow((1 + taxaJuros), numeroParcelas);
+    const valorFinalEmprestimo = montante;
+    // fazer o calculo inteiro da parcela
+    const valorParcela = Math.floor(valorFinalEmprestimo / numeroParcelas);
+    // acumular o resto para adicionar à última parcela
+    const resto = valorFinalEmprestimo % numeroParcelas;
+    // adicionar o resto à última parcela
+    const valorUltimaParcela = valorParcela + resto;
+
+    return { valorEmprestimo, numeroParcelas, valorParcela, valorUltimaParcela };
+}
 
 
+// Usando a função com tratamento de exceções:
+try {
+    const resultado = calcularParcelas(1000, 5, 0.05); // parâmetros válidos
+    console.log("Cálculo das parcelas:", resultado);
+} catch (erro) {
+    console.error("Erro ao calcular parcelas:", erro.message); // não será executado neste caso
+}
+
+try {
+    const resultado = calcularParcelas(50, 1, -0.1); // parâmetros inválidos
+    console.log("Cálculo das parcelas:", resultado);
+} catch (erro) {
+    // será executado e exibirá a mensagem: "O valor do empréstimo deve ser pelo menos 100."
+    console.error("Erro ao calcular parcelas:", erro.message); 
+}
+
+try {
+    const resultado = calcularParcelas(100, 1, -0.1); // parâmetros inválidos
+    console.log("Cálculo das parcelas:", resultado);
+} catch (erro) {
+    // será executado e exibirá a mensagem: "O número de parcelas deve ser pelo menos 2."
+    console.error("Erro ao calcular parcelas:", erro.message); 
+}
+```
+
+Note que a ordem das validações dentro da função é importante, pois a primeira condição que falhar lançará uma exceção, interrompendo a execução da função. Portanto, as validações devem ser organizadas de forma lógica para fornecer feedback útil ao usuário ou chamador da função.
+
+Finalmente, o bloco `finally` pode ser usado para executar código que deve ser executado independentemente de uma exceção ter sido lançada ou não. Isso é útil para liberar recursos, fechar conexões ou realizar outras tarefas de limpeza, mais comuns quando usamos recuros externos, como arquivos ou conexões de rede. Aqui está um exemplo sintético simples:
+
+```javascript
+function exemploFinally() { // abrindo, executando um sql e fechando uma conexão fictícia:
+    let conexao = null;
+    try {
+        conexao = abrirConexaoBancoDeDados(); // função fictícia
+        // executar operações no banco de dados
+        console.log("Operações no banco de dados executadas com sucesso.");
+    } catch (erro) {
+        console.error("Erro ao executar operações no banco de dados:", erro.message);
+    } finally {
+        if (conexao) {
+            conexao.fechar(); // função fictícia para fechar a conexão
+            console.log("Conexão com o banco de dados fechada.");
+        }
+    }
+}
+```
 
 
 ## Composição de Funções
@@ -1204,6 +1310,8 @@ Os módulos podem reter estado entre importações, pois são carregados apenas 
 
 ```javascript
 // arquivo: contador.js
+
+// contadores é privado ao módulo
 const contadores = new Map();
 contadores.set('default', 0);
 
@@ -1230,6 +1338,102 @@ console.log(obterContador('user')); // { prefixo: "user", contador: 1 }
 ## Classes e Objetos em JavaScript
 
 JavaScript é uma linguagem orientada a objetos baseada em protótipos, o que significa que os objetos podem herdar propriedades e métodos diretamente de outros objetos. No entanto, a partir do ECMAScript 6 (ES6), JavaScript introduziu a sintaxe de classes, que fornece uma maneira mais familiar e estruturada de criar objetos e lidar com herança.
+
+Tenha em consideração que Programação Orientada a Objetos (POO) é um tópico extenso por si só e mereceria um guia apenas para tratar do paradigma. Nesta seção é abordado apenas o mínimo em JavaScript para implementar classes que tenham estado (atributos e propriedades) e comportamento (métodos).
+
+Como exemplo, pense na representação de horário, de `00:00:00` à `23:59:59`. Embora tudo possa ser representado como _string_ (ex.: `"13:23:41"`), na maioria das vezes um tipo customizados são mais adequados. Tipos customizados podem ser implementados de diversas formas, as linguagens de programação disponibilizam construtos para tal, como records, structs e, claro, CLASSES. A seguir, a implementação de horário:
+
+```javascript
+// Horario.js
+export default class Horario {
+    // atributo privado (ENCAPSULADO) para manter a contagem de segundos de um dia: de 0 à 86399
+    #segundos = 0; // o símbolo # torna o atributo privado
+
+    constructor(horas = 0, minutos = 0, segundos = 0) {
+        if (typeof (horas) !== 'number' || typeof (minutos) !== 'number' || typeof (segundos) !== 'number') {
+            throw new Error('Horas, minutos e segundos devem ser números inteiros');
+        }
+        // converter horas e minutos em segundos para armazenamento
+        const segundosTotais = ((horas | 0) * 3600 + (minutos | 0) * 60 + (segundos | 0)) % 86400;
+        if (segundosTotais < 0) {
+            throw new Error('O resultante não pode ser negativo');
+        }
+        this.#segundos = segundosTotais;
+        // segundos é o parâmetro enquanto this.#segundos é o atributo
+    }
+
+    // interface pública permitindo consultar as horas, minutos e segundos
+    // essas são propriedades computadas
+    get horas() {
+        return (this.#segundos / 3600) | 0;
+    }
+
+    get minutos() {
+        return (this.#segundos % 3600 / 60) | 0;
+    }
+
+    get segundos() {
+        return (this.#segundos % 60);
+    }
+
+    // métodos
+    adicionaSegundos(segundos) {
+        if (typeof (segundos) !== 'number') throw new Error('Segundos deve ser um inteiro');
+        const segundosTotais = (this.#segundos + segundos) % 86400;
+        if (segundosTotais < 0) {
+            throw new Error('O resultante não pode ser negativo');
+        }
+        this.#segundos = segundosTotais;
+    }
+
+    adicionaMinutos(minutos) {
+        if (typeof (minutos) !== 'number') throw new Error('Minutos deve ser um inteiro');
+        const segundosTotais = (this.#segundos + minutos * 60) % 86400;
+        if (segundosTotais < 0) {
+            throw new Error('O resultante não pode ser negativo');
+        }
+        this.#segundos = segundosTotais;
+    }
+
+    adicionaHoras(horas) {
+        if (typeof (horas) !== 'number') throw new Error('Horas deve ser um inteiro');
+        const segundosTotais = (this.#segundos + horas * 3600) % 86400;
+        if (segundosTotais < 0) {
+            throw new Error('O resultante não pode ser negativo');
+        }
+        this.#segundos = segundosTotais;
+    }
+
+    // devolve uma representação string deste horário na forma de "00:00:00"
+    toString() {
+        return `${this.#pad(this.horas)}:${this.#pad(this.minutos)}:${this.#pad(this.segundos)}`;
+    }
+
+    // este método é privado, acessível apenas internamente
+    #pad(valor) {
+        return valor < 10 ? `0${valor}` : `${valor}`;
+    }
+}
+
+// index.js
+import Horario from './Horario.js';
+
+const h = new Horario(13, 55, 34);
+console.log(h.horas, h.minutos, h.segundos); // 13, 55, 34
+h.adicionaSegundos(3);
+console.log(h.horas, h.minutos, h.segundos); // 13, 55, 37
+h.adicionaMinutos(30);
+console.log(h.horas, h.minutos, h.segundos); // 14, 25, 37
+h.adicionaHoras(13);
+console.log(h.horas, h.minutos, h.segundos); // 3, 25, 37
+
+console.log(h.toString()); // '03:25:37'
+```
+
+O exemplo anterior apresenta diversos conceitos da POO. A classe `Horario` introduz um novo tipo customizado. O estado é armazenado em segundos totais no atributo `#segundos` -- o símbolo `#` protege o atributo (um tipo de variável) de acesso externo. O construtor recebe os parâmetros para inicializar um objeto horário, na forma de `new Horario(13, 45, 12)`. O construtor é sempre invocado na instanciação de objetos, isto é, o uso do `new`. Para ler a quantidade de horas, minutos e segundos são disponibilizadas as propriedades `horas`, `minutos` e `segundos` na forma de `get horas()`, etc. As propriedades parecem funções, por causa dos parênteses, assim como os métodos `adicionaHoras()` e outros, mas não são declarados com a palavra-chave `function`. Por fim, o método `#pad(valor)` também é como uma função, porém privada, isto é, só pode ser invocada dentro da classe `Horario` -- é parte do encapsulamento, não faz sentido expor o método `pad`. 
+
+
+
 
 
 ## Biblioteca Padrão do JavaScript
