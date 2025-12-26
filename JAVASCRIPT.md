@@ -1,34 +1,45 @@
-# As Bases com JavaScript
+## As Bases com JavaScript
 
 As linguagens de programação servem para nós expressarmos o que queremos que o computador faça. Como os idiomas humanos, elas são diferentes na escrita (sintaxe) e até na forma de organizar o pensamento (paradigma de programação). Até usando a mesma linguagem podemos encontrar diversas maneiras de resolver um mesmo problema. No entanto, todas essas linguagens compartilham construtos comuns para guardar o estado do programa, decidir o que fazer dada uma condição, realizar um conjunto de tarefas um determinado número de vezes, obter e devolver informações, modularizar uma solução reutilizável, etc. Esse guia apresenta esses construtos usando a linguagem de programação JavaScript.
 
 ## Sumário
 
 - [As Bases com JavaScript](#as-bases-com-javascript)
-  - [Sumário](#sumário)
+- [Sumário](#sumário)
+- [Introdução](#introdução)
   - [História do JavaScript](#história-do-javascript)
   - [Linguagem interpretada](#linguagem-interpretada)
   - [Linguagem de tipagem dinâmica](#linguagem-de-tipagem-dinâmica)
+  - [Linguagem de tipagem fraca](#linguagem-de-tipagem-fraca)
   - [Ambiente de Execução](#ambiente-de-execução)
   - [Instalando o Node.js](#instalando-o-nodejs)
+- [Estado e Computação](#estado-e-computação)
   - [Valores](#valores)
   - [Variáveis e Constantes](#variáveis-e-constantes)
   - [Operadores](#operadores)
   - [Expressões, Sentenças, Declarações e Blocos](#expressões-sentenças-declarações-e-blocos)
-  - [Estruturas de Controle](#estruturas-de-controle)
+- [Estruturas de Controle](#estruturas-de-controle)
+  - [Estrtuturas Condicionais](#estrtuturas-condicionais)
+  - [Estruturas de Repetição](#estruturas-de-repetição)
+  - [Estruturas para o Tratamento de Exceções](#estruturas-para-o-tratamento-de-exceções)
+- [Funções](#funções)
   - [Declaração de Funções](#declaração-de-funções)
   - [Retorno de Funções](#retorno-de-funções)
-  - [Tratamento de Exceções](#tratamento-de-exceções)
   - [Composição de Funções](#composição-de-funções)
   - [Funções Anônimas e Arrow Functions](#funções-anônimas-e-arrow-functions)
+- [Programação Modular](#programação-modular)
   - [Projetos JavaScript](#projetos-javascript)
-  - [Programação Modular](#programação-modular)
+  - [Sobre Programação Modular](#sobre-programação-modular)
   - [Programação Modular em JavaScript](#programação-modular-em-javascript)
+  - [JavaScript Object Notation (JSON)](#javascript-object-notation-json)
   - [Classes e Objetos em JavaScript](#classes-e-objetos-em-javascript)
   - [Biblioteca Padrão do JavaScript](#biblioteca-padrão-do-javascript)
+- [Considerações Finais](#considerações-finais)
 
 
-## História do JavaScript
+## Introdução
+
+### História do JavaScript
 
 Em 1995 a web era estática. A Netscape Communications, criadora do navegador dominante Netscape Navigator, queria adicionar interatividade. Eles seguiram dois caminhos: incorporar a complexa linguagem Java para tarefas pesadas e uma linguagem de script leve para tarefas simples do lado do cliente. Brendan Eich foi contratado em abril de 1995 e recebeu a tarefa de criar essa linguagem de script. Sob imensa pressão de prazo, ele desenvolveu um protótipo funcional em apenas dez dias. A linguagem foi inicialmente chamada de "Mocha", depois brevemente "LiveScript". O detalhe crucial "não contado" é a mudança de nome para JavaScript em dezembro de 1995. Isso foi uma jogada puramente de marketing para capitalizar o hype em torno da popular linguagem de programação Java da Sun Microsystems. Apesar do nome, as linguagens são totalmente diferentes, fato que causou (e ainda causa) confusão entre os desenvolvedores.
 
@@ -41,7 +52,7 @@ A próxima revolução ocorreu em 2009, quando Ryan Dahl introduziu o Node.js, u
 Hoje, o JavaScript é uma linguagem de programação amplamente utilizada no mundo, alimentando virtualmente todos os web sites, bem como aplicativos móveis (React Native, Ionic) e aplicativos de desktop (Electron, Discord, Slack, etc).
 
 
-## Linguagem interpretada
+### Linguagem interpretada
 
 JavaScript é uma linguagem interpretada, assim como PHP, Python e Ruby, em oposição a uma linguagem compilada como C, Java e Rust. Por interpretada, entende-se que o código fonte é executado diretamente por um interpretador, sem a necessidade de um processo de compilação prévio para transformar o código fonte em código de máquina executável.
 
@@ -54,7 +65,7 @@ alert(`Olá, ${prompt("Qual é o seu nome?")}!`);
 ```
 
 
-## Linguagem de tipagem dinâmica
+### Linguagem de tipagem dinâmica
 
 JavaScript é uma linguagem de tipagem dinâmica, assim como Python, Ruby e PHP, em oposição a linguagens de tipagem estática como C, C# e Java. Por tipagem dinâmica, entende-se que o tipo de uma variável é pós-determinado e conhecido em tempo de execução, permitindo maior flexibilidade na atribuição de valores.
 
@@ -67,7 +78,11 @@ valor = "Olá, mundo!"; // agora valor é uma string
 console.log(typeof valor); // "string"
 ```
 
-## Ambiente de Execução
+### Linguagem de tipagem fraca
+
+TODO
+
+### Ambiente de Execução
 
 JavaScript é executado em diversos ambientes, desde que seja disponibilizado um JavaScript engine (motor), sendo os mais comuns os navegadores web e o Node.js. Cada ambiente fornece APIs específicas que permitem interagir com o sistema onde o JavaScript está sendo executado. Por exemplo, em um navegador você pode pegar a localização geográfica do usuário através da API de Geolocalização, enquanto no Node.js você pode acessar o sistema de arquivos do servidor.
 
@@ -81,7 +96,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
 
 O objeto `navigator` é uma API específica do ambiente do navegador e não está disponível no Node.js, por exemplo. Para executar JavaScript fora do navegador é necessário instalar o Node.js.
 
-## Instalando o Node.js
+### Instalando o Node.js
 
 Para instalar o Node.js, siga os passos abaixo:
 
@@ -106,7 +121,9 @@ Há três maneiras para executar um código JavaScript usando o Node.js:
 Recortes pequenos de código neste guia podem ser testados diretamente no console do navegador, no REPL do Node.js ou diretamente no terminal (3ra opção acima). Exemples maiores podem ser salvos em arquivos `.js` e executados com o Node.js. Os projetos mais complexos serão criados usando o gerenciador de pacotes npm (Node Package Manager), que é instalado automaticamente junto com o Node.js (que será explicado mais adiante nesse guia).
 
 
-## Valores
+## Estado e Computação
+
+### Valores
 
 Em JavaScript, tudo gira em torno de valores. Valores são as unidades básicas de dados que o programa manipula. Eles podem ser números, texto, objetos, funções, entre outros. Cada valor tem um tipo associado a ele, que determina como o valor pode ser usado e quais operações podem ser realizadas sobre ele.
 
@@ -182,7 +199,7 @@ console.log("a".charCodeAt(0)); // 97
 console.log("€".charCodeAt(0)); // 8364
 ```
 
-## Variáveis e Constantes
+### Variáveis e Constantes
 
 Variáveis são usadas para armazenar valores que podem ser alterados durante a execução do programa. Em JavaScript, você pode declarar variáveis usando as palavras-chave `var`, `let` ou `const`, embora este último não possa ser redeclarada nem reatribuída (não é tanto uma variável ao pé da letra). A diferença entre elas está no escopo e na mutabilidade:
 
@@ -229,7 +246,7 @@ A ordem de preferência para declarar variáveis em JavaScript é:
 3. `var` - apenas quando necessário, devido ao seu escopo mais amplo e comportamento peculiar.
 
 
-## Operadores
+### Operadores
 
 Operadores são símbolos ou palavras-chave que realizam operações sobre valores. Eles podem ser classificados nas seguintes categorias:
 
@@ -339,7 +356,7 @@ console.log(5 >> 1); // 2 (0101 >> 1 = 0010)
 console.log(5 >>> 1); // 2 (0101 >>> 1 = 0010)
 ```
 
-## Expressões, Sentenças, Declarações e Blocos
+### Expressões, Sentenças, Declarações e Blocos
 
 Em JavaScript, uma **expressão** é qualquer fragmento de código que produz um valor. Pode ser tão simples quanto um número ou uma string literal, ou tão complexo quanto uma chamada de função ou uma operação matemática. Por exemplo:
 
@@ -406,6 +423,8 @@ Estruturas de controle são usadas para controlar o fluxo de execução do códi
 - Controle de loop: `break`, `continue`
 - Tratamento de exceções: `try`, `catch`, `finally`, `throw`
 - Declarações de término: `return`
+
+### Estrtuturas Condicionais
 
 A estrutura condicional mais simples é o `if`, que executa um bloco de código se uma condição for verdadeira:
 
@@ -534,6 +553,8 @@ switch (caractere) {
 }
 ```
 
+### Estruturas de Repetição
+
 Use o `while` para repetir um bloco de código enquanto uma condição for verdadeira:
 
 ```javascript
@@ -570,10 +591,95 @@ for (let i = surpresa.length; i < nivelSurpresa; i++) {
 console.log(surpresa); // "ahhhh!"
 ```
 
-O tratamento de exceções será abordado mais adiante neste guia, assim como funções e retornos.
+### Estruturas para o Tratamento de Exceções
+
+Em JavaScript, o tratamento de exceções é realizado usando as palavras-chave `try`, `catch`, `finally` e `throw`. Esses construtos para o tratamento de fluxos excepcionais também é usada por outras linguagens, tais como Java e C#. Eles permitem que você lide com erros de forma controlada, evitando que o programa falhe abruptamente -- exceto se nenhuma exceção for capturada. 
+
+A implementação começa pelas funções que podem lançar exceções usando a instrução `throw`, como `throw new Error("mensagem de erro")`. As exceções são lançadas quando há algum problema que impede a função de computar ou retornar um valor válido. As condições são testadas condicionalmente e podem ocorrer por diversas razões, desde um parâmetro inválido, como informar uma quantidade negativa para um produto, até um estado inconsistente ou impossível de atingir, por exemplo, tentar sacar de uma conta bancária com saldo insuficiente.
+
+Por exemplo, considere uma função para calcular as parcelas acumulando os centavos na última:
+
+```javascript
+function calcularParcelas(valorEmprestimo, numeroParcelas, taxaJuros) {
+    if (typeof valorEmprestimo !== 'number' || typeof numeroParcelas !== 'number' || typeof taxaJuros !== 'number') {
+        throw new Error("Parâmetros inválidos: todos devem ser números.");
+    }
+    if (valorEmprestimo < 100) {
+        throw new Error("O valor do empréstimo deve ser pelo menos 100.");
+    }
+    if (numeroParcelas < 2) {
+        throw new Error("O número de parcelas deve ser pelo menos 2.");
+    }
+    if (taxaJuros < 0) {
+        throw new Error("A taxa de juros não pode ser negativa.");
+    }
+    if (taxaJuros > 1) {
+        throw new Error("A taxa de juros deve ser um valor decimal (por exemplo, 0.05 para 5%).");
+    }
+    // calcular os juros compostos
+    const montante = valorEmprestimo * Math.pow((1 + taxaJuros), numeroParcelas);
+    const valorFinalEmprestimo = montante;
+    // fazer o calculo inteiro da parcela
+    const valorParcela = Math.floor(valorFinalEmprestimo / numeroParcelas);
+    // acumular o resto para adicionar à última parcela
+    const resto = valorFinalEmprestimo % numeroParcelas;
+    // adicionar o resto à última parcela
+    const valorUltimaParcela = valorParcela + resto;
+
+    return { valorEmprestimo, numeroParcelas, valorParcela, valorUltimaParcela };
+}
 
 
-## Declaração de Funções
+// Usando a função com tratamento de exceções:
+try {
+    const resultado = calcularParcelas(1000, 5, 0.05); // parâmetros válidos
+    console.log("Cálculo das parcelas:", resultado);
+} catch (erro) {
+    console.error("Erro ao calcular parcelas:", erro.message); // não será executado neste caso
+}
+
+try {
+    const resultado = calcularParcelas(50, 1, -0.1); // parâmetros inválidos
+    console.log("Cálculo das parcelas:", resultado);
+} catch (erro) {
+    // será executado e exibirá a mensagem: "O valor do empréstimo deve ser pelo menos 100."
+    console.error("Erro ao calcular parcelas:", erro.message); 
+}
+
+try {
+    const resultado = calcularParcelas(100, 1, -0.1); // parâmetros inválidos
+    console.log("Cálculo das parcelas:", resultado);
+} catch (erro) {
+    // será executado e exibirá a mensagem: "O número de parcelas deve ser pelo menos 2."
+    console.error("Erro ao calcular parcelas:", erro.message); 
+}
+```
+
+Note que a ordem das validações dentro da função é importante, pois a primeira condição que falhar lançará uma exceção, interrompendo a execução da função. Portanto, as validações devem ser organizadas de forma lógica para fornecer feedback útil ao usuário ou chamador da função.
+
+Finalmente, o bloco `finally` pode ser usado para executar código que deve ser executado independentemente de uma exceção ter sido lançada ou não. Isso é útil para liberar recursos, fechar conexões ou realizar outras tarefas de limpeza, mais comuns quando usamos recuros externos, como arquivos ou conexões de rede. Aqui está um exemplo sintético simples:
+
+```javascript
+function exemploFinally() { // abrindo, executando um sql e fechando uma conexão fictícia:
+    let conexao = null;
+    try {
+        conexao = abrirConexaoBancoDeDados(); // função fictícia
+        // executar operações no banco de dados
+        console.log("Operações no banco de dados executadas com sucesso.");
+    } catch (erro) {
+        console.error("Erro ao executar operações no banco de dados:", erro.message);
+    } finally {
+        if (conexao) {
+            conexao.fechar(); // função fictícia para fechar a conexão
+            console.log("Conexão com o banco de dados fechada.");
+        }
+    }
+}
+```
+
+## Funções
+
+### Declaração de Funções
 
 Funções são blocos reutilizáveis de código que realizam uma tarefa específica. Elas podem receber entradas (parâmetros), executar operações, faz computações e retornar um valor. Funções ajudam a organizar o código, sendo o primeiro passo na direção da **modularidade** e reutilização.
 
@@ -735,7 +841,7 @@ console.log(expressarSurpresa(150)); // "Surpresa demais!"
 console.log(expressarSurpresa("muito")); // NaN
 ```
 
-## Retorno de Funções
+### Retorno de Funções
 
 Funções podem retornar valores usando a palavra-chave `return`. Quando uma função encontra uma instrução `return`, ela imediatamente termina sua execução e retorna o valor especificado para o chamador. Se nenhuma instrução `return` for encontrada, a função retornará `undefined` por padrão.
 
@@ -788,94 +894,7 @@ console.log(usuario); // null é mais útil neste caso pois indica que o usuári
 Valores `null` não retornam por padrão, a menos que sejam explicitamente retornados pela função. A escolha entre retornar `undefined` ou `null` depende do contexto e da intenção do programador. `undefined` geralmente indica que algo não foi definido ou não existe, enquanto `null` é usado para indicar a ausência intencional de um valor.
 
 
-## Tratamento de Exceções
-
-Em JavaScript, o tratamento de exceções é realizado usando as palavras-chave `try`, `catch`, `finally` e `throw`. Esses construtos para o tratamento de fluxos excepcionais também é usada por outras linguagens, tais como Java e C#. Eles permitem que você lide com erros de forma controlada, evitando que o programa falhe abruptamente -- exceto se nenhuma exceção for capturada. 
-
-A implementação começa pelas funções que podem lançar exceções usando a instrução `throw`, como `throw new Error("mensagem de erro")`. As exceções são lançadas quando há algum problema que impede a função de computar ou retornar um valor válido. As condições são testadas condicionalmente e podem ocorrer por diversas razões, desde um parâmetro inválido, como informar uma quantidade negativa para um produto, até um estado inconsistente ou impossível de atingir, por exemplo, tentar sacar de uma conta bancária com saldo insuficiente.
-
-Por exemplo, considere uma função para calcular as parcelas acumulando os centavos na última:
-
-```javascript
-function calcularParcelas(valorEmprestimo, numeroParcelas, taxaJuros) {
-    if (typeof valorEmprestimo !== 'number' || typeof numeroParcelas !== 'number' || typeof taxaJuros !== 'number') {
-        throw new Error("Parâmetros inválidos: todos devem ser números.");
-    }
-    if (valorEmprestimo < 100) {
-        throw new Error("O valor do empréstimo deve ser pelo menos 100.");
-    }
-    if (numeroParcelas < 2) {
-        throw new Error("O número de parcelas deve ser pelo menos 2.");
-    }
-    if (taxaJuros < 0) {
-        throw new Error("A taxa de juros não pode ser negativa.");
-    }
-    if (taxaJuros > 1) {
-        throw new Error("A taxa de juros deve ser um valor decimal (por exemplo, 0.05 para 5%).");
-    }
-    // calcular os juros compostos
-    const montante = valorEmprestimo * Math.pow((1 + taxaJuros), numeroParcelas);
-    const valorFinalEmprestimo = montante;
-    // fazer o calculo inteiro da parcela
-    const valorParcela = Math.floor(valorFinalEmprestimo / numeroParcelas);
-    // acumular o resto para adicionar à última parcela
-    const resto = valorFinalEmprestimo % numeroParcelas;
-    // adicionar o resto à última parcela
-    const valorUltimaParcela = valorParcela + resto;
-
-    return { valorEmprestimo, numeroParcelas, valorParcela, valorUltimaParcela };
-}
-
-
-// Usando a função com tratamento de exceções:
-try {
-    const resultado = calcularParcelas(1000, 5, 0.05); // parâmetros válidos
-    console.log("Cálculo das parcelas:", resultado);
-} catch (erro) {
-    console.error("Erro ao calcular parcelas:", erro.message); // não será executado neste caso
-}
-
-try {
-    const resultado = calcularParcelas(50, 1, -0.1); // parâmetros inválidos
-    console.log("Cálculo das parcelas:", resultado);
-} catch (erro) {
-    // será executado e exibirá a mensagem: "O valor do empréstimo deve ser pelo menos 100."
-    console.error("Erro ao calcular parcelas:", erro.message); 
-}
-
-try {
-    const resultado = calcularParcelas(100, 1, -0.1); // parâmetros inválidos
-    console.log("Cálculo das parcelas:", resultado);
-} catch (erro) {
-    // será executado e exibirá a mensagem: "O número de parcelas deve ser pelo menos 2."
-    console.error("Erro ao calcular parcelas:", erro.message); 
-}
-```
-
-Note que a ordem das validações dentro da função é importante, pois a primeira condição que falhar lançará uma exceção, interrompendo a execução da função. Portanto, as validações devem ser organizadas de forma lógica para fornecer feedback útil ao usuário ou chamador da função.
-
-Finalmente, o bloco `finally` pode ser usado para executar código que deve ser executado independentemente de uma exceção ter sido lançada ou não. Isso é útil para liberar recursos, fechar conexões ou realizar outras tarefas de limpeza, mais comuns quando usamos recuros externos, como arquivos ou conexões de rede. Aqui está um exemplo sintético simples:
-
-```javascript
-function exemploFinally() { // abrindo, executando um sql e fechando uma conexão fictícia:
-    let conexao = null;
-    try {
-        conexao = abrirConexaoBancoDeDados(); // função fictícia
-        // executar operações no banco de dados
-        console.log("Operações no banco de dados executadas com sucesso.");
-    } catch (erro) {
-        console.error("Erro ao executar operações no banco de dados:", erro.message);
-    } finally {
-        if (conexao) {
-            conexao.fechar(); // função fictícia para fechar a conexão
-            console.log("Conexão com o banco de dados fechada.");
-        }
-    }
-}
-```
-
-
-## Composição de Funções
+### Composição de Funções
 
 Funções podem chamar outras funções dentro de seu corpo, permitindo a composição de funcionalidades e a criação de programas mais complexos. Isso promove a reutilização de código e a modularidade. Aqui está um exemplo simples de composição de funções:
 
@@ -1006,7 +1025,7 @@ funcaoA(); // Inicia a cadeia de chamadas
 //     at <anonymous>:1:1
 ```
 
-## Funções Anônimas e Arrow Functions
+### Funções Anônimas e Arrow Functions
 
 Funções anônimas são funções que não possuem um nome associado. Elas são frequentemente usadas como argumentos para outras funções, especialmente em _callbacks_ e funções de ordem superior. Aqui está um exemplo de uma função usada como callback em um método de array:
 
@@ -1053,7 +1072,9 @@ const pluralizar = palavra => {
 console.log(pluralizar("carro")); // "carros"
 ```
 
-## Projetos JavaScript
+## Programação Modular
+
+### Projetos JavaScript
 
 Em JavaScript, um projeto geralmente consiste em um conjunto de arquivos e pastas organizados de maneira lógica para desenvolver uma aplicação ou biblioteca. A estrutura do projeto pode variar dependendo do tipo de aplicação (web, Node.js, etc.) e das ferramentas utilizadas. Os projetos JavaScript modernos frequentemente utilizam gerenciadores de pacotes como `npm` (Node Package Manager) ou Yarn para gerenciar dependências e scripts de construção. Neste guia usaremos o `npm` para inicializar um projeto que utiliza módulos ES6.
 
@@ -1127,7 +1148,7 @@ console.log(`Olá, ${nome}!`);
 Tenha em consideração que você precisará roda o comando `npm install` sempre que clonar um projeto que contenha um arquivo `package.json`, para instalar todas as dependências listadas nele. As dependências são armazenadas na pasta `node_modules`, que não deve ser incluída no controle de versão (como Git), por isso é comum adicionar `node_modules` ao arquivo `.gitignore`.
 
 
-## Programação Modular
+### Sobre Programação Modular
 
 Esta seção aborda o conceito de modularidade em programação, independentemente da linguagem utilizada, fornecendo as bases teóricas necessárias para entender a importância dos módulos no desenvolvimento de software.
 
@@ -1173,7 +1194,7 @@ Resumindo, um módulo deve ter as seguintes características:
 Na seção seguinte, exploraremos como implementar a programação modular especificamente em JavaScript.
 
 
-## Programação Modular em JavaScript
+### Programação Modular em JavaScript
 
 JavaScript organiza os módulos na forma de arquivos separados, onde cada arquivo pode conter uma ou mais funções, classes ou variáveis. A interface do módulo é definida pelas funcionalidades que ele exporta, permitindo que outros módulos importem e utilizem essas funcionalidades. Isto é, podem existir funções e variáveis privadas dentro do módulo que não são acessíveis externamente, promovendo o encapsulamento, enquanto as funcionalidades exportadas formam a interface pública do módulo.
 
@@ -1335,7 +1356,11 @@ console.log(incrementar('user')); // { prefixo: "user", contador: 1 }
 console.log(obterContador('user')); // { prefixo: "user", contador: 1 }
 ```
 
-## Classes e Objetos em JavaScript
+### JavaScript Object Notation (JSON)
+
+TODO
+
+### Classes e Objetos em JavaScript
 
 JavaScript é uma linguagem orientada a objetos baseada em protótipos, o que significa que os objetos podem herdar propriedades e métodos diretamente de outros objetos. No entanto, a partir do ECMAScript 6 (ES6), JavaScript introduziu a sintaxe de classes, que fornece uma maneira mais familiar e estruturada de criar objetos e lidar com herança.
 
@@ -1433,10 +1458,7 @@ console.log(h.toString()); // '03:25:37'
 O exemplo anterior apresenta diversos conceitos da POO. A classe `Horario` introduz um novo tipo customizado. O estado é armazenado em segundos totais no atributo `#segundos` -- o símbolo `#` protege o atributo (um tipo de variável) de acesso externo. O construtor recebe os parâmetros para inicializar um objeto horário, na forma de `new Horario(13, 45, 12)`. O construtor é sempre invocado na instanciação de objetos, isto é, o uso do `new`. Para ler a quantidade de horas, minutos e segundos são disponibilizadas as propriedades `horas`, `minutos` e `segundos` na forma de `get horas()`, etc. As propriedades parecem funções, por causa dos parênteses, assim como os métodos `adicionaHoras()` e outros, mas não são declarados com a palavra-chave `function`. Por fim, o método `#pad(valor)` também é como uma função, porém privada, isto é, só pode ser invocada dentro da classe `Horario` -- é parte do encapsulamento, não faz sentido expor o método `pad`. 
 
 
-
-
-
-## Biblioteca Padrão do JavaScript
+### Biblioteca Padrão do JavaScript
 
 A Biblioteca Padrão do JavaScript, também conhecida como API padrão, é um conjunto de objetos, funções e métodos integrados que fornecem funcionalidades básicas para manipulação de dados, operações matemáticas, manipulação de strings, datas, arrays, entre outros. Esses recursos estão disponíveis em qualquer ambiente JavaScript, seja no navegador ou no Node.js.
 
@@ -1480,3 +1502,6 @@ console.log(frutas.indexOf("banana")); // 1 (posição de "banana")
 console.log(frutas.slice(0, 2)); // ["morango", "banana"] (subarray do índice 0 ao 2, exclusivo)
 ```
 
+## Considerações Finais
+
+TODO
