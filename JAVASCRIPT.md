@@ -61,14 +61,14 @@ JavaScript é uma linguagem interpretada, assim como PHP, Python e Ruby, em opos
 
 No navegador, o interpretador de JavaScript é parte do motor do navegador (como V8 no Google Chrome e Node.js, SpiderMonkey no Firefox, JavaScriptCore no Safari, etc.). Em ambientes fora do navegador, como o Node.js, o interpretador é parte do ambiente de execução.
 
-Experimente o interpretador agora mesmo: abra o console do seu navegador (geralmente com F12 ou Ctrl+Shift+J) e digite:
+Experimente o interpretador agora mesmo abrindo o console do seu navegador (geralmente com F12 ou Ctrl+Shift+J) e digite:
 
 ```javascript
 alert(`Olá, ${prompt("Qual é o seu nome?")}!`);
 ```
 
 
-### Linguagem de tipagem dinâmica
+### Linguagem de Tipagem Dinâmica
 
 JavaScript é uma linguagem de tipagem dinâmica, assim como Python, Ruby e PHP, em oposição a linguagens de tipagem estática como C, C# e Java. Por tipagem dinâmica, entende-se que o tipo de uma variável é pós-determinado e conhecido em tempo de execução, permitindo maior flexibilidade na atribuição de valores.
 
@@ -113,7 +113,7 @@ Para instalar o Node.js, siga os passos abaixo:
 node -v
 ```
 
-Deve exibir a versão do Node.js instalada.
+O comando anterior deve exibir a versão do Node.js instalada.
 
 Há três maneiras para executar um código JavaScript usando o Node.js:
 
@@ -121,7 +121,12 @@ Há três maneiras para executar um código JavaScript usando o Node.js:
 2. **Arquivo JavaScript**: Crie um arquivo com a extensão `.js` (por exemplo, `programinha.js`) e escreva seu código JavaScript nele. Depois, execute o arquivo no terminal com o comando `node programinha.js`;
 3. **Executar código diretamente no terminal**: Você pode executar um comando JavaScript diretamente no terminal usando o comando `node -e "console.log('Olá, mundo!');"`.
 
-Recortes pequenos de código neste guia podem ser testados diretamente no console do navegador, no REPL do Node.js ou diretamente no terminal (3ra opção acima). Exemples maiores podem ser salvos em arquivos `.js` e executados com o Node.js. Os projetos mais complexos serão criados usando o gerenciador de pacotes npm (Node Package Manager), que é instalado automaticamente junto com o Node.js (que será explicado mais adiante nesse guia).
+```js
+// programinha.js
+console.log("Um programinha JavaScript") // o ; é opcional, mas recomendado!
+```
+
+Recortes pequenos de código neste guia podem ser testados diretamente no console do navegador, no REPL do Node.js ou diretamente no terminal (3ra opção acima). Exemples maiores podem ser salvos em arquivos `.js` e executados com o Node.js. Os projetos mais complexos serão criados usando o gerenciador de pacotes `npm` (Node Package Manager), que é instalado automaticamente junto com o Node.js (que será explicado mais adiante nesse guia).
 
 
 ## Estado e Computação
@@ -933,19 +938,15 @@ function expressarDecepcao(nivelDecepcao = 5) {
 }
 
 function expressar(vogal = 'a', nivel = 5) {
-    if (typeof nivel !== 'number') {
-        return NaN;
-    }
-    if (nivel <= 0) {
-        return "Nenhuma expressão, na verdade";
-    }
-    if (nivel > 100) {
-        return "Expressão demais!";
-    }
+    // cláusulas guarda: se nenhuma entrar, então os parâmetros recebidos são válidos:
+    if (typeof nivel !== 'number') return NaN;
+    if (nivel <= 0) return "Nenhuma expressão, na verdade";
+    if (nivel > 100) return "Expressão demais!";
+    
     let sentimento = "ah";
-    for (let i = sentimento.length; i < nivel; i++) {
-        sentimento += "h";
-    }
+    
+    for (let i = sentimento.length; i < nivel; i++) sentimento += "h";
+    
     return sentimento + "!";
 }
 
@@ -1085,7 +1086,7 @@ Bertrand Meyer, em seu livro _Object-Oriented Software Construction_, também di
 
 Grady Booch, em _Object-Oriented Analysis and Design_, também aborda a modularidade como um princípio fundamental na engenharia de software. Booch destaca que a modularidade permite a decomposição de sistemas complexos em partes menores e mais gerenciáveis, facilitando o desenvolvimento colaborativo e a evolução do software ao longo do tempo. Ele enfatiza a importância de definir interfaces claras entre os módulos para garantir a interoperabilidade e a independência dos componentes. O livro é vendido pela Editora O'Reilly e pode ser encontrado em: https://www.oreilly.com/library/view/object-oriented-analysis-and/9780201895513/
 
-Portanto, um módulo pode ser pequeno como uma função, ou um grupo de funções relacionadas escritas em um arquivo, ou até um conjunto de arquivos, com classes e funções, formando um pacote ou até uma biblioteca completa. A seguir uma representação visual simples de como um sistema modular pode ser estruturado:
+Portanto, um módulo pode ser minúsculo como uma única função reutilizável, ou um grupo de funções relacionadas (coesas) escritas em um arquivo, ou até um conjunto de arquivos, com classes e funções, formando um pacote coeso, ou até uma biblioteca completa (conjunto de pacotes). A seguir uma representação visual simples de como um sistema modular pode ser estruturado:
 
 ```plain
 +-------------------+      +-------------------+      +-------------------+
@@ -1145,10 +1146,10 @@ Exemplo de comandos para iniciar um projeto:
 mkdir meu-projeto-js
 cd meu-projeto-js
 npm init -y
-# Edite o package.json para incluir "type": "module" ou substituir "type": "commonjs" por "type": "module"
-code . # abre o projeto no VS Code ou use outro editor de sua preferência
 # Crie o arquivo index.js
 touch index.js
+# Edite o package.json para incluir "type": "module" ou substituir "type": "commonjs" por "type": "module"
+code . # abre o projeto no VS Code ou use outro editor de sua preferência
 ```
 
 O arquivo `package.json` deve ficar parecido com isto:
@@ -1169,7 +1170,7 @@ O arquivo `package.json` deve ficar parecido com isto:
 }
 ```
 
-Para executar o projeto, você pode usar o comando `npm start` que executará o script definido na seção `scripts` do `package.json`, com `node index.js` ou `node .`.
+Para executar o projeto, você pode usar o comando `npm start` que executará o script definido na seção `scripts` do `package.json`, com `node index.js` ou apenas `node .` (`.` é um símbolo que significa o diretório atual).
 
 ```bash
 npm start
