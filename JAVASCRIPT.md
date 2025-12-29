@@ -1357,6 +1357,60 @@ console.log(incrementar('user')); // { prefixo: "user", contador: 1 }
 console.log(obterContador('user')); // { prefixo: "user", contador: 1 }
 ```
 
+
+### Biblioteca Padrão do JavaScript
+
+A Biblioteca Padrão do JavaScript, também conhecida como API padrão, é um conjunto de objetos, funções e métodos integrados que fornecem funcionalidades básicas para manipulação de dados, operações matemáticas, manipulação de strings, datas, arrays, entre outros. Esses recursos estão disponíveis em qualquer ambiente JavaScript, seja no navegador ou no Node.js.
+
+Alguns dos principais componentes da Biblioteca Padrão do JavaScript incluem:
+
+- `Math`: fornece propriedades e métodos para operações matemáticas, como arredondamento, geração de números aleatórios, cálculos trigonométricos, etc.
+- `Date`: permite criar, manipular e formatar datas e horas.
+- `String`: oferece métodos para manipulação de strings, como busca, substituição, divisão, concatenação, etc.
+- `Array`: fornece métodos para manipulação de arrays, como adição, remoção, ordenação, filtragem, mapeamento, etc.
+- `Object`: oferece métodos para manipulação de objetos, como criação, cópia, verificação de propriedades, etc.
+- `JSON`: fornece métodos para conversão entre objetos JavaScript e strings JSON.
+
+Operações comuns de strings incluem:
+
+```javascript
+var texto = "Olá, mundo!";
+console.log(texto.length); // 13 (número de caracteres)
+console.log(texto.toUpperCase()); // "OLÁ, MUNDO!" (tudo
+console.log(texto.toLowerCase()); // "olá, mundo!" (tudo minúsculo)
+console.log(texto.indexOf("mundo")); // 5 (posição inicial da substring)
+console.log(texto.replace("mundo", "JavaScript")); // "Olá, JavaScript!" (substituição)
+console.log(texto.split(", ")); // ["Olá", "mundo!"] (divisão em array)
+console.log(texto.substring(0, 5)); // "Olá, " (substring do índice 0 ao 5)
+console.log(texto.trim()); // "Olá, mundo!" (remove espaços em branco nas extremidades)
+console.log(texto.endsWith("!")); // true (verifica se termina com "!")
+```
+
+Arrays são listas ordenadas de valores e possuem diversos métodos úteis:
+
+```javascript
+var frutas = ["maçã", "banana", "laranja"];
+frutas.push("uva"); // adiciona "uva" ao final
+console.log(frutas); // ["maçã", "banana", "laranja", "uva"]
+frutas.pop(); // remove o último elemento
+console.log(frutas); // ["maçã", "banana", "laranja"]
+frutas.shift(); // remove o primeiro elemento
+console.log(frutas); // ["banana", "laranja"]
+frutas.unshift("morango"); // adiciona "morango" no início
+console.log(frutas); // ["morango", "banana", "laranja"]
+console.log(frutas.indexOf("banana")); // 1 (posição de "banana")
+console.log(frutas.slice(0, 2)); // ["morango", "banana"] (subarray do índice 0 ao 2, exclusivo)
+```
+
+
+## Estruturas de Dados Elementares
+
+
+## Classificação das Estruturas de Dados
+
+
+TODO Object, Array, List, Set, Map, 
+
 ### JavaScript Object Notation (JSON)
 
 TODO
@@ -1458,50 +1512,12 @@ console.log(h.toString()); // '03:25:37'
 
 O exemplo anterior apresenta diversos conceitos da POO. A classe `Horario` introduz um novo tipo customizado. O estado é armazenado em segundos totais no atributo `#segundos` -- o símbolo `#` protege o atributo (um tipo de variável) de acesso externo. O construtor recebe os parâmetros para inicializar um objeto horário, na forma de `new Horario(13, 45, 12)`. O construtor é sempre invocado na instanciação de objetos, isto é, o uso do `new`. Para ler a quantidade de horas, minutos e segundos são disponibilizadas as propriedades `horas`, `minutos` e `segundos` na forma de `get horas()`, etc. As propriedades parecem funções, por causa dos parênteses, assim como os métodos `adicionaHoras()` e outros, mas não são declarados com a palavra-chave `function`. Por fim, o método `#pad(valor)` também é como uma função, porém privada, isto é, só pode ser invocada dentro da classe `Horario` -- é parte do encapsulamento, não faz sentido expor o método `pad`. 
 
+### Listas (arrays)
 
-### Biblioteca Padrão do JavaScript
+### Conjuntos
 
-A Biblioteca Padrão do JavaScript, também conhecida como API padrão, é um conjunto de objetos, funções e métodos integrados que fornecem funcionalidades básicas para manipulação de dados, operações matemáticas, manipulação de strings, datas, arrays, entre outros. Esses recursos estão disponíveis em qualquer ambiente JavaScript, seja no navegador ou no Node.js.
+### Mapas
 
-Alguns dos principais componentes da Biblioteca Padrão do JavaScript incluem:
-
-- `Math`: fornece propriedades e métodos para operações matemáticas, como arredondamento, geração de números aleatórios, cálculos trigonométricos, etc.
-- `Date`: permite criar, manipular e formatar datas e horas.
-- `String`: oferece métodos para manipulação de strings, como busca, substituição, divisão, concatenação, etc.
-- `Array`: fornece métodos para manipulação de arrays, como adição, remoção, ordenação, filtragem, mapeamento, etc.
-- `Object`: oferece métodos para manipulação de objetos, como criação, cópia, verificação de propriedades, etc.
-- `JSON`: fornece métodos para conversão entre objetos JavaScript e strings JSON.
-
-Operações comuns de strings incluem:
-
-```javascript
-var texto = "Olá, mundo!";
-console.log(texto.length); // 13 (número de caracteres)
-console.log(texto.toUpperCase()); // "OLÁ, MUNDO!" (tudo
-console.log(texto.toLowerCase()); // "olá, mundo!" (tudo minúsculo)
-console.log(texto.indexOf("mundo")); // 5 (posição inicial da substring)
-console.log(texto.replace("mundo", "JavaScript")); // "Olá, JavaScript!" (substituição)
-console.log(texto.split(", ")); // ["Olá", "mundo!"] (divisão em array)
-console.log(texto.substring(0, 5)); // "Olá, " (substring do índice 0 ao 5)
-console.log(texto.trim()); // "Olá, mundo!" (remove espaços em branco nas extremidades)
-console.log(texto.endsWith("!")); // true (verifica se termina com "!")
-```
-
-Arrays são listas ordenadas de valores e possuem diversos métodos úteis:
-
-```javascript
-var frutas = ["maçã", "banana", "laranja"];
-frutas.push("uva"); // adiciona "uva" ao final
-console.log(frutas); // ["maçã", "banana", "laranja", "uva"]
-frutas.pop(); // remove o último elemento
-console.log(frutas); // ["maçã", "banana", "laranja"]
-frutas.shift(); // remove o primeiro elemento
-console.log(frutas); // ["banana", "laranja"]
-frutas.unshift("morango"); // adiciona "morango" no início
-console.log(frutas); // ["morango", "banana", "laranja"]
-console.log(frutas.indexOf("banana")); // 1 (posição de "banana")
-console.log(frutas.slice(0, 2)); // ["morango", "banana"] (subarray do índice 0 ao 2, exclusivo)
-```
 
 ## Considerações Finais
 
