@@ -1,5 +1,7 @@
 # LISTA DE EXERCÍCIOS
 
+Essa lista de exercícios é dividida em seções que abrangem números, strings, parâmetros mistos e estruturas de dados. Cada seção é subdividida em níveis de dificuldade crescente: Nível 1 (básico), Nível 2 (intermediário) e Nível 3 (avançado). Cada exercício inclui exemplos de entrada e saída, bem como casos especiais para garantir uma compreensão completa do problema.
+
 ## Números
 
 ### Nível 1
@@ -350,13 +352,111 @@ console.log(ehPalindromo()); // true
 
 #### Calcular Raiz Quadrada Inteira
 
+Considere um número inteiro positivo, retornar a raiz quadrada inteira (sem casas decimais). Se não for um quadrado perfeito, retornar o maior inteiro menor que a raiz quadrada.
 
+```js
+console.log(raizInteira(0)); // 0
+console.log(raizInteira(1)); // 1
+console.log(raizInteira(4)); // 2
+console.log(raizInteira(9)); // 3
+console.log(raizInteira(16)); // 4
+console.log(raizInteira(25)); // 5
+console.log(raizInteira(26)); // 5
+console.log(raizInteira(15)); // 3
+console.log(raizInteira(20)); // 4
+console.log(raizInteira(30)); // 5
+
+// casos especiais
+console.log(raizInteira("25")); // NaN
+console.log(raizInteira(-4)); // undefined
+console.log(raizInteira(4.5)); // undefined
+console.log(raizInteira()); // 0
+```
 
 #### Converter Número Decimal para Binário
+
+Considere um número inteiro positivo, retornar a representação binária como uma string.
+
+```js
+console.log(decimalBinario(0)); // "0"
+console.log(decimalBinario(1)); // "1"
+console.log(decimalBinario(2)); // "10"
+console.log(decimalBinario(5)); // "101"
+console.log(decimalBinario(10)); // "1010"
+console.log(decimalBinario(255)); // "11111111"
+console.log(decimalBinario(1023)); // "1111111111"
+
+// casos especiais
+console.log(decimalBinario("10")); // NaN
+console.log(decimalBinario(-4)); // undefined
+console.log(decimalBinario(4.5)); // undefined
+console.log(decimalBinario()); // "0"
+```
+
 #### Converter Número Binário para Decimal
+
+Considere uma string representando um número binário, retornar o valor decimal.
+
+```js
+console.log(binarioDecimal("0")); // 0
+console.log(binarioDecimal("1")); // 1
+console.log(binarioDecimal("10")); // 2
+console.log(binarioDecimal("101")); // 5
+console.log(binarioDecimal("1010")); // 10
+console.log(binarioDecimal("11111111")); // 255
+
+// casos especiais
+console.log(binarioDecimal("102")); // Error ("Número binário inválido")
+console.log(binarioDecimal("abc")); // Error ("Número binário inválido")
+console.log(binarioDecimal("")); // 0
+console.log(binarioDecimal()); // null
+```
+
 #### Calcular Juros Simples
+
+Considere um valor principal, uma taxa de juros e um período de tempo, retornar o valor total com juros simples.
+
+```js
+console.log(jurosSimples(1000, 0.05, 1)); // 1050
+console.log(jurosSimples(1000, 0.05, 2)); // 1100
+console.log(jurosSimples(1500, 0.03, 4)); // 1680
+console.log(jurosSimples(2000, 0.04, 3)); // 2240
+
+// casos especiais
+console.log(jurosSimples("1000", 0.05, 2)); // NaN
+console.log(jurosSimples(1000, "0.05", 2)); // NaN
+console.log(jurosSimples(1000, 0.05, "2")); // NaN
+console.log(jurosSimples(1000, 0.05)); // 1050
+console.log(jurosSimples(1000)); // 1000
+console.log(jurosSimples()); // 0
+```
+
 #### Calcular Juros Compostos
 
+Considere a fórmula de juros compostos `A = P (1 + r/n)^(nt)` onde `A` é o valor futuro do investimento/ empréstimo, incluindo juros, `P` é o valor principal (o valor inicial), `r` é a taxa anual de juros (decimal), `n` é o número de vezes que os juros são compostos por ano e `t` é o número de anos que o dinheiro é investido ou emprestado. Por exemplo, `P = 1000`, `r = 0.05`, `n = 12`, `t = 10`, calcular `A`, seria:
+
+```plain
+A = 1000 (1 + 0.05/12)^(12*10) = 1647.01
+```
+
+Retornar o valor total com juros compostos com JavaScript em duas casas decimais.
+
+```js
+console.log(jurosCompostos(1000, 0.05, 12, 1)); // 1051.16
+console.log(jurosCompostos(1000, 0.05, 12, 2)); // 1104.94
+console.log(jurosCompostos(1500, 0.03, 4, 4)); // 1789.39
+console.log(jurosCompostos(2000, 0.04, 365, 3)); // 2262.87
+
+// casos especiais
+console.log(jurosCompostos("1000", 0.05, 12, 2)); // NaN
+console.log(jurosCompostos(1000, "0.05", 12, 2)); // NaN
+console.log(jurosCompostos(1000, 0.05, "12", 2)); // NaN
+// sempre devem vir os quatro parâmetros, caso contrário retorna undefined
+console.log(jurosCompostos(1000, 0.05, 12)); // undefined
+console.log(jurosCompostos(1000, 0.05)); // undefined
+console.log(jurosCompostos(1000)); // undefined
+console.log(jurosCompostos()); // undefined
+```
 
 ## Strings
 
@@ -470,3 +570,10 @@ Formatar Texto com Máscara Numérica
 Validar Entrada Mista com Regras Compostas
 
 
+## Estruturas de Dados
+
+### Com Arrays
+### Com Objetos
+### Com Sets
+### Com Maps
+### Com Estruturas Compostas
