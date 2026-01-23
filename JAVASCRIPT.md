@@ -1,39 +1,46 @@
-## As Bases com JavaScript
+# As Bases com JavaScript
 
 As linguagens de programação servem para nós expressarmos o que queremos que o computador faça. Como os idiomas humanos, elas são diferentes na escrita (sintaxe) e até na forma de organizar o pensamento (paradigma de programação). Até usando a mesma linguagem podemos encontrar diversas maneiras de resolver um mesmo problema. No entanto, todas essas linguagens compartilham construtos comuns para guardar o estado do programa, decidir o que fazer dada uma condição, realizar um conjunto de tarefas um determinado número de vezes, obter e devolver informações, modularizar uma solução reutilizável, etc. Esse guia apresenta esses construtos usando a linguagem de programação JavaScript.
 
 ## Sumário
 
 - [As Bases com JavaScript](#as-bases-com-javascript)
-- [Sumário](#sumário)
-- [Introdução](#introdução)
-  - [História do JavaScript](#história-do-javascript)
-  - [Linguagem interpretada](#linguagem-interpretada)
-  - [Linguagem de tipagem dinâmica](#linguagem-de-tipagem-dinâmica)
-  - [Linguagem de tipagem fraca](#linguagem-de-tipagem-fraca)
-  - [Ambiente de Execução](#ambiente-de-execução)
-  - [Instalando o Node.js](#instalando-o-nodejs)
-- [Estado e Computação](#estado-e-computação)
-  - [Valores](#valores)
-  - [Variáveis e Constantes](#variáveis-e-constantes)
-  - [Operadores](#operadores)
-  - [Expressões, Sentenças, Declarações e Blocos](#expressões-sentenças-declarações-e-blocos)
-- [Estruturas de Controle](#estruturas-de-controle)
-  - [Estrtuturas Condicionais](#estrtuturas-condicionais)
-  - [Estruturas de Repetição](#estruturas-de-repetição)
-  - [Estruturas para o Tratamento de Exceções](#estruturas-para-o-tratamento-de-exceções)
-- [Funções](#funções)
-  - [Declaração de Funções](#declaração-de-funções)
-  - [Retorno de Funções](#retorno-de-funções)
-  - [Composição de Funções](#composição-de-funções)
-  - [Funções Anônimas e Arrow Functions](#funções-anônimas-e-arrow-functions)
-- [Programação Modular](#programação-modular)
-  - [Projetos JavaScript](#projetos-javascript)
-  - [Programação Modular em JavaScript](#programação-modular-em-javascript)
-  - [JavaScript Object Notation (JSON)](#javascript-object-notation-json)
-  - [Classes e Objetos em JavaScript](#classes-e-objetos-em-javascript)
-  - [Biblioteca Padrão do JavaScript](#biblioteca-padrão-do-javascript)
-- [Considerações Finais](#considerações-finais)
+  - [Sumário](#sumário)
+  - [Introdução](#introdução)
+    - [História do JavaScript](#história-do-javascript)
+    - [Linguagem interpretada](#linguagem-interpretada)
+    - [Linguagem de Tipagem Dinâmica](#linguagem-de-tipagem-dinâmica)
+    - [Linguagem de tipagem fraca](#linguagem-de-tipagem-fraca)
+    - [Ambiente de Execução](#ambiente-de-execução)
+    - [Instalando o Node.js](#instalando-o-nodejs)
+  - [Estado e Computação](#estado-e-computação)
+    - [Valores](#valores)
+    - [Variáveis e Constantes](#variáveis-e-constantes)
+    - [Operadores](#operadores)
+    - [Expressões, Sentenças, Declarações e Blocos](#expressões-sentenças-declarações-e-blocos)
+  - [Estruturas de Controle](#estruturas-de-controle)
+    - [Estrtuturas Condicionais](#estrtuturas-condicionais)
+    - [Estruturas de Repetição](#estruturas-de-repetição)
+    - [Estruturas para o Tratamento de Exceções](#estruturas-para-o-tratamento-de-exceções)
+  - [Funções](#funções)
+    - [Declaração de Funções](#declaração-de-funções)
+    - [Retorno de Funções](#retorno-de-funções)
+    - [Composição de Funções](#composição-de-funções)
+    - [Funções Anônimas e Arrow Functions](#funções-anônimas-e-arrow-functions)
+  - [Programação Modular](#programação-modular)
+    - [Projetos JavaScript](#projetos-javascript)
+    - [Programação Modular em JavaScript](#programação-modular-em-javascript)
+    - [Biblioteca Padrão do JavaScript](#biblioteca-padrão-do-javascript)
+  - [Estruturas de Dados em JavaScript](#estruturas-de-dados-em-javascript)
+    - [Estruturas de Dados Elementares](#estruturas-de-dados-elementares)
+      - [Notação Literal de Objetos em JavaScript](#notação-literal-de-objetos-em-javascript)
+      - [Classes e Objetos em JavaScript](#classes-e-objetos-em-javascript)
+      - [Arrays (listas)](#arrays-listas)
+      - [Conjuntos](#conjuntos)
+      - [Mapas](#mapas)
+    - [Estruturas de Dados Compostas](#estruturas-de-dados-compostas)
+    - [Estruturas de Dados Inexistentes em JavaScript](#estruturas-de-dados-inexistentes-em-javascript)
+  - [Considerações Finais](#considerações-finais)
 
 
 ## Introdução
@@ -1403,19 +1410,83 @@ console.log(frutas.slice(0, 2)); // ["morango", "banana"] (subarray do índice 0
 ```
 
 
-## Estruturas de Dados Elementares
+## Estruturas de Dados em JavaScript
+
+Não é possível escrever programas mais complexos sem o uso de estruturas de dados adequadas. Estruturas de dados são formas específicas de organizar e armazenar dados na memória do computador, permitindo acesso e manipulação eficientes. Cada estrutura de dados é projetada para atender a diferentes necessidades e requisitos de desempenho, dependendo do tipo de dados e das operações que serão realizadas sobre eles. Enquanto algumas estruturas de dados são fornecidas diretamente pela linguagem de programação, outras podem ser implementadas pelo programador conforme necessário. As estruturas de dados podem ser heterogêneas ou homogêneas, dependendo do tipo de dados que armazenam. Estruturas de dados heterogêneas podem conter elementos de diferentes tipos, enquanto estruturas de dados homogêneas armazenam apenas elementos do mesmo tipo. JavaScript por ser uma linguagem de tipagem dinâmica, todas as suas estruturas de dados são heterogêneas por padrão, ou seja, é possível armazenar diferentes tipos de dados em arrays e objetos.
+
+### Estruturas de Dados Elementares
+
+A maioria das linguagens de programação modernas, incluindo JavaScript, oferecem uma variedade de estruturas de dados embutidas que facilitam o desenvolvimento de software, como objetos, registros, arrays, listas, conjuntos e mapas, sendo essas as estruturas de dados mais comuns e elementares. Este capítulo aborda essas estruturas de dados elementares em JavaScript.
+
+#### Notação Literal de Objetos em JavaScript
+
+O modo mais simples de representar um objeto em JavaScript é usando a notação literal de objetos, que utiliza chaves `{}` para definir um objeto e pares chave-valor para representar suas propriedades, agrupando um conjunto de características relacionadas em uma única entidade. Neste sentido, é possível armazenar múltiplas informações usando uma única variávels e passá-las às funções como um único argumento.
+
+Por exemplo, considere uma função para calcular o índice de massa corporal (IMC) de uma pessoa. Em vez de passar vários parâmetros separados para a função, podemos agrupar as informações relevantes (a antropometria) em um objeto e passá-lo como um único argumento. A seguir um exemplo da função `imc` com parâmetros separados e com um objeto:
+
+```javascript
+function classificacao(imc) {
+    if (imc < 18.5) return "Abaixo do peso";
+    else if (imc < 25.0) return "Peso normal (ideal)";
+    else if (imc < 30.0) return "Sobrepeso";
+    else if (imc < 35.0) return "Obesidade Grau I";
+    else if (imc < 40.0) return "Obesidade Grau II";
+    else return "Obesidade Grau III (Mórbida)";    
+}
+
+function imc_v1(peso, altura) {
+    const alturaEmMetros = altura / 100; // converter cm para metros
+    const imcCalculado = (peso / (alturaEmMetros * alturaEmMetros)).toFixed(2);
+    let classe = classificacao(imcCalculado);
+    return imcCalculado;
+}
+
+// usando o IMC e verificando a classificação com variáveis e retornos separados
+const peso = 85; // em kg
+const altura = 175; // em cm
+const imc1 = imc_v1(peso, altura);
+const classif1 = classificacao(imc1);
+console.log(`IMC: ${imc1} - Classificação: ${classif1}`);
+
+// agora usando um objeto para agrupar os dados antropométricos e retornando ambos IMC e classificação juntos como um objeto
+
+function imc_v2(antropometria) { // o parâmetro é um objeto contendo peso e altura
+    const alturaEmMetros = antropometria.altura / 100; // converter cm para metros
+    const imcCalculado = (antropometria.peso / (alturaEmMetros * alturaEmMetros)).toFixed(2);
+    const classe = classificacao(imcCalculado);
+
+    // retornando ambos IMC e classificação como um objeto usando a notação literal de objetos
+    return { imc: imcCalculado, classificacao: classe };
+}
+
+const antropometria = { peso: 85, altura: 175 };
+const resultado = imc_v2(antropometria); // apenas um parâmetro é passado
+console.log(`IMC: ${resultado.imc} - Classificação: ${resultado.classificacao}`);
+```
+
+Os objetos podem ser aninhados, ou seja, um objeto pode conter outros objetos como propriedades. Isso é útil para representar estruturas de dados mais complexas. Por exemplo, podemos representar uma pessoa com suas informações pessoais e endereço:
+
+```javascript
+const pessoa = {
+    nome: "João Silva",
+    idade: 30,
+    endereco: {
+        rua: "Rua das Flores",
+        numero: 123,
+        cidade: "Rio Grande",
+        estado: "RS"
+    },
+    // os objetos literais também podem conter métodos (funções associadas ao objeto)
+    saudacao: function() {
+        return `Olá, meu nome é ${this.nome} e eu moro em ${this.endereco.cidade}/${this.endereco.estado}.`;
+    }
+};
+
+console.log(pessoa.saudacao()); // "Olá, meu nome é João Silva e eu moro em Rio Grande/RS."
+```
 
 
-## Classificação das Estruturas de Dados
-
-
-TODO Object, Array, List, Set, Map, 
-
-### JavaScript Object Notation (JSON)
-
-TODO
-
-### Classes e Objetos em JavaScript
+#### Classes e Objetos em JavaScript
 
 JavaScript é uma linguagem orientada a objetos baseada em protótipos, o que significa que os objetos podem herdar propriedades e métodos diretamente de outros objetos. No entanto, a partir do ECMAScript 6 (ES6), JavaScript introduziu a sintaxe de classes, que fornece uma maneira mais familiar e estruturada de criar objetos e lidar com herança.
 
@@ -1512,13 +1583,314 @@ console.log(h.toString()); // '03:25:37'
 
 O exemplo anterior apresenta diversos conceitos da POO. A classe `Horario` introduz um novo tipo customizado. O estado é armazenado em segundos totais no atributo `#segundos` -- o símbolo `#` protege o atributo (um tipo de variável) de acesso externo. O construtor recebe os parâmetros para inicializar um objeto horário, na forma de `new Horario(13, 45, 12)`. O construtor é sempre invocado na instanciação de objetos, isto é, o uso do `new`. Para ler a quantidade de horas, minutos e segundos são disponibilizadas as propriedades `horas`, `minutos` e `segundos` na forma de `get horas()`, etc. As propriedades parecem funções, por causa dos parênteses, assim como os métodos `adicionaHoras()` e outros, mas não são declarados com a palavra-chave `function`. Por fim, o método `#pad(valor)` também é como uma função, porém privada, isto é, só pode ser invocada dentro da classe `Horario` -- é parte do encapsulamento, não faz sentido expor o método `pad`. 
 
-### Listas (arrays)
+A mesma representação de horário poderia ser implementada usando a notação literal de objetos, mas a implementação com classes oferece uma estrutura mais clara e organizada, especialmente quando se trata de criar múltiplas instâncias do mesmo tipo de objeto, cada uma com seu próprio estado e comportamento. Usar a notação literal seria útil, no entanto, para representar um horário de uso único, sem a necessidade de criar múltiplas instâncias ou reutilizar o código, como a seguir:
 
-### Conjuntos
+```javascript
+const horario = {
+    segundos: 12345, // representa 03:25:45
+    get horas() {
+        return (this.segundos / 3600) | 0;
+    },
+    get minutos() {
+        return (this.segundos % 3600 / 60) | 0;
+    },
+    get segundosRestantes() {
+        return (this.segundos % 60);
+    },
+    adicionaSegundos(segundos) {
+        this.segundos = (this.segundos + segundos) % 86400;
+    }
+}
 
-### Mapas
+console.log(horario.horas, horario.minutos, horario.segundosRestantes); // 3, 25, 45
+horario.adicionaSegundos(500);
+console.log(horario.horas, horario.minutos, horario.segundosRestantes); // 3, 33, 5
+```
 
+#### Arrays (listas)
+
+Arrays em JavaScript são diferentes de arrays em linguagens de tipagem estática, como C, C++ e Java. Em JavaScript, arrays são objetos dinâmicos que podem crescer e encolher conforme necessário, e podem conter elementos de diferentes tipos, funcionando, na verdade, como LISTAS ordenadas.
+
+Um array pode ser declarado literalmente usando colchetes `[]`, determinando os elementos, ou usando o construtor `Array()`, para criar uma lista vazia. Seguem alguns exemplos:
+
+```javascript
+// declaração literal de array
+const nomes = ["Ana", "Bruno", "Carlos", "Daniela"];
+// arrays são ordenados, o primeiro elemento está no índice 0 e o último sempre no índice length - 1
+console.log(nomes[0]); // "Ana", o primeiro nome
+console.log(nomes[2]); // "Carlos", o terceiro nome
+console.log(nomes.length); // 4 (número de elementos no array)
+console.log(nomes[nomes.length - 1]); // "Daniela" (último elemento)
+
+// o array pode ser criado vazio e os elementos adicionados depois
+const idades = []; // ou new Array();
+idades.push(25);
+idades.push(30);
+idades.push(22);
+console.log(idades); // [25, 30, 22]
+
+const matriculas = new Array();
+matriculas.push("2026001");
+matriculas.push("2026002");
+matriculas.push("2026003");
+console.log(matriculas); // ["2026001", "2026002", "2026003"]
+
+// o método push (empurrar) adiciona elementos ao final do array
+// este método funciona mesmo em arrays declarados com const, pois o array em si não é reatribuído, apenas modificado
+nomes.push("Eduardo");
+console.log(nomes); // ["Ana", "Bruno", "Carlos", "Daniela", "Eduardo"]
+
+// o construtor Array também pode receber um número para definir o tamanho inicial do array
+const estados = new Array(5); // cria um array com 5 posições vazias
+console.log(estados.length); // 5
+console.log(estados); // [ <5 empty items> ]
+// podemos atribuir valores às posições do array diretamente
+estados[0] = "RS";
+estados[1] = "SC";
+estados[2] = "MG";
+console.log(estados); // ["RS", "SC", "MG", <2 empty items>]
+
+// note quem em JavaScript podemos inclusive atribuir valores em índices fora do tamanho atual do array
+estados[9] = "SP"; // atribuindo no índice 9
+console.log(estados.length); // 10 (o array cresce automaticamente)
+console.log(estados); // ["RS", "SC", "MG", <6 empty items>, "SP"]
+```
+
+Como arrays são objetos em JavaScript, eles possuem diversos métodos úteis para manipulação de listas. Alguns dos métodos mais comuns incluem:
+
+- `push(elemento)`: Adiciona um elemento ao final do array.
+- `pop()`: Remove e retorna o último elemento do array.
+- `shift()`: Remove e retorna o primeiro elemento do array.
+- `unshift(elemento)`: Adiciona um elemento no início do array.
+- `indexOf(elemento)`: Retorna o índice da primeira ocorrência do elemento no array, ou -1 se não encontrado.
+- `slice(início, fim)`: Retorna uma cópia de uma parte do array, do índice `início` ao `fim` (exclusivo).
+- `splice(início, quantidade, ...elementos)`: Remove elementos do array e, opcionalmente, adiciona novos elementos.
+- `forEach(callback)`: Executa uma função para cada elemento do array.
+- `map(callback)`: Cria um novo array com os resultados da função aplicada a cada elemento.
+- `filter(callback)`: Cria um novo array com todos os elementos que passam no teste implementado pela função fornecida.
+- `join(separador)`: Junta todos os elementos do array em uma string, separados pelo `separador` especificado.
+- `reverse()`: Inverte a ordem dos elementos do array in place.
+- `includes(elemento)`: Retorna true se o elemento estiver presente no array, caso contrário false.
+
+A referência completa dos métodos de arrays pode ser encontrada na documentação oficial do MDN: <https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array#m%C3%A9todos>
+
+A seguir, alguns exemplos de uso dos métodos de arrays:
+
+```javascript
+const paises = ["Brasil", "Argentina", "Chile", "Peru", "Colômbia", "Venezuela", "Equador"];
+// adicionando Uruguai ao final
+paises.push("Uruguai");
+// adicionando Paraguai no início
+paises.unshift("Paraguai");
+console.log(paises); // ["Paraguai", "Brasil", "Argentina", "Chile", "Peru", "Colômbia", "Venezuela", "Equador", "Uruguai"]
+
+// removendo o último país
+const ultimoPais = paises.pop();
+console.log(ultimoPais); // "Uruguai"
+// removendo o primeiro país
+const primeiroPais = paises.shift();
+console.log(primeiroPais); // "Paraguai"
+console.log(paises); // ["Brasil", "Argentina", "Chile", "Peru", "Colômbia", "Venezuela", "Equador"]
+
+// encontrando o índice da Colômbia
+const indiceColombia = paises.indexOf("Colômbia");
+console.log(indiceColombia); // 4
+
+// criando um subarray com os três primeiros países
+const primeirosTres = paises.slice(0, 3);
+console.log(primeirosTres); // ["Brasil", "Argentina", "Chile"]
+
+// removendo Chile e Peru, e adicionando Bolívia no lugar
+paises.splice(2, 2, "Bolívia");
+console.log(paises); // ["Brasil", "Argentina", "Bolívia", "Colômbia", "Venezuela", "Equador"]
+
+// iterando sobre os países e exibindo-os
+paises.forEach((pais, indice) => {
+    console.log(`${indice + 1}. ${pais}`);
+});
+// 1. Brasil
+// 2. Argentina
+// 3. ...
+
+// criando um novo array apenas com as duas primeiras letras de cada país em maiúsculas
+const siglas = paises.map(p => p.slice(0, 2).toUpperCase()); // onde "p" é cada país do array
+console.log(siglas); // ["BR", "AR", "BO", "CO", "VE", "EQ"]
+
+// filtrando países que começam com a letra 'B'
+const paisesComB = paises.filter(p => p.startsWith('B'));
+console.log(paisesComB); // ["Brasil", "Bolívia"]
+
+// juntando os países em uma única string separada por vírgulas
+const listaPaises = paises.join(', ');
+console.log(listaPaises); // "Brasil, Argentina, Bolívia, Colômbia, Venezuela, Equador"
+
+// invertendo a ordem dos países
+paises.reverse();
+console.log(paises); // ["Equador", "Venezuela", "Colômbia", "Bolívia", "Argentina", "Brasil"]
+
+// verificando se o Brasil está na lista
+const temBrasil = paises.includes("Brasil");
+console.log(temBrasil); // true
+const temUruguai = paises.includes("Uruguai");
+console.log(temUruguai); // false
+```
+
+Tenha sempre em consideração que arrays em JavaScript são dinâmicos e heterogêneos (diferente das outras linguagens tipadas), permitindo armazenar diferentes tipos de dados juntos:
+
+```javascript
+const misturado = [42, "texto", true, { chave: "valor" }, [1, 2, 3], null, undefined];
+console.log(misturado);
+// [42, "texto", true, { chave: "valor" }, [1, 2, 3], null, undefined]
+```
+
+Também não há restrições quanto ao tamanho e duplicidade de elementos:
+
+```js
+const numeros = [1, 2, 2, 3, 4, 4, 4, 5];
+console.log(numeros); // [1, 2, 2, 3, 4, 4, 4, 5]
+console.log(numeros.length); // 8
+```
+
+
+#### Conjuntos
+
+Conjuntos (sets) são coleções não-ordenadas de valores únicos, ou seja, não permitem elementos duplicados. Em JavaScript, os conjuntos são implementados pela classe `Set`, que faz parte da Biblioteca Padrão do JavaScript desde o ECMAScript 2015 (ES6). Conjuntos são úteis quando você precisa armazenar uma coleção de itens sem se preocupar com a ordem ou duplicidade.
+
+Por exemplo, considere o exemplo dos estados novamente, mas agora usando um conjunto para garantir que não haja estados duplicados:
+
+```javascript
+const estados = new Set();
+estados.add("RS");
+estados.add("SC");
+estados.add("MG");
+estados.add("RS"); // tentativa de adicionar duplicata, será ignorada
+console.log(estados.size); // 3 (número de elementos únicos no conjunto)
+console.log(estados.has("SC")); // true (verifica se "SC" está no conjunto)
+console.log(estados.has("SP")); // false (verifica se "SP" está no conjunto)
+
+// conjuntos não são ordenados, portanto não podemos acessar elementos por índice
+// mas podemos iterar sobre os elementos usando for...of
+for (const estado of estados) {
+    console.log(estado);
+}
+
+// ou usando o método forEach
+estados.forEach(estado => console.log(estado));
+// ou simplesmente:
+estados.forEach(console.log);
+
+// removendo um elemento do conjunto
+estados.delete("MG");
+console.log(estados.size); // 2
+```
+
+É possível instanciar conjuntos a partir de Arrays e vice-versa:
+
+```javascript
+const arrayComDuplicatas = ["RS", "SC", "MG", "RS", "SC"];
+const conjunto = new Set(arrayComDuplicatas); // cria um conjunto a partir do array
+console.log(conjunto.size); // 3 (elementos únicos)
+const novoArray = Array.from(conjunto); // cria um array a partir do conjunto
+console.log(novoArray); // ["RS", "SC", "MG"]
+```
+
+Conjuntos têm melhor performance para operações de verificação de existência (`has`), adição (`add`) e remoção (`delete`) em comparação com arrays, especialmente quando a coleção é grande, pois não é necessário percorrer toda a lista para encontrar um elemento. O modo como os conjuntos são implementados possui endereçamento direto, similar a tabelas hash (que não será abordado neste material, mas podes encontrar mais a respeito em recursos sobre estruturas de dados).
+
+Os métodos mais comuns de conjuntos incluem:
+- `add(valor)`: Adiciona um valor ao conjunto.
+- `delete(valor)`: Remove um valor do conjunto.
+- `has(valor)`: Verifica se o conjunto contém um valor específico.
+- `clear()`: Remove todos os valores do conjunto.
+
+
+#### Mapas
+
+Os Mapas (map) são coleções de pares chave-valor, onde cada chave é única e está associada a um valor. Em JavaScript, os mapas são implementados pela classe `Map`, que também faz parte da Biblioteca Padrão do JavaScript desde o ECMAScript 2015 (ES6). Mapas são úteis quando você precisa armazenar dados associados a chaves específicas, permitindo acesso rápido aos valores com base nas chaves. É semelhante aos objetos, mas com algumas diferenças importantes, como a capacidade de usar qualquer tipo de valor (não apenas strings ou símbolos) como chave. Também é semelhante aos arrays, mas com chaves personalizadas em vez de índices numéricos.
+
+Aqui está um exemplo de uso de mapas em JavaScript:
+
+```javascript
+const mapa = new Map();
+// adicionando pares chave-valor ao mapa
+mapa.set("nome", "João Silva");
+mapa.set("idade", 30);
+mapa.set("cidade", "Rio Grande");
+console.log(mapa.size); // 3 (número de pares chave-valor no mapa)
+console.log(mapa.get("nome")); // "João Silva" (acessando o valor pela chave)
+console.log(mapa.has("idade")); // true (verifica se a chave "idade" está no mapa)
+console.log(mapa.has("pais")); // false (verifica se a chave "pais" está no mapa)
+mapa.forEach((valor, chave) => {
+    console.log(`${chave}: ${valor}`);
+});
+// nome: João Silva
+// idade: 30
+// cidade: Rio Grande
+
+// neste exemplo foi armazenada uma instância de informação (uma pessoa), e poderia ter sido usado um objeto como:
+const pessoa = {
+    nome: "João Silva",
+    idade: 30,
+    cidade: "Rio Grande"
+};
+
+// no entanto pode-se usar um mapa para armazenar múltiplas pessoas, usando o nome como chave:
+const pessoas = new Map();
+pessoas.set("João Silva", { peso: 85, altura: 175 });
+pessoas.set("Ana Maria", { peso: 60, altura: 165 });
+console.log(pessoas.get("Ana Maria")); // { peso: 60, altura: 165 }
+
+// quando não existe a chave, o método get retorna undefined
+console.log(pessoas.get("Carlos")); // undefined
+
+// removendo um par chave-valor do mapa
+pessoas.delete("João Silva");
+console.log(pessoas.size); // 1
+
+// iterando sobre as chaves e valores do mapa
+for (const [nome, antropometria] of pessoas) {
+    console.log(`${nome}: ${antropometria.peso} kg, ${antropometria.altura} cm`);
+}
+```
+
+Os métodos mais comuns de mapas incluem:
+- `set(chave, valor)`: Adiciona ou atualiza um par chave-valor no mapa.
+- `get(chave)`: Retorna o valor associado à chave especificada.
+- `has(chave)`: Verifica se o mapa contém a chave especificada.
+- `delete(chave)`: Remove o par chave-valor associado à chave especificada.
+- `clear()`: Remove todos os pares chave-valor do mapa.
+
+A decisão de quando usar um mapa em vez de um objeto depende do caso de uso específico. Mapas são mais adequados quando você precisa de chaves que não sejam strings ou símbolos, quando a ordem dos elementos é importante, ou quando você precisa de melhor performance para operações frequentes de adição e remoção de pares chave-valor.
+
+
+### Estruturas de Dados Compostas
+
+Estruturas de dados compostas são aquelas que combinam várias estruturas de dados elementares para formar uma estrutura mais complexa. Em JavaScript, é possível criar estruturas de dados compostas usando objetos, arrays, conjuntos e mapas. Essas estruturas permitem organizar e manipular dados de maneira mais eficiente e intuitiva, facilitando a resolução de problemas mais complexos. Aqui estão alguns exemplos de estruturas de dados compostas em JavaScript:
+
+```javascript
+// Exemplo 1: Array de Objetos
+const pessoas = [
+    { nome: "João Silva", idade: 30, cidade: "Rio Grande" },
+    { nome: "Ana Maria", idade: 25, cidade: "Porto Alegre" },
+    { nome: "Carlos Souza", idade: 35, cidade: "Santa Maria" }
+];
+console.log(pessoas[0].nome); // "João Silva"
+// Exemplo 2: Objeto com Arrays
+const turma = {
+    nome: "Turma A",
+    alunos: Map.from([
+        ["2026001", { nome: "João Silva", idade: 30 }],
+        ["2026002", { nome: "Ana Maria", idade: 25 }],
+        ["2026003", { nome: "Carlos Souza", idade: 35 }]
+    ])
+};
+```
+
+É possível combinar conjuntos, arrays, mapas e objetos literais para criar estruturas mais complexas. Outras estruturas de dados, como filas, pilhas, árvores e grafos, podem ser implementadas usando essas estruturas básicas como blocos de construção.
+
+### Estruturas de Dados Inexistentes em JavaScript
+
+JavaScript não possui record ou structs, como em outras linguagens de programação. Também não possui filas (queues) e pilhas (stacks) como estruturas de dados nativas. Por ser fracamente tipada, não há tuplas (tuples) nem outras estruturas homogêneas. Para esses casos de uso, existem linguagens de programacão mais adequadas, ou então é possível implementar essas estruturas manualmente em JavaScript, usando as estruturas de dados elementares disponíveis.
 
 ## Considerações Finais
 
-TODO
+Este guia abordou os conceitos fundamentais de programação com JavaScript. Estes conceitos são basicamente os mesmos em outras linguagens de programação, com variações na sintaxe, formas de organizar o código e nas bibliotecas padrão. É recomendado que qualquer programador domine pelo menos uma linguagem dinâmica (como JavaScript, Python ou Ruby) e uma linguagem estática (como Rust, TypeScript, C# ou Java), para compreender as diferenças entre os paradigmas e estilos de programação. Liguagens tipadas adicionam uma camada extra de complexidade, mas também oferecem benefícios em termos de segurança e desempenho. A escolha da linguagem deve ser baseada nos requisitos do projeto, na experiência da equipe e nas características específicas de cada linguagem.
