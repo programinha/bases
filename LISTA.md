@@ -462,47 +462,254 @@ console.log(jurosCompostos()); // undefined
 
 ### Nível 1
 
-Contar Caracteres de uma String
+#### Contar Caracteres de uma String
 
-Converter String para Maiúsculas
+Dada uma string, retornar a quantidade de caracteres nela sem usar o método `length`.
 
-Converter String para Minúsculas
+```js
+const res = contarCaracteres("hello world");
+console.log(res); // 11
+console.log(contarCaracteres("JavaScript")); // 10
+console.log(contarCaracteres("123abc!@#")); // 10
 
-Verificar String Vazia
+// casos especiais
+console.log(contarCaracteres("")); // 0
+console.log(contarCaracteres()); // undefined
+console.log(contarCaracteres(12345)); // undefined
+```
 
-Concatenar Duas Strings
+#### Converter String para Maiúsculas
 
-Retornar Primeiro Caractere
+Considere uma string, retornar a mesma string em letras maiúsculas. Não usar o método `toUpperCase`, ao invés, implementar a lógica manualmente com base na tabela ASCII, podendo usar os métodos `charCodeAt` e `fromCharCode`.
 
-Retornar Último Caractere
+```js
+const res = paraMaiusculas("hello world");
+console.log(res); // "HELLO WORLD"  
 
-Comparar Duas Strings
+console.log(paraMaiusculas("JavaScript")); // "JAVASCRIPT"
+console.log(paraMaiusculas("123abc!@#")); // "123ABC!@#"
 
-Verificar se Contém Substring
+// casos especiais
+console.log(paraMaiusculas("")); // ""
+console.log(paraMaiusculas()); // undefined
+```
 
-Remover Espaços das Extremidades
+#### Converter String para Minúsculas
+
+Mesmo que anterior, mas para minúsculas.
+
+#### Verificar String Vazia
+
+Dada uma string, retornar se ela está vazia ou não, onde vazio é considerado uma string com comprimento zero ou composta apenas por espaços (' ', '\t', '\n', e '\r').
+
+```js
+const res = vazio("");
+console.log(res); // true
+console.log(vazio("hello")); // false
+console.log(vazio(" ")); // true
+console.log(vazio("   \t\n")); // true
+console.log(vazio("  hello  ")); // false
+
+// casos especiais
+console.log(vazio()); // undefined
+```
+
+#### Retornar Primeiro Caractere
+
+Dada uma string, retornar o primeiro caractere dela.
+
+```js
+const res = primeiroCaractere("hello");
+console.log(res); // "h"
+console.log(primeiroCaractere("world")); // "w"
+console.log(primeiroCaractere("A")); // "A"
+// casos especiais
+console.log(primeiroCaractere("")); // ""
+console.log(primeiroCaractere()); // undefined
+console.log(primeiroCaractere(123)); // undefined
+```
+
+#### Retornar Último Caractere
+
+Mesmo que anterior, mas o último caractere.
+
+#### Verificar se Contém Substring
+
+Dada uma string e uma substring, retornar se a string contém a substring.
+
+```js
+const res = contemSubstring("hello world", "world");
+console.log(res); // true
+console.log(contemSubstring("hello world", "hello")); // true
+console.log(contemSubstring("hello world", "test")); // false
+// casos especiais
+console.log(contemSubstring("hello world", "")); // true
+console.log(contemSubstring("", "test")); // false
+console.log(contemSubstring("", "")); // true
+console.log(contemSubstring()); // undefined
+console.log(contemSubstring("hello world")); // undefined
+console.log(contemSubstring(123, "23")); // undefined
+console.log(contemSubstring(123)); // undefined
+```
+
+#### Remover Espaços das Extremidades (trim)
+
+Considere uma string, retornar a mesma string sem espaços no início e no fim. Não usar o método `trim`, ao invés, implementar a lógica manualmente.
+
+```js
+const res = trim("   hello world   ");
+console.log(res); // "hello world"
+console.log(trim("   JavaScript   ")); // "JavaScript"
+console.log(trim("   123abc!@#   ")); // "123abc!@#"
+
+// casos especiais
+console.log(trim("")); // ""
+console.log(trim("      ")); // ""
+console.log(trim()); // undefined
+console.log(trim(123)); // undefined
+```
 
 ### Nível 2
 
-Contar Vogais em uma String
+#### Contar Vogais em uma String
 
-Contar Consoantes em uma String
+Dada uma string, retornar a quantidade de vogais nela.
 
-Inverter uma String
+```js
+const res = contarVogais("hello world");
+console.log(res); // 3
+console.log(contarVogais("JavaScript")); // 3
+console.log(contarVogais("AEIOU")); // 5
+console.log(contarVogais("Aula")); // 3
 
-Verificar Palíndromo (String)
+// casos especiais
+console.log(contarVogais("")); // 0
+console.log(contarVogais("bcdfghjklmnpqrstvwxyz")); // 0
+console.log(contarVogais()); // undefined
+console.log(contarVogais(123)); // undefined
+```
 
-Contar Ocorrências de um Caractere
+#### Contar Consoantes em uma String
 
-Remover Caracteres Repetidos
+Mesmo que anterior, mas para consoantes.
 
-Substituir Caracteres
+#### Inverter uma String
 
-Contar Palavras em uma String
+Dada uma string, retornar a mesma string invertida.
 
-Capitalizar Primeira Letra de Cada Palavra
+```js
+const res = inverterString("hello");
+console.log(res); // "olleh"
+console.log(inverterString("JavaScript")); // "tpircSavaJ"
+console.log(inverterString("123abc!@#")); // "#@!cba321"
 
-Remover Caracteres Especiais
+// casos especiais
+console.log(inverterString("")); // ""
+console.log(inverterString()); // undefined
+console.log(inverterString(123)); // undefined
+```
+
+#### Verificar Palíndromo (String)
+
+Dada uma string, retornar se ela é um palíndromo, isto é, se lida de trás para frente resulta na mesma string. Os espaços e diferenças entre maiúsculas e minúsculas devem ser ignorados.
+
+```js
+const res = ehPalindromoString("racecar");
+console.log(res); // true
+console.log(ehPalindromoString("hello")); // false
+console.log(ehPalindromoString("A man a plan a canal Panama")); // true
+console.log(ehPalindromoString("12321")); // true
+
+// casos especiais
+console.log(ehPalindromoString("")); // true
+console.log(ehPalindromoString()); // undefined
+console.log(ehPalindromoString(12321)); // undefined
+```
+
+#### Remover Caracteres Repetidos
+
+Dada uma string, retornar a mesma string sem caracteres repetidos. Lembrando que a ordem dos caracteres deve ser mantida e a primeira ocorrência de cada caractere deve ser preservada. Letras maiúsculas e minúsculas são consideradas diferentes.
+
+```js
+const res = removerRepetidos("hello world");
+console.log(res); // "helo wrd"
+console.log(removerRepetidos("JavaScript")); // "JavScript"
+console.log(removerRepetidos("aaabbbccc")); // "abc"
+
+// casos especiais
+console.log(removerRepetidos("")); // ""
+console.log(removerRepetidos()); // undefined
+console.log(removerRepetidos(12345)); // undefined
+```
+
+#### Substituir Caracteres
+
+Considere uma string, um caractere antigo e um novo caractere, retornar a string com todas as ocorrências do caractere antigo substituídas pelo novo caractere. Maiúsculas e minúsculas são consideradas diferentes.
+
+```js
+const res = substituirCaracteres("hello world", "o", "a");
+console.log(res); // "hella warld"
+console.log(substituirCaracteres("JavaScript", "a", "o")); // "JovoScript"
+console.log(substituirCaracteres("123abc!@#", "a", "x")); // "123xbc!@#"
+
+// casos especiais
+console.log(substituirCaracteres("hello world", "z", "a")); // "hello world"
+console.log(substituirCaracteres("", "a", "b")); // ""
+console.log(substituirCaracteres()); // undefined
+console.log(substituirCaracteres("hello world")); // undefined
+console.log(substituirCaracteres(12345, "2", "9")); // undefined
+const res = substituirCaracteres("hello world", "o", "ab"); // Error ("Novo caractere deve ser um único caractere")
+```
+
+#### Contar Palavras em uma String
+
+Dada uma string, retornar a quantidade de palavras nela. Palavras são definidas como sequências de caracteres separadas por espaços. Espaços múltiplos devem ser tratados como um único separador, e espaços no início ou no fim da string não devem ser contados como palavras.
+
+```js
+const res = contarPalavras("hello world");
+console.log(res); // 2
+console.log(contarPalavras("JavaScript is awesome")); // 3
+console.log(contarPalavras("  Leading and trailing spaces  ")); // 5
+
+// casos especiais
+console.log(contarPalavras("")); // 0
+console.log(contarPalavras("     ")); // 0
+console.log(contarPalavras()); // undefined
+console.log(contarPalavras(12345)); // undefined
+```
+
+#### Capitalizar Primeira Letra de Cada Palavra
+
+Dada uma string, retornar a mesma string com a primeira letra de cada palavra em maiúscula e o restante em minúscula. Não deve ser usado o método `toUpperCase` ou `toLowerCase`, ao invés, implementar a lógica manualmente com base na tabela ASCII, podendo usar os métodos `charCodeAt` e `fromCharCode`.
+
+```js
+const res = capitalizarPalavras("hello world");
+console.log(res); // "Hello World"
+console.log(capitalizarPalavras("javaSCRIPT is AWESOME")); // "Javascript Is Awesome"
+console.log(capitalizarPalavras("  leading AND trailing SPACES  ")); // "  Leading And Trailing Spaces  "
+
+// casos especiais
+console.log(capitalizarPalavras("")); // ""
+console.log(capitalizarPalavras("     ")); // "     "
+console.log(capitalizarPalavras()); // undefined
+console.log(capitalizarPalavras(12345)); // undefined
+```
+
+#### Remover Caracteres Especiais
+
+Dada uma string, retornar a mesma string sem caracteres especiais, mantendo apenas letras (maiúsculas e minúsculas), números e espaços.
+
+```js
+const res = removerEspeciais("hello@world!");
+console.log(res); // "hello world"
+console.log(removerEspeciais("Java#Script$ is %awesome^")); // "JavaScript is awesome"
+console.log(removerEspeciais("123abc!@#")); // "123abc"
+// casos especiais
+console.log(removerEspeciais("")); // ""
+console.log(removerEspeciais("!@#$%^&*()")); // ""
+console.log(removerEspeciais()); // undefined
+console.log(removerEspeciais(12345)); // undefined
+```
 
 ### Nível 3
 
