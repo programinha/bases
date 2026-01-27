@@ -7,10 +7,10 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
 - [As Bases com JavaScript](#as-bases-com-javascript)
   - [Sumário](#sumário)
   - [Introdução](#introdução)
-    - [História do JavaScript](#história-do-javascript)
-    - [Linguagem interpretada](#linguagem-interpretada)
-    - [Linguagem de Tipagem Dinâmica](#linguagem-de-tipagem-dinâmica)
-    - [Linguagem de tipagem fraca](#linguagem-de-tipagem-fraca)
+    - [História do JavaScript h](#história-do-javascript-h)
+    - [Linguagem interpretada h](#linguagem-interpretada-h)
+    - [Linguagem de Tipagem Dinâmica h](#linguagem-de-tipagem-dinâmica-h)
+    - [Linguagem de Tipagem Fraca](#linguagem-de-tipagem-fraca)
     - [Ambiente de Execução](#ambiente-de-execução)
     - [Instalando o Node.js](#instalando-o-nodejs)
   - [Estado e Computação](#estado-e-computação)
@@ -45,7 +45,7 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
 
 ## Introdução
 
-### História do JavaScript
+### História do JavaScript h
 
 A história serve para compreender o presente através do passado.
 
@@ -62,7 +62,7 @@ rd, Slack, etc.
 
 ¹ _Most popular technologies_, em: https://survey.stackoverflow.co/2025/technology
 
-### Linguagem interpretada
+### Linguagem interpretada h
 
 JavaScript é uma linguagem interpretada, assim como PHP, Python e Ruby, em oposição a uma linguagem compilada como C, Java e Rust. Por interpretada, entende-se que o código fonte é executado diretamente por um interpretador, sem a necessidade de um processo de compilação prévio para transformar o código fonte em código de máquina executável.
 
@@ -75,9 +75,9 @@ alert(`Olá, ${prompt("Qual é o seu nome?")}!`);
 ```
 
 
-### Linguagem de Tipagem Dinâmica
+### Linguagem de Tipagem Dinâmica h
 
-JavaScript é uma linguagem de tipagem dinâmica, assim como Python, Ruby e PHP, em oposição a linguagens de tipagem estática como C, C# e Java. Por tipagem dinâmica, entende-se que o tipo de uma variável é pós-determinado e conhecido em tempo de execução, permitindo maior flexibilidade na atribuição de valores.
+JavaScript é uma linguagem de tipagem dinâmica, assim como Python, Ruby e PHP, em oposição a linguagens de tipagem estática como C, C# e Java. Por tipagem dinâmica, entende-se que o tipo de uma variável é pós-determinado e conhecido em tempo de execução, permitindo maior flexibilidade na atribuição de valores. Isto é, o tipo não é declarado junto com a variável, permitindo que a variável assuma o tipo do valor que é atribuído a no momento e podendo mudar ao longo do tempo.
 
 Experimente agora mesmo no console do seu navegador:
 
@@ -86,9 +86,11 @@ var valor = 42; // valor é um número
 console.log(typeof valor); // "number"
 valor = "Olá, mundo!"; // agora valor é uma string
 console.log(typeof valor); // "string"
+valor = {};
+console.log(typeof valor); // "object"
 ```
 
-### Linguagem de tipagem fraca
+### Linguagem de Tipagem Fraca
 
 TODO
 
