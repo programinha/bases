@@ -7,16 +7,16 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
 - [As Bases com JavaScript](#as-bases-com-javascript)
   - [Sumário](#sumário)
   - [Introdução](#introdução)
-    - [História do JavaScript h](#história-do-javascript-h)
-    - [Linguagem interpretada h](#linguagem-interpretada-h)
-    - [Linguagem de Tipagem Dinâmica h](#linguagem-de-tipagem-dinâmica-h)
-    - [Linguagem de Tipagem Fraca](#linguagem-de-tipagem-fraca)
-    - [Ambiente de Execução](#ambiente-de-execução)
-    - [Instalando o Node.js](#instalando-o-nodejs)
+    - [História do JavaScript o/](#história-do-javascript-o)
+    - [Linguagem interpretada o/](#linguagem-interpretada-o)
+    - [Linguagem de Tipagem Dinâmica o/](#linguagem-de-tipagem-dinâmica-o)
+    - [Linguagem de Tipagem Fraca o/](#linguagem-de-tipagem-fraca-o)
+    - [Ambiente de Execução o/](#ambiente-de-execução-o)
+    - [Instalando o Node.js o/](#instalando-o-nodejs-o)
   - [Estado e Computação](#estado-e-computação)
-    - [Valores](#valores)
-    - [Variáveis e Constantes](#variáveis-e-constantes)
-    - [Operadores](#operadores)
+    - [Valores o/](#valores-o)
+    - [Variáveis e Constantes o/](#variáveis-e-constantes-o)
+    - [Operadores o/](#operadores-o)
     - [Expressões, Sentenças, Declarações e Blocos](#expressões-sentenças-declarações-e-blocos)
   - [Estruturas de Controle](#estruturas-de-controle)
     - [Estrtuturas Condicionais](#estrtuturas-condicionais)
@@ -45,7 +45,7 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
 
 ## Introdução
 
-### História do JavaScript h
+### História do JavaScript o/
 
 A história serve para compreender o presente através do passado.
 
@@ -62,7 +62,7 @@ rd, Slack, etc.
 
 ¹ _Most popular technologies_, em: https://survey.stackoverflow.co/2025/technology
 
-### Linguagem interpretada h
+### Linguagem interpretada o/
 
 JavaScript é uma linguagem interpretada, assim como PHP, Python e Ruby, em oposição a uma linguagem compilada como C, Java e Rust. Por interpretada, entende-se que o código fonte é executado diretamente por um interpretador, sem a necessidade de um processo de compilação prévio para transformar o código fonte em código de máquina executável.
 
@@ -75,7 +75,7 @@ alert(`Olá, ${prompt("Qual é o seu nome?")}!`);
 ```
 
 
-### Linguagem de Tipagem Dinâmica h
+### Linguagem de Tipagem Dinâmica o/
 
 JavaScript é uma linguagem de tipagem dinâmica, assim como Python, Ruby e PHP, em oposição a linguagens de tipagem estática como C, C# e Java. Por tipagem dinâmica, entende-se que o tipo de uma variável é pós-determinado e conhecido em tempo de execução, permitindo maior flexibilidade na atribuição de valores. Isto é, o tipo não é declarado junto com a variável, permitindo que a variável assuma o tipo do valor que é atribuído a no momento e podendo mudar ao longo do tempo.
 
@@ -90,13 +90,91 @@ valor = {};
 console.log(typeof valor); // "object"
 ```
 
-### Linguagem de Tipagem Fraca
+### Linguagem de Tipagem Fraca o/
 
-TODO
+JavaScript é uma linguagem de tipagem fraca (_weak typing_), assim como PHP e Perl, em oposição a linguagens de tipagem forte (_strong typing_) como Python, Ruby e Java. Por tipagem fraca, entende-se que o interpretador realiza conversões automáticas entre tipos de dados quando necessário. Também é possível realizar diversas operações com variáveis e literais de tipos diferentes, como subtrair uma string a um número, verificar se um número é maior que um array, comparar se um valor booleano é igual a uma string, etc. Essas conversões automáticas podem levar a resultados inesperados se o programador não for ciente dessas regras de coerção de tipos, que são complexas e implícitas.
 
-### Ambiente de Execução
+Considere os seguintes exemplos:
 
-JavaScript é executado em diversos ambientes, desde que seja disponibilizado um JavaScript engine (motor), sendo os mais comuns os navegadores web e o Node.js. Cada ambiente fornece APIs específicas que permitem interagir com o sistema onde o JavaScript está sendo executado. Por exemplo, em um navegador você pode pegar a localização geográfica do usuário através da API de Geolocalização, enquanto no Node.js você pode acessar o sistema de arquivos do servidor.
+```javascript
+let x = '8';
+console.log(typeof x); // "string"
+let y = 3;
+console.log(typeof y); // "number"
+
+let z = x + y; // somar prioriza a conversão de y para string e concatenação
+console.log(typeof z); // "string"
+console.log(z); // "83" (concatenação de string)
+
+let w = x - y; // subtrair prioriza a conversão de x para número e subtração
+console.log(typeof w); // "number"
+console.log(w); // 5 (subtração numérica)
+
+if (x > y) { // comparação numérica, x é convertido para número
+    console.log(`${x} é maior que ${y}`);
+} else {
+    console.log(`${x} não é maior que ${y}`);
+} // "8 é maior que 3"
+
+if (x == (y + 5)) { // comparação frouxa, y + 5 (8) é convertido para string
+    console.log(`${x} é igual a ${y + 5}`);
+} else {
+    console.log(`${x} não é igual a ${y + 5}`);
+} // "8 é igual a 8"
+
+// para considerar o tipo na comparação, use o operador de igualdade estrita (===) --- três símbolos de igual
+if (x === (y + 5)) {
+    console.log(`${x} é estritamente igual a ${y + 5}`);
+} else {
+    console.log(`${x} não é estritamente igual a ${y + 5}`);
+} // "8 não é estritamente igual a 8"
+```
+
+Ainda existe a questão dos valores especiais `null` e `undefined`, que podem causar confusão em certas situações:
+
+```javascript
+let a; // variável declarada, mas não inicializada
+console.log(a); // undefined
+console.log(typeof a); // "undefined"
+let b = null; // variável inicializada com null
+console.log(b); // null
+console.log(typeof b); // "object" (isso é um bug histórico em JavaScript)
+```
+
+A tipagem fraca é normalmente usada para tirar vantagem na comparação booleana, com os conceitos de truthy e falsy values (valores verídicos e não verídicos em contexto booleano). Em JavaScript, os seguintes valores são considerados falsy (falsos) em um contexto booleano:
+
+- `false`
+- `0` (zero)
+- `0n` (BigInt zero)
+- `""` (string vazia)
+- `null`
+- `undefined`
+- `NaN` (Not a Number)
+- `0.0` (zero ponto flutuante)
+
+Todos os outros valores são considerados truthy (verdadeiros) em um contexto booleano.
+
+Considere as seguintes comparações:
+
+```javascript
+var valor;
+
+if (valor) console.log("valor é verdadeiro"); // não é
+
+valor = "";
+if (valor) console.log("valor é verdadeiro"); // não é
+
+valor = 0;
+if (valor) console.log("valor é verdadeiro"); // não é
+
+valor = "JavaScript";
+if (valor) console.log("valor é verdadeiro"); // é
+```
+
+
+### Ambiente de Execução o/
+
+JavaScript é executado em diversos ambientes e plataformas, desde que seja disponibilizado um JavaScript _engine_ (motor (interpretador) JavaScript). Os ambientes mais comuns são os navegadores web e a plataforma Node.js. Cada ambiente fornece APIs específicas que permitem interagir com o sistema onde o JavaScript está sendo executado. Por exemplo, em um navegador você pode pegar a localização geográfica do usuário através da API de Geolocalização, enquanto no Node.js você pode acessar o sistema de arquivos onde o código está rodando (isto não é possível no navegador, seria uma incrível falha de segurança).
 
 Teste você mesmo no console do navegador:
 
@@ -106,15 +184,32 @@ navigator.geolocation.getCurrentPosition(function(position) {
 });
 ```
 
-O objeto `navigator` é uma API específica do ambiente do navegador e não está disponível no Node.js, por exemplo. Para executar JavaScript fora do navegador é necessário instalar o Node.js.
+O objeto `navigator` é uma API específica do ambiente do navegador e não está disponível no Node.js, por exemplo.
 
-### Instalando o Node.js
+Para executar JavaScript fora do navegador é necessário instalar o Node.js. Se já está instalado, o código a seguir lista os arquivos no diretório atual (semelhante ao comando `ls` no Linux/Mac ou `dir` no Windows):
+
+```javascript
+const fs = require('fs');
+fs.readdir('.', (err, files) => {
+    if (!err) {
+        console.log('Arquivos no diretório atual:');
+        files.forEach(console.log(file));
+    } else {
+        console.error('Erro ao ler o diretório:', err);
+    }
+});
+```
+
+Este código não funciona em navegadores, pois a API `fs` (_file system_) é específica do Node.js e não está disponível em ambientes web por razões de segurança.
+
+
+### Instalando o Node.js o/
 
 Para instalar o Node.js, siga os passos abaixo:
 
 1. Acesse o site oficial do Node.js: [https://nodejs.org/](https://nodejs.org/);
-2. Baixe o instalador adequado para o seu sistema operacional (Windows, macOS, Linux) -- de preferência a versão LTS (Long Term Support);
-3. Execute o instalador e siga as instruções na tela;
+2. Baixe o instalador adequado para o seu sistema operacional (Windows, macOS, Linux) -- de preferência a versão LTS (Long Term Support -- suporte de longo prazo);
+3. Execute o instalador e siga as instruções no assistente de instalação;
 4. Após a instalação, abra o terminal (Prompt de Comando no Windows, Terminal no macOS/Linux) e verifique se o Node.js foi instalado corretamente:
 
 
@@ -135,33 +230,36 @@ Há três maneiras para executar um código JavaScript usando o Node.js:
 console.log("Um programinha JavaScript") // o ; é opcional, mas recomendado!
 ```
 
-Recortes pequenos de código neste guia podem ser testados diretamente no console do navegador, no REPL do Node.js ou diretamente no terminal (3ra opção acima). Exemples maiores podem ser salvos em arquivos `.js` e executados com o Node.js. Os projetos mais complexos serão criados usando o gerenciador de pacotes `npm` (Node Package Manager), que é instalado automaticamente junto com o Node.js (que será explicado mais adiante nesse guia).
+Recortes pequenos de código neste guia podem ser testados diretamente no console do navegador, no REPL do Node.js ou diretamente no terminal (3ra opção acima). Exemplos maiores podem ser salvos em arquivos `.js` e executados com o Node.js. Os projetos mais complexos serão criados usando o gerenciador de pacotes `npm` (Node Package Manager), que é instalado automaticamente junto com o Node.js (e que será explicado mais adiante nesse guia).
 
 
 ## Estado e Computação
 
-### Valores
+Esta seção apresenta os conceitos básicos de valores, variáveis, operadores, expressões, sentenças, declarações e blocos em JavaScript.
 
-Em JavaScript, tudo gira em torno de valores. Valores são as unidades básicas de dados que o programa manipula. Eles podem ser números, texto, objetos, funções, entre outros. Cada valor tem um tipo associado a ele, que determina como o valor pode ser usado e quais operações podem ser realizadas sobre ele.
+### Valores o/
 
-JavaScript possui dois tipos principais de valores: primitivos e objetos. Primeiramente, vamos explorar os primitivos, listados abaixo:
+Em JavaScript e demais linguagens, as informações são valores declarados no código. Valores são as unidades básicas de dados que o programa manipula. Eles podem ser números, textos, objetos, funções, listas, entre outros. Tenha em consideração que **cada valor tem um tipo associado a ele**, que determina como o valor pode ser usado e quais operações podem ser realizadas sobre ele.
 
-- `Number`: representa números, tanto inteiros quanto de ponto flutuante (ex: `42`, `3.14`, `-7`, `2.8e3`) e também valores especiais como `Infinity`, `-Infinity` e `NaN` (Not a Number);
-- `String`: representa sequências de caracteres (ex: `"Olá, mundo!"`);
-- `Boolean`: representa valores lógicos, `true` ou `false`;
-- `Undefined`: representa uma variável que foi declarada, mas não inicializada;
-- `Null`: representa a ausência intencional de qualquer valor;
-- `Symbol`: representa um identificador único e imutável (introduzido no ECMAScript 6);
-- `BigInt`: representa números inteiros muito grandes (introduzido no ECMAScript 2020).
+JavaScript possui duas categorias principais de valores: primitivos e objetos. Primeiramente, vamos explorar os primitivos, listados abaixo:
+
+- `number`: representa números, tanto inteiros quanto de ponto flutuante (ex: `42`, `3.14`, `-7`, `2.8e3`) e também valores especiais como `Infinity`, `-Infinity` e `NaN` (_Not a Number_ -- não é um número);
+- `string`: representa sequências de caracteres (ex: `"Olá, mundo!"`);
+- `boolean`: representa valores lógicos, `true` ou `false`;
+- `undefined`: representa uma variável que foi declarada, mas não inicializada;
+- `null`: representa a ausência intencional de qualquer valor;
+- `symbol`: representa um identificador único e imutável (introduzido no ECMAScript 6);
+- `bigint`: representa números inteiros muito grandes (introduzido no ECMAScript 2020).
 
 Experimente o seguinte código:
 
 ```javascript
+// a seguir os tipos de diversos valores literais em JavaScript:
 console.log(typeof 42); // "number"
 console.log(typeof "Olá, mundo!"); // "string"
 console.log(typeof true); // "boolean"
 console.log(typeof undefined); // "undefined"
-console.log(typeof null); // "object" (isso é um bug histórico em JavaScript)
+console.log(typeof null); // "object"
 console.log(typeof Symbol("id")); // "symbol"
 console.log(typeof 9007199254740991n); // "bigint"
 
@@ -193,7 +291,7 @@ console.log(palavra[4]); // "S"
 console.log(palavra[10]); // undefined (índice fora do alcance)
 ```
 
-Strings literais são definidas com aspas simples (`'`), aspas duplas (`"`) ou crases (`` ` ``). As crases permitem interpolação de variáveis e expressões usando `${}`:
+Strings literais são definidas com aspas simples (`'`), aspas duplas (`"`) ou crases (`` ` ``). As crases permitem a interpolação de variáveis e expressões usando `${}`:
 
 ```javascript
 var nome = "Alice";
@@ -216,7 +314,15 @@ console.log("a".charCodeAt(0)); // 97
 console.log("€".charCodeAt(0)); // 8364
 ```
 
-### Variáveis e Constantes
+Da mesma forma, é possível obter o caractere correspondente a um código Unicode usando o método `String.fromCharCode()`:
+
+```javascript   
+console.log(String.fromCharCode(74)); // "J"
+console.log(String.fromCharCode(83)); // "S"
+console.log(String.fromCharCode(65)); // "A"
+```
+
+### Variáveis e Constantes o/
 
 Variáveis são usadas para armazenar valores que podem ser alterados durante a execução do programa. Em JavaScript, você pode declarar variáveis usando as palavras-chave `var`, `let` ou `const`, embora este último não possa ser redeclarada nem reatribuída (não é tanto uma variável ao pé da letra). A diferença entre elas está no escopo e na mutabilidade:
 
@@ -233,8 +339,8 @@ const PI = 3.14; // declaração com const
 console.log(`Nome: ${nome}, Idade: ${idade}, PI: ${PI}`);
 
 // Reatribuição de variáveis:
-idade = 31; // válido
-nome = "Maria"; // válido
+idade = 31; // válido, idade agora é 31
+nome = "Maria"; // válido, nome agora é "Maria"
 PI = 3.14159; // inválido, gera um TypeError: Assignment to constant variable.
 
 // Redeclaração:
@@ -251,21 +357,21 @@ function exemploVar() {
         var x = 10; // x tem escopo de função
         let y = 20; // y tem escopo de bloco
     }
-    console.log(x); // 10 (válido)
-    console.log(y); // 20 (inválido, gera um ReferenceError: y is not defined)
+    console.log(x); // 10 (válido, x está no escopo da função e é visível aqui)
+    console.log(y); // 20 (inválido, gera um ReferenceError: y is not defined, pois y está fora do escopo do bloco if)
 }
 ```
 
 A ordem de preferência para declarar variáveis em JavaScript é: 
 
 1. `const` - para valores que não devem ser reatribuídos;
-2. `let` - para valores que podem ser reatribuídos;
-3. `var` - apenas quando necessário, devido ao seu escopo mais amplo e comportamento peculiar.
+2. `let` - para valores que podem ser reatribuídos, mas não redeclarados no mesmo escopo;
+3. `var` - apenas quando necessário, devido ao seu escopo mais amplo e comportamento legado.
 
 
-### Operadores
+### Operadores o/
 
-Operadores são símbolos ou palavras-chave que realizam operações sobre valores. Eles podem ser classificados nas seguintes categorias:
+Operadores são símbolos ou palavras-chave que realizam operações sobre valores, transformando-os em novos valores. Eles podem ser classificados nas seguintes categorias:
 
 - Operadores **Aritméticos**: realizam operações matemáticas básicas, como adição (`+`), subtração `-`, multiplicação `*`, divisão `/`, potência `**`, e módulo `%` ou resto da divisão;
 - Operadores de **Comparação**: comparam dois valores e retornam um valor booleano `true` ou `false`, sendo _igual a_ `==`, _estritamente igual a_ `===`, _diferente de_ `!=`, _maior que_ `>`, _menor que_ `<`, _maior ou igual a_ `>=`, e _menor ou igual a_ `<=`;
@@ -300,8 +406,10 @@ console.log(5 < 10); // true
 console.log(5 >= 5); // true
 console.log(3 <= 2); // false
 // Cuidados com NaN (Not a Number):
-console.log(5 > 'teste'); // false (comparação numérica, 'teste' é NaN)
-console.log(5 < 'teste'); // false (comparação numérica, 'teste' é NaN)
+console.log(5 > 'teste'); // false (comparação numérica, 'teste' é considerado NaN e nada é maior que NaN)
+console.log(5 < 'teste'); // false (comparação numérica, 'teste' é considerado NaN e nada é menor que NaN)
+console.log(5 == NaN); // false (NaN não é igual a nada, nem mesmo a ele mesmo)
+console.log(NaN === NaN); // false (NaN não é estritamente igual a nada, nem mesmo a ele mesmo)
 ```
 
 Exemplos de uso dos operadores lógicos:
@@ -340,6 +448,7 @@ console.log(y++); // 5 pós-incremento
 console.log(y); // 6
 console.log(++y); // 7 pré-incremento
 console.log(y); // 7
+
 console.log(y--); // 7 pós-decremento
 console.log(y); // 6
 console.log(--y); // 5 pré-decremento
@@ -351,26 +460,33 @@ Exemplo de uso do operador ternário:
 ```javascript
 const idade = 20;
 const podeDirigir = (idade >= 18) ? "Sim" : "Não";
-console.log(podeDirigir); // "Sim" porque idade é 20 e 20 >= 18
+console.log(podeDirigir); // "Sim" porque idade tem o valor 20 e o valor 20 é maior que o valor 18
 ```
 
-Exemplo de uso do operador typeof:
+Exemplo de uso do operador `typeof` para verificar o tipo de um valor:
 
 ```javascript
 console.log(typeof 42); // "number"
 console.log(typeof "Olá"); // "string"
 console.log(typeof true); // "boolean"
+
+// pode ser usado para verificar o tipo de variáveis também:
+let valor = {};
+console.log(typeof valor); // "object"
+
+// pode ser chamado como uma função, entre parênteses:
+console.log(typeof(valor)); // "object"
 ```
 
 Exemplos de uso dos operadores bit a bit:
 
 ```javascript
-console.log(5 & 3); // 1 (0101 & 0011 = 0001)
-console.log(5 | 3); // 7 (0101 | 0011 = 0111)
-console.log(5 ^ 3); // 6 (0101 ^ 0011 = 0110)
-console.log(5 << 1); // 10 (0101 << 1 = 1010)
-console.log(5 >> 1); // 2 (0101 >> 1 = 0010)
-console.log(5 >>> 1); // 2 (0101 >>> 1 = 0010)
+console.log(5 & 3); // 1 (0101 & 0011 = 0001 = 1)
+console.log(5 | 3); // 7 (0101 | 0011 = 0111 = 7)
+console.log(5 ^ 3); // 6 (0101 ^ 0011 = 0110 = 6)
+console.log(5 << 1); // 10 (0101 << 1 = 1010 = 10)
+console.log(5 >> 1); // 2 (0101 >> 1 = 0010 = 2)
+console.log(5 >>> 1); // 2 (0101 >>> 1 = 0010 = 2)
 ```
 
 ### Expressões, Sentenças, Declarações e Blocos
