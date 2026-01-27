@@ -17,7 +17,7 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
     - [Valores o/](#valores-o)
     - [Variáveis e Constantes o/](#variáveis-e-constantes-o)
     - [Operadores o/](#operadores-o)
-    - [Expressões, Sentenças, Declarações e Blocos](#expressões-sentenças-declarações-e-blocos)
+    - [Expressões, Sentenças, Declarações e Blocos o/](#expressões-sentenças-declarações-e-blocos-o)
   - [Estruturas de Controle](#estruturas-de-controle)
     - [Estrtuturas Condicionais](#estrtuturas-condicionais)
     - [Estruturas de Repetição](#estruturas-de-repetição)
@@ -489,7 +489,7 @@ console.log(5 >> 1); // 2 (0101 >> 1 = 0010 = 2)
 console.log(5 >>> 1); // 2 (0101 >>> 1 = 0010 = 2)
 ```
 
-### Expressões, Sentenças, Declarações e Blocos
+### Expressões, Sentenças, Declarações e Blocos o/
 
 Em JavaScript, uma **expressão** é qualquer fragmento de código que produz um valor. Pode ser tão simples quanto um número ou uma string literal, ou tão complexo quanto uma chamada de função ou uma operação matemática. Por exemplo:
 
@@ -499,18 +499,19 @@ Em JavaScript, uma **expressão** é qualquer fragmento de código que produz um
 Math.max(5, 10); // expressão que produz o valor 10
 ```
 
-Sentenças (ou instruções) são unidades completas de código que realizam uma ação. Elas podem incluir expressões, mas também podem conter palavras-chave e estruturas de controle. As sentenças geralmente terminam com um ponto e vírgula (`;`), embora em muitos casos o JavaScript permita omiti-lo. Exemplos de sentenças incluem:
+Sentenças (ou instruções, ou _statements_ em inglês) são unidades completas de código que realizam uma ação. Elas podem incluir expressões, mas também podem conter palavras-chave e estruturas de controle. É recomendado que as sentenças terminem com um ponto e vírgula (`;`), porém ela é opcional em JavaScript. Exemplos de sentenças incluem:
 
 ```javascript
 let x = 10; // declaração de variável (sentença)
 
 console.log(x); // chamada de função (sentença)
+
 if (x > 5) { // sentença condicional
     console.log("x é maior que 5");
 }
 ```
 
-As declarações são um tipo específico de sentença que introduz novas variáveis, funções ou outras entidades no escopo atual. Exemplos de declarações incluem:
+As declarações são um tipo específico de sentença usadas para introduzir novas variáveis, funções ou outras entidades no escopo atual. Exemplos de declarações incluem:
 
 ```javascript
 let y = 20; // declaração de variável
@@ -518,17 +519,21 @@ let y = 20; // declaração de variável
 function dobro(n) { // declaração de função
     return n * 2;
 }
+
+let triplo = function(n) { // expressão de função atribuída a uma variável
+    return n * 3;
+};
 ```
 
-Os blocos são conjuntos de sentenças agrupadas entre chaves `{}`. Eles são usados para definir o escopo de variáveis e para agrupar sentenças em estruturas de controle, como loops e condicionais. Por exemplo:
+Os blocos são conjuntos de sentenças agrupadas entre chaves `{}`. Eles são usados para definir o escopo de variáveis e para agrupar sentenças em estruturas de controle, como _loops_ e condicionais. Por exemplo:
 
 ```javascript
 let x = 10;
 
-if (x > 5) { // o bloco começa aqui
+if (x > 5) { // o bloco IF começa aqui
     const mensagem = "x é maior que 5";
     console.log(mensagem);
-} // o bloco termina aqui   
+} // o bloco IF termina aqui   
 ```
 
 Blocos podem ser aninhados dentro de outros blocos, permitindo a criação de estruturas complexas de controle de fluxo, por exemplo:
@@ -544,7 +549,7 @@ for (let i = 0; i < 3; i++) { // bloco do loop
 } // fim do bloco do loop
 ```
 
-A indentação do código dentro dos blocos é uma prática recomendada para melhorar a legibilidade, embora o JavaScript não exija isso sintaticamente.
+A indentação do código dentro dos blocos é uma prática recomendada para melhorar a legibilidade, embora o JavaScript não exija isso sintaticamente (como Python exige, por exemplo).
 
 
 ## Estruturas de Controle
