@@ -26,7 +26,7 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
     - [Declaração de Funções o/](#declaração-de-funções-o)
     - [Retorno de Funções o/](#retorno-de-funções-o)
     - [Composição de Funções o/](#composição-de-funções-o)
-    - [Funções Anônimas e Arrow Functions](#funções-anônimas-e-arrow-functions)
+    - [Funções Anônimas e _Arrow Functions_ o/](#funções-anônimas-e-arrow-functions-o)
   - [Programação Modular](#programação-modular)
     - [Projetos JavaScript](#projetos-javascript)
     - [Programação Modular em JavaScript](#programação-modular-em-javascript)
@@ -1185,38 +1185,46 @@ funcaoA(); // Inicia a cadeia de chamadas
 Ao se deparar com um erro, o stacktrace é o primeiro lugar a ser verificado para entender a origem do problema e como ele se propagou através das chamadas de função.
 
 
-### Funções Anônimas e Arrow Functions
+### Funções Anônimas e _Arrow Functions_ o/
 
-Funções anônimas são funções que não possuem um nome associado. Elas são frequentemente usadas como argumentos para outras funções, especialmente em _callbacks_ e funções de ordem superior. Aqui está um exemplo de uma função usada como callback em um método de array:
+Funções anônimas são funções que não possuem um identificador. Elas são frequentemente usadas como argumentos para outras funções, especialmente em _callbacks_ (retornos de chamadas) e funções de ordem superior. Aqui está um exemplo de uma função usada como _callback_ em um método de _array_:
 
 ```javascript
+// aqui temos uma função nomeada chamada 'quadrado'
 const quadrado = function(n) {
     return n * n;
 };
 const numeros = [1, 2, 3, 4, 5];
-const quadrados = numeros.map(quadrado);
+const quadrados = numeros.map(quadrado); // usando a função 'quadrado' como callback para map
 console.log(quadrados); // [1, 4, 9, 16, 25]
 ```
 
-Se a função dobro fosse apenas usada uma vez, poderíamos defini-la diretamente como uma *função anônima* dentro do `map`:
+Se a função dobro fosse usada apenas uma vez, poderíamos defini-la diretamente como uma *função anônima* dentro do `map`:
 
 ```javascript
 const numeros = [1, 2, 3, 4, 5];
+ // note que a function(n) {} é a mesma anterior, porém sem o identificador
 const quadrados = numeros.map(function(n) {
     return n * n;
 });
 console.log(quadrados); // [1, 4, 9, 16, 25]
 ```
 
-As arrow functions (funções de seta) são uma sintaxe mais concisa para escrever funções anônimas introduzida no ECMAScript 6 (ES6). Elas utilizam a flecha `=>` para separar os parâmetros do corpo da função. Aqui está o mesmo exemplo usando uma arrow function:
+As _arrow functions_ (funções em seta) são uma sintaxe mais concisa para escrever funções anônimas (ou até nomeadas) introduzida no ECMAScript 6 (ES6). Elas utilizam a flecha `=>` para separar os parâmetros do corpo da função. Aqui está o mesmo exemplo usando uma arrow function:
 
 ```javascript
 const numeros = [1, 2, 3, 4, 5];
-const quadrados = numeros.map(n => n * n);
+// onde n é o parâmetro e n * n é o valor retornado,
+// note que não é necessário usar a palavra-chave 'function', 'return' nem chaves {}
+const quadrados = numeros.map(n => n * n); 
 console.log(quadrados); // [1, 4, 9, 16, 25]
+
+// essa função poderia ser identificada também:
+const quadrado = n => n * n;
+console.log(quadrado(6)); // 36
 ```
 
-_Arrow functions_ também pode ser usadas para declarar funções:
+As funções podem ser declaradas como _arrow functions_ criando funções nomeadas/identificadas:
 
 ```javascript
 const pluralizar = palavra => {
@@ -1231,6 +1239,9 @@ const pluralizar = palavra => {
 
 console.log(pluralizar("carro")); // "carros"
 ```
+
+A decisão de declarar uma função como anônima, nomeada ou como uma _arrow function_ depende do contexto e das necessidades específicas do código. As _arrow functions_ são particularmente úteis para usos simples e explícitos, especialmente quando usadas como _callbacks_, enquanto funções nomeadas são preferíveis quando a função precisa ser reutilizada ou referenciada em outros lugares do código, melhorando a legibilidade e rastreabilidade do programa.
+
 
 ## Programação Modular
 
