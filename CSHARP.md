@@ -7,7 +7,7 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
 - [As Bases com C#](#as-bases-com-c)
   - [Sumário](#sumário)
   - [Introdução](#introdução)
-    - [História do C#](#história-do-c)
+    - [História do C# o/](#história-do-c-o)
     - [Linguagem Compilada](#linguagem-compilada)
     - [Linguagem de Tipagem Estática](#linguagem-de-tipagem-estática)
     - [Linguagem de Tipagem Forte](#linguagem-de-tipagem-forte)
@@ -51,17 +51,17 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
 
 ## Introdução
 
-### História do C#
+### História do C# o/
 
 A história serve para compreender o presente através do passado.
 
-C# foi desenvolvido pela Microsoft a partir de 2000 como parte da iniciativa .NET Framework, com o objetivo de criar uma linguagem moderna orientada a objetos que combinasse o poder do C++ com a simplicidade do Visual Basic e as capacidades de gerenciamento automático de memória inspiradas em Java. Anders Hejlsberg, o principal arquiteto do C#, também foi responsável pela criação do Delphi e influenciou o desenvolvimento de TypeScript. A primeira versão (C# 1.0) foi lançada em 2002 junto com o .NET Framework 1.0.
+C# foi desenvolvida pela Microsoft a partir de 2000 como parte da iniciativa .NET Framework, com o objetivo de criar uma linguagem moderna orientada a objetos que combinasse o poder do C++ com a simplicidade do Visual Basic e as capacidades de gerenciamento automático de memória inspiradas em Java. Anders Hejlsberg, o principal arquiteto do C#, também foi responsável pela criação do Delphi e influenciou o desenvolvimento de TypeScript. A primeira versão (C# 1.0) foi lançada em 2002 junto com o .NET Framework 1.0.
 
-C# foi projetado desde o início para ser uma linguagem de tipagem forte e estática, o que contrasta significativamente com linguagens como JavaScript. Essa decisão de design oferecia maior segurança em tempo de compilação, melhor desempenho e suporte melhorado do IDE (Integrated Development Environment) como o Visual Studio.
+C# foi projetado desde o início para ser uma linguagem de tipagem forte e estática, o que contrasta significativamente com linguagens como JavaScript e Python. Essa decisão de design oferecia maior segurança em tempo de compilação, melhor desempenho e suporte melhorado das IDEs (Integrated Development Environment) como o Visual Studio.
 
-Ao longo dos anos, C# evoluiu significativamente. Recursos importantes foram adicionados em versões subsequentes: C# 2.0 introduziu genéricos, C# 3.0 introduziu LINQ (Language Integrated Query) e tipos anônimos, C# 5.0 introduziu async/await para programação assíncrona, C# 8.0 introduziu tipos de referência anulável (nullable reference types) e C# 9.0 introduziu registros (records) como um novo tipo de referência. Em 2020, a Microsoft liberou o .NET 5 (agora chamado de .NET Core) como a plataforma principal para desenvolvimento em C#, consolidando C# como uma linguagem verdadeiramente multiplataforma.
+Ao longo dos anos, C# evoluiu significativamente. Recursos importantes foram adicionados em versões subsequentes: C# 2.0 introduziu genéricos, C# 3.0 introduziu LINQ (Language Integrated Query) e tipos anônimos, C# 5.0 introduziu async/await para programação assíncrona, C# 8.0 introduziu tipos de referência anulável (_nullable reference types_), C# 9.0 introduziu registros (records) como um novo tipo de referência, C# 10.0 introduziu tipos de valor anuláveis e C# 11.0 trouxe melhorias no desempenho e novos recursos de programação funcional. Em 2020, a Microsoft liberou o .NET 5 (agora chamado de .NET Core) como a plataforma principal para desenvolvimento em C#, consolidando C# como uma linguagem verdadeiramente multiplataforma, isto é, que roda em Windows, Linux e macOS sem nenhuma dependência além do .NET core.
 
-Atualmente, C# é amplamente utilizado para desenvolvimento de aplicações empresariais, jogos (especialmente com Unity), servidores web (com ASP.NET Core) e aplicações desktop (com Windows Forms, WPF e MAUI). C# é uma linguagem de propósito geral, moderna e em contínua evolução.
+Atualmente, C# é amplamente utilizada para o desenvolvimento de aplicações empresariais, jogos (especialmente com Unity), servidores web (com ASP.NET Core) e aplicações desktop (com Windows Forms, WPF e MAUI). C# é uma linguagem de propósito geral, moderna e em contínua evolução.
 
 ### Linguagem Compilada
 
