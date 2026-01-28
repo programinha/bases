@@ -228,13 +228,13 @@ Considere um intervalo de dois números inteiros, somar os pares:
 var res = somaParesEntre(5, 17); // 6 + 8 + 10 + 12 + 14 + 16
 console.log(res); // 66
 
-console.log(somaParesEnter(4, 18)); // 88
+console.log(somaParesEntre(4, 18)); // 88
 
-console.log(somaParesEnter(18, 4)); // 0
-console.log(somaParesEnter(-4, 4)); // -4 + -2 + 0 + 2 + 4 + 6 = 6
+console.log(somaParesEntre(18, 4)); // 0
+console.log(somaParesEntre(-4, 4)); // -4 + -2 + 0 + 2 + 4 + 6 = 6
 
-console.log(somaParesEnter(4.33, 8)); // null
-console.log(somaParesEnter(4, 8)); // null
+console.log(somaParesEntre(4.33, 8)); // null
+console.log(somaParesEntre(4, 8)); // null
 ```
 
 #### Soma de Números Ímpares em um Intervalo
