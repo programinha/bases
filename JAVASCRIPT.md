@@ -18,12 +18,12 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
     - [Variáveis e Constantes o/](#variáveis-e-constantes-o)
     - [Operadores o/](#operadores-o)
     - [Expressões, Sentenças, Declarações e Blocos o/](#expressões-sentenças-declarações-e-blocos-o)
-  - [Estruturas de Controle](#estruturas-de-controle)
-    - [Estrtuturas Condicionais](#estrtuturas-condicionais)
-    - [Estruturas de Repetição](#estruturas-de-repetição)
-    - [Estruturas para o Tratamento de Exceções](#estruturas-para-o-tratamento-de-exceções)
+  - [Estruturas de Controle o/](#estruturas-de-controle-o)
+    - [Estruturas Condicionais o/](#estruturas-condicionais-o)
+    - [Estruturas de Repetição o/](#estruturas-de-repetição-o)
+    - [Estruturas para o Tratamento de Exceções o/](#estruturas-para-o-tratamento-de-exceções-o)
   - [Funções](#funções)
-    - [Declaração de Funções](#declaração-de-funções)
+    - [Declaração de Funções o/](#declaração-de-funções-o)
     - [Retorno de Funções](#retorno-de-funções)
     - [Composição de Funções](#composição-de-funções)
     - [Funções Anônimas e Arrow Functions](#funções-anônimas-e-arrow-functions)
@@ -330,6 +330,13 @@ Variáveis são usadas para armazenar valores que podem ser alterados durante a 
 - `let`: tem escopo de bloco e pode ser reatribuída, mas não pode ser redeclarada no mesmo escopo;
 - `const`: tem escopo de bloco e não pode ser redeclarada nem reatribuída.
 
+Todos estes são sucedidos por um **identificador** (nome da variável/constante) e opcionalmente uma atribuição inicial de valor usando o operador `=`. Os identificadores devem seguir as regras de nomenclatura de variáveis em JavaScript, a saber:
+
+- Devem começar com uma letra, sublinhado (`_`) ou cifrão (`$`);
+- Podem conter letras, dígitos, sublinhados e cifrões;
+- Não podem ser palavras reservadas da linguagem (como `if`, `for`, `return`, etc.);
+- São sensíveis a maiúsculas e minúsculas (`salariominimo` é diferente de `salarioMinimo`).
+
 Exemplos de declaração e uso de variáveis e constantes:
 
 ```javascript
@@ -552,37 +559,37 @@ for (let i = 0; i < 3; i++) { // bloco do loop
 A indentação do código dentro dos blocos é uma prática recomendada para melhorar a legibilidade, embora o JavaScript não exija isso sintaticamente (como Python exige, por exemplo).
 
 
-## Estruturas de Controle
+## Estruturas de Controle o/
 
-Estruturas de controle são usadas para controlar o fluxo de execução do código com base em condições ou repetições. As principais estruturas de controle em JavaScript incluem:
+Estruturas de controle são usadas para controlar o fluxo de execução do código com base em condições (para executar este ou outro código baseado em uma condição) ou repetições (executar um bloco de códigos por um número determinado de vezes). As principais estruturas de controle em JavaScript incluem:
 
-- Estruturas condicionais: `if`, `else if`, `else`, `switch`
-- Estruturas de repetição: `for`, `while`, `do...while`
-- Controle de loop: `break`, `continue`
-- Tratamento de exceções: `try`, `catch`, `finally`, `throw`
+- Estruturas condicionais: `if`, `else if`, `else`, e `switch`
+- Estruturas de repetição: `for`, `while`, e `do...while`
+- Controle de _loop_: `break` e `continue`
+- Tratamento de exceções: `throw`, `try`, `catch`, e `finally`
 - Declarações de término: `return`
 
-### Estrtuturas Condicionais
+### Estruturas Condicionais o/
 
-A estrutura condicional mais simples é o `if`, que executa um bloco de código se uma condição for verdadeira:
+A estrutura condicional mais simples é o `if` ("se", em português), que executa um bloco de código apenas se uma condição for verdadeira:
 
 ```javascript
 let idade = 20;
 if (idade >= 18) {
-    console.log("Você é maior de idade.");
+    console.log("Você é maior de idade."); // executado apenas se a idade for maior ou igual a 18
 }
 
 // ainda, o bloco pode ser omitido se houver apenas uma sentença:
 if (idade >= 18) console.log("Você é maior de idade.");
 ```
 
-Estruturas mais complexas podem ser criadas usando `else if` e `else`:
+Estruturas mais complexas podem ser criadas usando `else if` e `else`, que significam "senão, se" e "senão", respectivamente. Veja o exemplo abaixo que classifica uma nota em conceitos de A a F:
 
 ```javascript
 let nota = 8.5;
-if (nota >= 9) {
+if (nota >= 9) { // esta condição é verificada primeiro
     console.log("A");
-} else if (nota >= 8) {
+} else if (nota >= 8) { // esta condição é verificada se a anterior for falsa
     console.log("B");
 } else if (nota >= 7) {
     console.log("C");
@@ -590,7 +597,7 @@ if (nota >= 9) {
     console.log("D");
 } else if (nota >= 5) {
     console.log("E");
-} else {
+} else { // este bloco é executado se todas as condições anteriores forem falsas
     console.log("F");
 }
 ```
@@ -643,7 +650,7 @@ A seguir uma representação visual do fluxo de uma estrutura condicional com `i
                                                 +-------------------+   +-------------------+
 ```
 
-O `switch` é outra estrutura condicional que pode ser usada quando há múltiplas condições baseadas no valor de uma variável:
+O `switch` é outra estrutura condicional que pode ser usada quando há múltiplas condições baseadas no valor de uma variável. Por exemplo, considere o código a seguir para imprimir o dia da semana baseado no número retornado por `getDay()`:
 
 ```javascript
 let dia = new Date().getDay(); // 0 (Domingo) a 6 (Sábado)
@@ -674,7 +681,7 @@ switch (dia) {
 }
 ```
 
-No caso de uso de switches, o uso do `break` é crucial para evitar o _"fall through"_, onde a execução continua para os casos subsequentes mesmo após encontrar uma correspondência. Por outro lado, existem casos em que o _"fall through"_ é desejado, como no exemplo abaixo:
+No uso de _switch/case_, o uso do `break` é crucial para evitar o _"fall through"_, onde a execução continua para os casos subsequentes mesmo após encontrar uma correspondência. Por outro lado, existem casos em que o _"fall through"_ é desejado, como no exemplo abaixo:
 
 ```javascript
 let caractere = 'I';
@@ -691,9 +698,12 @@ switch (caractere) {
 }
 ```
 
-### Estruturas de Repetição
+Na hora de implementar switch/case, sempre adicione o `break` ao final de cada caso, a menos que o _fall through_ seja intencional e estejas projetando o código considerando que aconteça.
 
-Use o `while` para repetir um bloco de código enquanto uma condição for verdadeira:
+
+### Estruturas de Repetição o/
+
+Use o `while` (enquanto) para repetir um bloco de código enquanto uma condição for verdadeira:
 
 ```javascript
 let surpresa = "ah";
@@ -714,10 +724,10 @@ do {
     surpresa += "h";
     if (surpresa.length == nivelSurpresa) surpresa += "!";
 } while (surpresa.length < nivelSurpresa);
-console.log(surpresa); // "ah!"
+console.log(surpresa); // "ahh!"
 ```
 
-E todos os exemplos acima podem ser escritos usando `for`, que é especialmente útil quando o número de iterações é conhecido:
+Todos os exemplos acima, onde foram usados `while` e `do/while`, podem ser escritos usando `for`, que é especialmente útil quando o número de iterações é conhecido:
 
 ```javascript
 let surpresa = "ah";
@@ -729,9 +739,9 @@ for (let i = surpresa.length; i < nivelSurpresa; i++) {
 console.log(surpresa); // "ahhhh!"
 ```
 
-### Estruturas para o Tratamento de Exceções
+### Estruturas para o Tratamento de Exceções o/
 
-Em JavaScript, o tratamento de exceções é realizado usando as palavras-chave `try`, `catch`, `finally` e `throw`. Esses construtos para o tratamento de fluxos excepcionais também é usada por outras linguagens, tais como Java e C#. Eles permitem que você lide com erros de forma controlada, evitando que o programa falhe abruptamente -- exceto se nenhuma exceção for capturada. 
+Em JavaScript, o tratamento de exceções é realizado usando as palavras-chave `try`, `catch`, `finally` e `throw`. Esses construtos para o tratamento de fluxos excepcionais também é usada por outras linguagens, tais como Java e C#. Eles permitem que você lide com os casos especiais de forma controlada, evitando (ou fazendo) que o programa falhe abruptamente.
 
 A implementação começa pelas funções que podem lançar exceções usando a instrução `throw`, como `throw new Error("mensagem de erro")`. As exceções são lançadas quando há algum problema que impede a função de computar ou retornar um valor válido. As condições são testadas condicionalmente e podem ocorrer por diversas razões, desde um parâmetro inválido, como informar uma quantidade negativa para um produto, até um estado inconsistente ou impossível de atingir, por exemplo, tentar sacar de uma conta bancária com saldo insuficiente.
 
@@ -793,7 +803,7 @@ try {
 }
 ```
 
-Note que a ordem das validações dentro da função é importante, pois a primeira condição que falhar lançará uma exceção, interrompendo a execução da função. Portanto, as validações devem ser organizadas de forma lógica para fornecer feedback útil ao usuário ou chamador da função.
+Note que a ordem das validações dentro da função é importante, pois a primeira condição que falhar lançará uma exceção, interrompendo a execução da função. Portanto, as validações devem ser organizadas de forma lógica para fornecer _feedback_ útil ao usuário ou chamador da função.
 
 Finalmente, o bloco `finally` pode ser usado para executar código que deve ser executado independentemente de uma exceção ter sido lançada ou não. Isso é útil para liberar recursos, fechar conexões ou realizar outras tarefas de limpeza, mais comuns quando usamos recuros externos, como arquivos ou conexões de rede. Aqui está um exemplo sintético simples:
 
@@ -817,9 +827,11 @@ function exemploFinally() { // abrindo, executando um sql e fechando uma conexã
 
 ## Funções
 
-### Declaração de Funções
+Praticamente todas as linguagens de programação suportam o conceito de funções, que são blocos reutilizáveis de código que realizam uma tarefa específica.
 
-Funções são blocos reutilizáveis de código que realizam uma tarefa específica. Elas podem receber entradas (parâmetros), executar operações, faz computações e retornar um valor. Funções ajudam a organizar o código, sendo o primeiro passo na direção da **modularidade** e reutilização.
+### Declaração de Funções o/
+
+Funções são blocos reutilizáveis de código para resolver um problema determinado. Elas podem receber entradas (parâmetros), executar operações, fazer computações e retornar um valor. Funções ajudam a organizar o código, sendo o primeiro passo na direção da **modularidade** e reutilização.
 
 A anatomia básica de uma função em JavaScript inclui:
 
@@ -854,19 +866,14 @@ A seguinte simbologia é usada para descrever a sintaxe das funções:
 
 A sintaxe geral para declarar uma função é:
 
-```javascript
-function <nome da função>([parametro 1, parametro 2, ...]) {
+```text
+function <nome da função>([parametro 1 [ = <valor padrão>], parametro 2 [ = <valor padrão>], ...]) {
     // corpo da função
     [return valor];
 }
 ```
 
-Onde `nome da função` é o identificador da função e `parametro 1`, `parametro 2`, etc,  são os parâmetros opcionais que a função pode receber. Os identificadores devem seguir as regras de nomenclatura de variáveis em JavaScript, a saber:
-
-- Devem começar com uma letra, sublinhado (`_`) ou cifrão (`$`);
-- Podem conter letras, dígitos, sublinhados e cifrões;
-- Não podem ser palavras reservadas da linguagem (como `if`, `for`, `return`, etc.);
-- São sensíveis a maiúsculas e minúsculas (`minhaFuncao` é diferente de `minhafuncao`).
+Onde `nome da função` é o identificador da função e `parametro 1`, `parametro 2`, etc,  são os identificadores dos parâmetros que a função pode receber. Os parâmetros também podem ter um valor padrão e devem seguir a mesma regra de nomenclatura de variáveis, pois eles são identificadores da mesma forma.
 
 Considere a função para expressar surpresa vista anteriormente:
 
@@ -874,9 +881,9 @@ Considere a função para expressar surpresa vista anteriormente:
 function expressarSurpresa(nivelSurpresa) {
     let surpresa = "ah";
     for (let i = surpresa.length; i < nivelSurpresa; i++) {
-        surpresa += "h";
-        if (surpresa.length == nivelSurpresa) surpresa += "!";
+        surpresa += "h";        
     }
+    surpresa += "!";
     return surpresa;
 }
 
@@ -886,9 +893,9 @@ console.log(expressarSurpresa(5)); // "ahhhh!"
 console.log(expressarSurpresa(10)); // "ahhhhhhhhh!"
 ```
 
-A mesma função poderia se chamar `expressar_surpresa`, no entanto, o estilo de nomenclatura mais comum em JavaScript é o `camelCase`, onde a primeira palavra é escrita em minúsculas e as demais palavras iniciam com maiúsculas, sem espaços ou sublinhados, por exemplo: `somarDoisNumeros`.
+A mesma função poderia se chamar `expressar_surpresa` (separada por underscore `_`), no entanto, o estilo de nomenclatura mais comum em JavaScript é o `camelCase`, onde a primeira palavra é escrita em minúsculas e as demais palavras iniciam com maiúsculas, sem espaços ou sublinhados, por exemplo: `somarDoisNumeros`.
 
-Particularidades da linguagem, em JavaScript os parâmetros são opcionais e podem ser omitidos na chamada da função. Se um parâmetro não for fornecido, seu valor será `undefined` dentro da função. Inclusive, é possível passar mais argumentos do que os parâmetros definidos. Esses argumentos extras podem ser acessados através do objeto especial `arguments` ou podem ser ignorados por completo. 
+Particularidades da linguagem, em JavaScript os parâmetros são opcionais e podem ser omitidos na chamada da função. Se um parâmetro não for fornecido, seu valor será `undefined` dentro da função. Inclusive, é possível passar mais argumentos do que os parâmetros definidos. Esses argumentos extras podem ser acessados através do objeto especial `arguments` ou podem ser ignorados por completo.
 
 Aqui está um exemplo que demonstra esses conceitos:
 
@@ -914,16 +921,17 @@ mostrarParametros(1, 2, 3, 4);
 // Número de argumentos recebidos: 4
 ```
 
-Dito isso, a função `expressarSurpresa` quebraria se chamada sem argumentos, pois `nivelSurpresa` seria `undefined`, e a comparação na condição do loop falharia. Para evitar isso, podemos definir um valor padrão para o parâmetro:
+Dito isso, a função `expressarSurpresa` quebraria se fosse chamada sem argumentos, pois `nivelSurpresa` seria `undefined`, e a comparação na condição do _loop_ falharia. Para evitar isso, podemos definir um valor padrão para o parâmetro:
 
 
 ```javascript
-function expressarSurpresa(nivelSurpresa = 5) { // valor padrão de 5
+// nível padrão de surpresa é 5, se nenhum argumento for fornecido
+function expressarSurpresa(nivelSurpresa = 5) {
     let surpresa = "ah";
     for (let i = surpresa.length; i < nivelSurpresa; i++) {
         surpresa += "h";
-        if (surpresa.length == nivelSurpresa) surpresa += "!";
     }
+    surpresa += "!";
     return surpresa;
 }
 // Chamando a função sem argumentos usará o valor padrão:
@@ -934,7 +942,7 @@ console.log(expressarSurpresa(10)); // "ahhhhhhhhh!" (nível 10)
 console.log(expressarSurpresa()); // aoenas "ah", pois nivelSurpresa é undefined e i < undefined é falso
 ```
 
-Como bons fazedores de programas, devemos sempre validar os parâmetros recebidos para garantir que a função se comporte corretamente, mesmo quando chamada com argumentos inesperados ou inválidos. Por exemplo:
+Como bons escritores de programas, devemos sempre validar os parâmetros recebidos para garantir que a função se comporte corretamente, mesmo quando chamada com argumentos inesperados ou inválidos. Por exemplo:
 
 ```javascript
 function dividir(a, b) {
@@ -957,11 +965,17 @@ function expressarSurpresa(nivelSurpresa = 5) {
     if (typeof nivelSurpresa !== 'number') {
         return NaN; // Retorna NaN se o parâmetro não for um número
     }
+    if (Number.isNaN(nivelSurpresa)) {
+        return NaN; // Retorna NaN se o parâmetro for NaN
+    }
+    if (Number.isInteger(nivelSurpresa) === false) {
+        throw new Error("O nível de surpresa deve ser um número inteiro."); // lança exceção se não for inteiro
+    }
     if (nivelSurpresa <= 0) {
         return "Nenhuma surpresa, na verdade";
     }
     if (nivelSurpresa > 100) {
-        return "Surpresa demais!"; // Limite máximo para evitar exageros      
+        return "SURPRESO DEMAIS!"; // Limite máximo para evitar exageros      
     }
 
     let sentimento = "ah";
