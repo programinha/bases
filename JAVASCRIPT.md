@@ -24,8 +24,8 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
     - [Estruturas para o Tratamento de Exceções o/](#estruturas-para-o-tratamento-de-exceções-o)
   - [Funções](#funções)
     - [Declaração de Funções o/](#declaração-de-funções-o)
-    - [Retorno de Funções](#retorno-de-funções)
-    - [Composição de Funções](#composição-de-funções)
+    - [Retorno de Funções o/](#retorno-de-funções-o)
+    - [Composição de Funções o/](#composição-de-funções-o)
     - [Funções Anônimas e Arrow Functions](#funções-anônimas-e-arrow-functions)
   - [Programação Modular](#programação-modular)
     - [Projetos JavaScript](#projetos-javascript)
@@ -653,7 +653,8 @@ A seguir uma representação visual do fluxo de uma estrutura condicional com `i
 O `switch` é outra estrutura condicional que pode ser usada quando há múltiplas condições baseadas no valor de uma variável. Por exemplo, considere o código a seguir para imprimir o dia da semana baseado no número retornado por `getDay()`:
 
 ```javascript
-let dia = new Date().getDay(); // 0 (Domingo) a 6 (Sábado)
+const hoje = new Date();
+const dia = hoje.getDay(); // 0 (Domingo) a 6 (Sábado)
 switch (dia) {
     case 0:
         console.log("Domingo");
@@ -867,13 +868,13 @@ A seguinte simbologia é usada para descrever a sintaxe das funções:
 A sintaxe geral para declarar uma função é:
 
 ```text
-function <nome da função>([parametro 1 [ = <valor padrão>], parametro 2 [ = <valor padrão>], ...]) {
+function <nome>([parametro1 [ = <valor padrão>], parametro2 [ = <valor padrão>], ...]) {
     // corpo da função
-    [return valor];
+    [return [valor]];
 }
 ```
 
-Onde `nome da função` é o identificador da função e `parametro 1`, `parametro 2`, etc,  são os identificadores dos parâmetros que a função pode receber. Os parâmetros também podem ter um valor padrão e devem seguir a mesma regra de nomenclatura de variáveis, pois eles são identificadores da mesma forma.
+Onde `nome` é o identificador da função e `parametro1`, `parametro2`, etc,  são os identificadores dos parâmetros que a função pode receber. Os parâmetros também podem ter um valor padrão e devem seguir a mesma regra de nomenclatura de variáveis, pois eles são identificadores da mesma forma.
 
 Considere a função para expressar surpresa vista anteriormente:
 
@@ -993,18 +994,19 @@ console.log(expressarSurpresa(150)); // "Surpresa demais!"
 console.log(expressarSurpresa("muito")); // NaN
 ```
 
-### Retorno de Funções
+### Retorno de Funções o/
 
-Funções podem retornar valores usando a palavra-chave `return`. Quando uma função encontra uma instrução `return`, ela imediatamente termina sua execução e retorna o valor especificado para o chamador. Se nenhuma instrução `return` for encontrada, a função retornará `undefined` por padrão.
+Funções podem retornar valores usando a palavra-chave `return`. Ao alcançar a instrução de `return` a função imediatamente termina sua execução e retorna o valor especificado para o chamador, ou `undefined` se nenhum valor ou identificador de retorno for informado. A função também retornará `undefined` por padrão se nenhuma instrução `return` for encontrada dentro do corpo da função.
 
-Considere uma função que conta o número de vogais em uma string:
+Considere uma função que conta o número de vogais em uma _string_:
 
 ```javascript
 function contarVogais(texto) {
     if (typeof texto !== 'string') return; // Retorna undefined se o parâmetro não for uma string
 
+    const vogais = "aáâãàeéiíoóõuúAÁÂÃÀEÉIÍOÓÕUÚ";
+
     let contador = 0;
-    const vogais = "aeiouAEIOU";
     for (let i = 0; i < texto.length; i++) {
         const caractere = texto[i];
         if (vogais.includes(caractere)) contador++;
@@ -1018,18 +1020,19 @@ console.log(numeroDeVogais); // 4
 console.log(contarVogais(12345)); // undefined
 ```
 
-A segunda opção para retornar nada é usar o `null`, que indica a ausência intencional de qualquer valor. Isso pode ser útil para sinalizar que uma função não tem um resultado válido para retornar:
+Outra opção de **não-valor**, isto é, para não retornar nadam, é usar o `null`. O nulo indica a ausência intencional de qualquer valor. Isso pode ser útil para sinalizar que uma função não tem um resultado válido para retornar:
 
 ```javascript
+const usuarios = [
+    { id: 1, nome: "Alice" },
+    { id: 2, nome: "Bob" },
+    { id: 3, nome: "Charlie" }
+];
+
 function buscarUsuarioPorId(id) {
-    const usuarios = [
-        { id: 1, nome: "Alice" },
-        { id: 2, nome: "Bob" },
-        { id: 3, nome: "Charlie" }
-    ];
     for (let i = 0; i < usuarios.length; i++) {
         if (usuarios[i].id === id) {
-            return usuarios[i]; // Retorna o usuário encontrado
+            return usuarios[i]; // Interrompe a execução e retorna o usuário encontrado
         }
     }
     // se este return fosse omitido, a função retornaria undefined por padrão
@@ -1043,12 +1046,12 @@ usuario = buscarUsuarioPorId(5);
 console.log(usuario); // null é mais útil neste caso pois indica que o usuário não foi encontrado e não que a função falhou
 ```
 
-Valores `null` não retornam por padrão, a menos que sejam explicitamente retornados pela função. A escolha entre retornar `undefined` ou `null` depende do contexto e da intenção do programador. `undefined` geralmente indica que algo não foi definido ou não existe, enquanto `null` é usado para indicar a ausência intencional de um valor.
+Valores `null` não retornam por padrão, a menos que sejam explicitamente retornados pela função. A escolha entre retornar `undefined` ou `null` depende do contexto e da intenção do programador. Com `undefined` geralmente indica que algo não foi definido ou não existe, enquanto `null` é usado para indicar a ausência intencional de um valor.
 
 
-### Composição de Funções
+### Composição de Funções o/
 
-Funções podem chamar outras funções dentro de seu corpo, permitindo a composição de funcionalidades e a criação de programas mais complexos. Isso promove a reutilização de código e a modularidade. Aqui está um exemplo simples de composição de funções:
+Funções podem chamar outras funções dentro de seu corpo, permitindo a composição de funcionalidades e a criação de programas mais complexos. Isso promove a reutilização de código e a modularidade. Todos software existentes, na verdade, são formados de uma grande composição de dados e funções. Aqui está um exemplo simples de composição de funções:
 
 ```javascript
 function dobrar(n) {
@@ -1060,24 +1063,30 @@ function somar(a, b) {
 }
 
 function somarEDobrar(x, y) {
-    let soma = somar(x, y); // chama a função somar
-    return dobrar(soma); // chama a função dobrar
+    const soma = somar(x, y); // chama a função somar
+    const resultado = dobrar(soma); // chama a função dobrar
+    return resultado;
 }
+
+// poderia ser escrito em uma linha também:
+// function somarEDobrar(x, y) {
+//     return dobrar(somar(x, y));
+// }
 
 // Chamando a função composta:
 console.log(somarEDobrar(3, 4)); // (3 + 4) * 2 = 14
 ```
 
-Voltando ao exemplo da surpresa, podemos dividir a lógica em funções menores para melhorar a clareza e a reutilização:
+Voltando ao exemplo da expressão de surpresa, podemos dividir a lógica em funções menores para melhorar a clareza e promover a reutilização:
 
 ```javascript
 function expressarSurpresa(nivelSurpresa = 5) {
-    let vogal = 'a';
+    const vogal = 'a';
     return expressar(vogal, nivelSurpresa);
 }
 
 function expressarDecepcao(nivelDecepcao = 5) {
-    let vogal = 'o';
+    const vogal = 'o';
     return expressar(vogal, nivelDecepcao);
 }
 
@@ -1085,9 +1094,9 @@ function expressar(vogal = 'a', nivel = 5) {
     // cláusulas guarda: se nenhuma entrar, então os parâmetros recebidos são válidos:
     if (typeof nivel !== 'number') return NaN;
     if (nivel <= 0) return "Nenhuma expressão, na verdade";
-    if (nivel > 100) return "Expressão demais!";
+    if (nivel > 100) return `CENTENAS de ${vogal.toUpperCase()}'sssss!`;
     
-    let sentimento = "ah";
+    let sentimento = vogal + "h";
     
     for (let i = sentimento.length; i < nivel; i++) sentimento += "h";
     
@@ -1136,18 +1145,18 @@ funcaoA(7); // Inicia a execução a partir da função A
 // Retornando para o chamador...
 ```
 
-Cada função têm seu próprio escopo, o que significa que variáveis declaradas dentro de uma função não são acessíveis fora dela, a menos que sejam retornadas ou atribuídas a variáveis globais. Isso ajuda a evitar conflitos de nomes e mantém o código organizado. No exemplo acima, as variáveis `n` em cada função são independentes umas das outras.
+Cada função têm seu próprio escopo, o que significa que parâmetros e variáveis declaradas dentro de uma função não são acessíveis fora dela, a menos que sejam retornadas ou atribuídas a variáveis globais. Isso ajuda a evitar conflitos de nomes e mantém o código organizado. No exemplo acima, as variáveis `n` em cada função são independentes umas das outras.
 
 As funções são empilhadas na pilha de chamadas (_call stack_), onde a função que está sendo executada no momento está no topo da pilha. Quando uma função chama outra, a nova função é adicionada ao topo da pilha, e quando uma função termina sua execução, ela é removida da pilha, retornando o controle para a função anterior. A seguir está uma representação visual simplificada da pilha de chamadas durante a execução do exemplo acima:
 
 ```
 Call Stack (Pilha de Chamadas)
 +-------------------+
-| funcaoC(n=9)     |  <-- Topo da pilha (função atualmente em execução)
+| funcaoC(n=9)      |  <-- Topo da pilha (função atualmente em execução)
 +-------------------+
-| funcaoB(n=8)     |
+| funcaoB(n=8)      |
 +-------------------+
-| funcaoA(n=7)     |
+| funcaoA(n=7)      |
 +-------------------+
 ```
 
@@ -1167,11 +1176,14 @@ function funcaoC() {
 funcaoA(); // Inicia a cadeia de chamadas
 // Saída esperada no console:
 // Uncaught Error: Algo deu errado!
-//     at funcaoC (<anonymous>:6:11) aqui o número 6 e 11 representam a linha e coluna do código onde o erro ocorreu
+//     at funcaoC (<anonymous>:6:11) // aqui o número 6 e 11 representam a linha e coluna do código onde o erro ocorreu
 //     at funcaoB (<anonymous>:3:5)
 //     at funcaoA (<anonymous>:2:5)
 //     at <anonymous>:1:1
 ```
+
+Ao se deparar com um erro, o stacktrace é o primeiro lugar a ser verificado para entender a origem do problema e como ele se propagou através das chamadas de função.
+
 
 ### Funções Anônimas e Arrow Functions
 
