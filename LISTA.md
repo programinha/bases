@@ -2,6 +2,8 @@
 
 Essa lista de exercícios é dividida em seções que abrangem números, strings, parâmetros mistos e estruturas de dados. Cada seção é subdividida em níveis de dificuldade crescente: Nível 1 (básico), Nível 2 (intermediário) e Nível 3 (avançado). Cada exercício inclui exemplos de entrada e saída, bem como casos especiais para garantir uma compreensão completa do problema.
 
+Regra de ouro: NÃO USAR INTELIGÊNCIA ARTIFICIAL PARA RESOLVER OS EXERCÍCIOS. O OBJETIVO É APRENDER PROGRAMANDO. Desative o Copilot, ChatGPT, Bard, ou qualquer outra ferramenta de IA que você utilize.
+
 ## Números
 
 ### Nível 1
@@ -713,26 +715,177 @@ console.log(removerEspeciais(12345)); // undefined
 
 ### Nível 3
 
-Verificar Anagrama
+#### Verificar Anagrama
 
-Encontrar a Palavra Mais Longa
+Dadas duas strings, retornar se elas são anagramas uma da outra. Anagramas são palavras ou frases formadas pela reorganização das letras de outra, ignorando espaços, pontuação e diferenças entre maiúsculas e minúsculas.
 
-Encontrar a Palavra Mais Curta
+```js
+const res = ehAnagrama("listen", "silent");
+console.log(res); // true
+console.log(ehAnagrama("hello", "world")); // false
+console.log(ehAnagrama("A gentleman", "Elegant man")); // true
+console.log(ehAnagrama("123abc", "cba321")); // true
+console.log(ehAnagrama("Alegria", "Galeria")); // true
+console.log(ehAnagrama("Alegria", "Galeria", "Regalia")); // true
+console.log(ehAnagrama("Alegria", "Galeria", "Regalia", "Alergia")); // true
 
-Contar Frequência de Cada Caractere
+// casos especiais
+console.log(ehAnagrama("", "")); // true
+console.log(ehAnagrama("hello", "")); // false
+console.log(ehAnagrama()); // undefined
+console.log(ehAnagrama("listen")); // undefined
+```
 
-Verificar se String Possui Apenas Dígitos
+#### Encontrar a Palavra Mais Longa
 
-Validar Endereço de E-mail
+Dada uma string contendo várias palavras, retornar a palavra mais longa nela. Havendo mais de uma palavra com o mesmo tamanho máximo, retornar a primeira que aparecer. Palavras são definidas como sequências de caracteres separadas por espaços.
 
-Validar CPF (Formato)
+```js
+const res = palavraMaisLonga("Análise e \n Desenvolvimento de Sistemas");
+console.log(res); // "Desenvolvimento"
+console.log(palavraMaisLonga("JavaScript é uma linguagem interpretada")); // "interpretada"
+console.log(palavraMaisLonga("Um  programa vale mais  que mil  palavras")); // "programa"
+console.log(palavraMaisLonga("1234 56789 123   23555 1 04812")); // "56789"
 
-Comprimir String (Run-Length Encoding)
+// casos especiais
+console.log(palavraMaisLonga("")); // ""
+console.log(palavraMaisLonga("     ")); // ""
+console.log(palavraMaisLonga()); // undefined
+console.log(palavraMaisLonga(12345)); // undefined
+```
 
-Encontrar Substring Mais Frequente
+#### Encontrar a Palavra Mais Curta
 
-Normalizar String (Remover Acentos e Padronizar)
+Mesmo que anterior, mas para a palavra mais curta.
 
+#### Contar Frequência de Cada Caractere
+
+Dada uma string, retornar um objeto onde as chaves são os caracteres únicos da string e os valores são a quantidade de vezes que cada caractere aparece na string.
+
+```js
+const res = contarFrequencia("hello world");
+console.log(res);
+// { h: 1, e: 1, l: 3, o: 2, ' ': 1, w: 1, r: 1, d: 1 }
+console.log(contarFrequencia("JavaScript"));
+// { J: 1, a: 2, v: 1, S: 1, c: 1, r: 1, i: 1, p: 1, t: 1 }
+console.log(contarFrequencia("123abc!@#"));
+// { '1': 1, '2': 1, '3': 1, a: 1, b: 1, c: 1, '!': 1, '@': 1, '#': 1 }
+console.log(contarFrequencia("aaabbbccc"));
+// { a: 3, b: 3, c: 3 }
+
+// casos especiais
+console.log(contarFrequencia("")); // {}
+console.log(contarFrequencia()); // undefined
+console.log(contarFrequencia(12345)); // undefined
+```
+
+#### Verificar se String Possui Apenas Dígitos
+
+Dada uma string, retornar se ela contém apenas dígitos (0-9).
+
+```js
+const res = apenasDigitos("123456");
+console.log(res); // true
+console.log(apenasDigitos("123abc")); // false
+console.log(apenasDigitos("")); // false
+console.log(apenasDigitos("   ")); // false
+console.log(apenasDigitos("0123456789")); // true
+
+// casos especiais
+console.log(apenasDigitos()); // undefined
+console.log(apenasDigitos(12345)); // undefined
+console.log(apenasDigitos("123 456")); // false
+```
+
+#### Validar Endereço de E-mail
+
+Dada uma string, retornar se ela é um endereço de e-mail válido. Um endereço de e-mail válido deve conter exatamente um caractere '@', pelo menos um caractere antes do '@', pelo menos um caractere entre o '@' e o último '.', e pelo menos dois caracteres após o último '.'. Não usar expressões regulares. A primeira parte pode conter letras, números, pontos, hífens e sublinhados. A segunda parte (domínio) pode conter letras, números e hífens, e a extensão (após o último '.') deve conter apenas letras.
+
+```js
+const res = validarEmail("user@email.com");
+console.log(res); // true
+console.log(validarEmail("user@email")); // false
+console.log(validarEmail("user@@email.com")); // false
+console.log(validarEmail("user@email..com")); // false
+console.log(validarEmail("user@email.com.br")); // true
+console.log(validarEmail("u.456-123_2@dominio3-do.co")); // true
+console.log(validarEmail("u.456&123_2@dominio3-do.co")); // false
+
+// casos especiais
+console.log(validarEmail("")); // false
+console.log(validarEmail()); // undefined
+console.log(validarEmail(12345)); // undefined
+```
+
+#### Validar CPF (Formato)
+
+Dada uma string, retornar se ela é um CPF válido no formato "XXX.XXX.XXX-XX", onde X é um dígito (0-9). Não usar expressões regulares.
+
+```js
+const res = validarCPF("123.456.789-09");
+console.log(res); // true
+console.log(validarCPF("12345678909")); // false
+console.log(validarCPF("123.456.789-0A")); // false
+console.log(validarCPF("12.3456.789-09")); // false
+console.log(validarCPF("123.456.789-090")); // false
+
+// casos especiais
+console.log(validarCPF("")); // false
+console.log(validarCPF()); // undefined
+console.log(validarCPF(12345678909)); // undefined
+```
+
+#### Comprimir String (Run-Length Encoding)
+
+Dada uma string, retornar uma string comprimida usando o algoritmo Run-Length Encoding. Cada sequência de caracteres consecutivos é representada pelo caractere e o número de vezes que ele aparece.
+
+```js
+const res = comprimirString("aaabbbcccaaa");
+console.log(res); // "a3b3c3a3"
+console.log(comprimirString("hello world")); // "h1e1l2o1 1w1o1r1l1d1"
+console.log(comprimirString("WWWWaaadexxxxxx")); // "W4a3d1e1x6"
+
+// casos especiais
+console.log(comprimirString("")); // ""
+console.log(comprimirString()); // undefined
+console.log(comprimirString(12345)); // undefined
+```
+
+#### Encontrar Substring Mais Frequente
+
+Dada uma string e um número N, retornar a substring de comprimento N que aparece com mais frequência na string. Se houver múltiplas substrings com a mesma frequência máxima, retornar a primeira que aparecer.
+
+```js
+const res = substringMaisFrequente("abcabcabc", 3);
+console.log(res); // "abc"
+console.log(substringMaisFrequente("aaaaaa", 2)); // "aa"
+console.log(substringMaisFrequente("ababababa", 2)); // "ab"
+console.log(substringMaisFrequente("abcdef", 1)); // "a"
+    
+// casos especiais
+console.log(substringMaisFrequente("", 1)); // ""
+console.log(substringMaisFrequente("abc", 0)); // ""
+console.log(substringMaisFrequente("abc", 4)); // ""
+console.log(substringMaisFrequente()); // undefined
+console.log(substringMaisFrequente(12345, 2)); // undefined
+```
+
+#### Normalizar String (Remover Acentos e Padronizar)
+
+Dada uma string, retornar a mesma string normalizada, ou seja, sem acentos e com todas as letras em minúsculas. Não usar métodos de normalização pré-existentes. Não usar o método `toLowerCase`, ao invés, implementar a lógica manualmente com base na tabela ASCII, podendo usar os métodos `charCodeAt` e `fromCharCode`. Não usar o método `replace` ou expressões regulares para remover acentos; ao invés disso, implementar a lógica manualmente.
+
+```js
+const res = normalizarString("Olá, Mundo!");
+console.log(res); // "ola, mundo!"
+console.log(normalizarString("Café com Leite")); // "cafe com leite"
+console.log(normalizarString("ÁÉÍÓÚ àèìòù Çç Ññ")); // "aeiou aeiou cc nn"
+
+// casos especiais
+console.log(normalizarString("")); // ""
+console.log(normalizarString()); // undefined
+console.log(normalizarString(12345)); // undefined
+console.log(normalizarString("123 ÁBC!")); // "123 abc!"
+```
 
 ## Parâmetros Mistos
 
