@@ -15,6 +15,7 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
     - [Instalando o Node.js o/](#instalando-o-nodejs-o)
   - [Estado e Computação](#estado-e-computação)
     - [Valores o/](#valores-o)
+    - [Não-Valores](#não-valores)
     - [Variáveis e Constantes o/](#variáveis-e-constantes-o)
     - [Operadores o/](#operadores-o)
     - [Expressões, Sentenças, Declarações e Blocos o/](#expressões-sentenças-declarações-e-blocos-o)
@@ -321,6 +322,11 @@ console.log(String.fromCharCode(74)); // "J"
 console.log(String.fromCharCode(83)); // "S"
 console.log(String.fromCharCode(65)); // "A"
 ```
+
+### Não-Valores
+
+TODO
+
 
 ### Variáveis e Constantes o/
 
@@ -1232,7 +1238,7 @@ const pluralizar = palavra => {
     if (palavra.endsWith("ão")) return palavra.slice(0, -2) + "ões"; // ex.: "coração" -> "corações"
     if (palavra.endsWith("m")) return palavra.slice(0, -1) + "ns"; // ex.: "homem" -> "homens"
     if (palavra.endsWith("l")) return palavra.slice(0, -1) + "is"; // ex.: "animal" -> "animais"
-    if (palavra.endsWith("r") || palavra.endsWith("z")) return palavra + "es"; // ex.: "flor" -> "flores"
+    if (palavra.endsWith("r") || palavra.endsWith("z")) return palavra + "es"; // ex.: "flor" -> "flores", "luz" -> "luzes"
 
     return palavra + "s";
 }
