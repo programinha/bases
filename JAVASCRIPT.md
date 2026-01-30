@@ -834,7 +834,7 @@ function exemploFinally() { // abrindo, executando um sql e fechando uma conexã
 
 ## Funções
 
-Praticamente todas as linguagens de programação suportam o conceito de funções, que são blocos reutilizáveis de código que realizam uma tarefa específica.
+Praticamente todas as linguagens de programação suportam o conceito de funções, que são blocos reutilizáveis de código que realizam uma tarefa específica. As funções também são conhecidas como métodos, procedimentos ou sub-rotinas em outras linguagens. Estes são conceitos um pouco diferentes, mas para os propósitos deste material, usaremos o termo "função" de forma genérica, já que a essência permanece a mesma: declarar um bloco de código que pode ser reutilizado em diferentes partes do programa.
 
 ### Declaração de Funções o/
 
