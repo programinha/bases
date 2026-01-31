@@ -28,9 +28,10 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
     - [Retorno de Funções o/](#retorno-de-funções-o)
     - [Composição de Funções o/](#composição-de-funções-o)
     - [Funções Anônimas e _Arrow Functions_ o/](#funções-anônimas-e-arrow-functions-o)
-  - [Programação Modular](#programação-modular)
-    - [Projetos JavaScript](#projetos-javascript)
-    - [Programação Modular em JavaScript](#programação-modular-em-javascript)
+  - [Programação Modular o/](#programação-modular-o)
+    - [O que é um Módulo? o/](#o-que-é-um-módulo-o)
+    - [Projetos JavaScript o/](#projetos-javascript-o)
+    - [Programação Modular em JavaScript o/](#programação-modular-em-javascript-o)
     - [Biblioteca Padrão do JavaScript](#biblioteca-padrão-do-javascript)
   - [Estruturas de Dados em JavaScript](#estruturas-de-dados-em-javascript)
     - [Estruturas de Dados Elementares](#estruturas-de-dados-elementares)
@@ -1249,27 +1250,33 @@ console.log(pluralizar("carro")); // "carros"
 A decisão de declarar uma função como anônima, nomeada ou como uma _arrow function_ depende do contexto e das necessidades específicas do código. As _arrow functions_ são particularmente úteis para usos simples e explícitos, especialmente quando usadas como _callbacks_, enquanto funções nomeadas são preferíveis quando a função precisa ser reutilizada ou referenciada em outros lugares do código, melhorando a legibilidade e rastreabilidade do programa.
 
 
-## Programação Modular
+## Programação Modular o/
 
-Esta seção aborda o conceito de modularidade em programação, independentemente da linguagem utilizada, fornecendo as bases teóricas necessárias para entender a importância dos módulos no desenvolvimento de software.
+Esta seção aborda o conceito de modularidade em programação, independentemente da linguagem utilizada, fornecendo as bases teóricas necessárias para entender a importância dos módulos no desenvolvimento de software, bem como sua aplicação prática em JavaScript.
 
-Um dos artigos mais populares na definição de módulo data de 1972 e foi escrito por David Parnas, intitulado "On the Criteria to be Used in Decomposing Systems into Modules" (Sobre os Critérios a Serem Usados na Decomposição de Sistemas em Módulos). Nele, Parnas argumenta que a modularidade deve ser baseada na ocultação de informações e na separação de responsabilidades, permitindo que cada módulo seja desenvolvido, testado e mantido de forma independente. O artigo pode ser encontrado aqui: https://dl.acm.org/doi/10.1145/361598.361623
+### O que é um Módulo? o/
 
-Bertrand Meyer, em seu livro _Object-Oriented Software Construction_, também discute a importância da modularidade e encapsulamento na construção de softwares orientados a objetos. Segundo ele, a definição de módulo é uma unidade de software que combina dados e procedimentos relacionados, fornecendo uma interface clara para interação com outros módulos. Ele enfatiza que módulos bem definidos ajudam a reduzir a complexidade do sistema, facilitam a reutilização de código e melhoram a manutenção. O livro de Meyer está disponível abertamente no site do autor em: https://bertrandmeyer.com/wp-content/upLoads/OOSC2.pdf A modularidade é discutida no Capítulo 3 do livro.
+Um dos artigos mais populares na definição de **módulo** data de 1972 e foi escrito por David Parnas, intitulado _"On the Criteria to be Used in Decomposing Systems into Modules"_ (Sobre os Critérios a Serem Usados na Decomposição de Sistemas em Módulos). Nele, Parnas argumenta que **a modularidade deve ser baseada na ocultação de informações e na separação de responsabilidades, permitindo que cada módulo seja desenvolvido, testado e mantido de forma independente**. O artigo pode ser encontrado aqui: <https://dl.acm.org/doi/10.1145/361598.361623>.
 
-Grady Booch, em _Object-Oriented Analysis and Design_, também aborda a modularidade como um princípio fundamental na engenharia de software. Booch destaca que a modularidade permite a decomposição de sistemas complexos em partes menores e mais gerenciáveis, facilitando o desenvolvimento colaborativo e a evolução do software ao longo do tempo. Ele enfatiza a importância de definir interfaces claras entre os módulos para garantir a interoperabilidade e a independência dos componentes. O livro é vendido pela Editora O'Reilly e pode ser encontrado em: https://www.oreilly.com/library/view/object-oriented-analysis-and/9780201895513/
+Bertrand Meyer, em seu influente livro _Object-Oriented Software Construction_, também discute a importância da modularidade e encapsulamento na construção de softwares, especificamente aqueles orientados a objetos. Segundo ele, a definição de **módulo é uma unidade de software que combina dados e procedimentos relacionados, fornecendo uma interface clara para interação com outros módulos**. Ele enfatiza que módulos bem definidos ajudam a reduzir a complexidade do sistema, facilitam a reutilização de código e melhoram a manutenção. O livro de Meyer está disponível abertamente no site do próprio autor em: <https://bertrandmeyer.com/wp-content/upLoads/OOSC2.pdf> (modularidade é discutida no Capítulo 3 do livro de Meyer).
 
-Portanto, um módulo pode ser minúsculo como uma única função reutilizável, ou um grupo de funções relacionadas (coesas) escritas em um arquivo, ou até um conjunto de arquivos, com classes e funções, formando um pacote coeso, ou até uma biblioteca completa (conjunto de pacotes). A seguir uma representação visual simples de como um sistema modular pode ser estruturado:
+Grady Booch, outro influente Engenheiro de Software e pioneiro no projeto e arquitetura de sistemas, no seu livro _Object-Oriented Analysis and Design_, também aborda a modularidade como um princípio fundamental na engenharia de software. Booch destaca que **a modularidade permite a decomposição de sistemas complexos em partes menores e mais gerenciáveis, facilitando o desenvolvimento colaborativo e a evolução do software ao longo do tempo**. Ele enfatiza a importância de definir interfaces claras entre os módulos para garantir a interoperabilidade e a independência dos componentes. O livro é vendido pela Editora O'Reilly e pode ser encontrado em: <https://www.oreilly.com/library/view/object-oriented-analysis-and/9780201895513/>.
+
+Portanto, um módulo pode ser minúsculo como uma única função reutilizável, ou um grupo de funções relacionadas (coesas) escritas em um arquivo, ou até um conjunto de arquivos, com classes e funções, formando um pacote maior, também coeso, ou até uma biblioteca completa (conjunto de pacotes). A seguir uma representação visual simples de como um sistema modular pode ser estruturado:
 
 ```plain
-+-------------------+      +-------------------+      +-------------------+
-|     Módulo A      |      |     Módulo B      |      |     Módulo C      |
-+-------------------+      +-------------------+      +-------------------+
-|  Função 1         |      |  Função 4         |      |  Função 7         |
-|  Função 2         |      |  Função 5         |      |  Função 8         |
-|  Função 3         |      |  Função 6         |      |  Função 9         |
-+-------------------+      +-------------------+      +-------------------+
-        ^                           ^                           ^
++------------------------------------------------------------------------------------+
+| Biblioteca Z                                                                       |
++------------------------------------------------------------------------------------+
+| +-------------------+      +-------------------+      +-------------------+        |
+| |     Módulo A      |      |     Módulo B      |      |     Módulo C      |        |
+| +-------------------+      +-------------------+      +-------------------+        |
+| |  Função 1         |      |  Função 4         |      |  Função 7         |        |
+| |  Função 2         |      |  Função 5         |      |  Função 8         |        |
+| |  Função 3         |      |  Função 6         |      |  Função 9         |        |
+| +-------------------+      +-------------------+      +-------------------+        |
++------------------------------------------------------------------------------------+
+                                   ^                           
         +---------------------------+---------------------------+
                     |                           |
             +-------------------+      +-------------------+
@@ -1294,9 +1301,9 @@ Resumindo, um módulo deve ter as seguintes características:
 Nas seções seguintes exploraremos como implementar a programação modular especificamente em JavaScript.
 
 
-### Projetos JavaScript
+### Projetos JavaScript o/
 
-Em JavaScript, um projeto geralmente consiste em um conjunto de arquivos e pastas organizados de maneira lógica para desenvolver uma aplicação ou biblioteca. A estrutura do projeto pode variar dependendo do tipo de aplicação (web, Node.js, etc.) e das ferramentas utilizadas. Os projetos JavaScript modernos frequentemente utilizam gerenciadores de pacotes como `npm` (Node Package Manager) ou Yarn para gerenciar dependências e scripts de construção. Neste guia usaremos o `npm` para inicializar um projeto que utiliza módulos ES6.
+Em JavaScript, um projeto geralmente consiste em um conjunto de arquivos e pastas organizados em uma estrutura lógica e coesa para desenvolver uma aplicação ou biblioteca. A estrutura do projeto pode variar dependendo do tipo de aplicação (web, Node.js, Electron, Mobile, etc.) e das ferramentas utilizadas. Os projetos JavaScript modernos frequentemente utilizam gerenciadores de pacotes como `npm` (Node Package Manager) ou `yarn` para gerenciar dependências e _scripts_ de construção. Neste guia usaremos o `npm` para inicializar um projeto que utiliza módulos ES6.
 
 Para checar se o `npm` está instalado, execute o seguinte comando no terminal:
 
@@ -1308,7 +1315,7 @@ Se o comando retornar uma versão, o `npm` está instalado corretamente. Caso co
 
 Para iniciar um novo projeto JavaScript com `npm`, siga os passos abaixo:
 
-1. Crie uma nova pasta para o seu projeto e navegue até ela no terminal.
+1. Crie uma nova pasta para o seu projeto e navegue até ela no terminal (ex.: `mkdir meu-projeto-js; cd meu-projeto-js`).
 2. Inicialize o projeto com `npm init -y`, que cria um arquivo `package.json` com as configurações padrão.
 3. Edite o arquivo `package.json` e adicione a linha `"type": "module"` para usar módulos ES6.
 4. Crie um arquivo JavaScript principal, como `index.js`, onde você escreverá seu código.
@@ -1365,16 +1372,24 @@ const nome = read.question('Qual é o seu nome?');
 console.log(`Olá, ${nome}!`);
 ```
 
-Tenha em consideração que você precisará roda o comando `npm install` sempre que clonar um projeto que contenha um arquivo `package.json`, para instalar todas as dependências listadas nele. As dependências são armazenadas na pasta `node_modules`, que não deve ser incluída no controle de versão (como Git), por isso é comum adicionar `node_modules` ao arquivo `.gitignore`.
+Tenha em consideração que você precisará roda o comando `npm install` sempre que clonar um projeto que contenha um arquivo `package.json`, para instalar todas as dependências listadas nele. As dependências são armazenadas na pasta `node_modules`, que não deve ser incluída no controle de versão (como Git), por isso é comum adicionar `node_modules` ao arquivo `.gitignore`. Para criar um arquivo `.gitignore`, você pode usar o seguinte comando no terminal:
+
+```bash
+echo "node_modules/" >> .gitignore
+```
+
+Para um `.gitignore` mais completo para projetos JavaScript, você pode usar o modelo disponível em: <https://github.com/github/gitignore/blob/main/Node.gitignore> ou usar o comando `npx gitignore node` para gerar um arquivo `.gitignore` adequado para projetos Node.js.
 
 
-### Programação Modular em JavaScript
+### Programação Modular em JavaScript o/
 
-JavaScript organiza os módulos na forma de arquivos separados, onde cada arquivo pode conter uma ou mais funções, classes ou variáveis. A interface do módulo é definida pelas funcionalidades que ele exporta, permitindo que outros módulos importem e utilizem essas funcionalidades. Isto é, podem existir funções e variáveis privadas dentro do módulo que não são acessíveis externamente, promovendo o encapsulamento, enquanto as funcionalidades exportadas formam a interface pública do módulo.
+Escrever funções é apenas o primeiro passo para criar programas modulares. Para avançar na modularidade, precisamos organizar essas funções em módulos distintos, que são unidades reaproveitáveis de código, agrupando funções relacionadas. Cada linguagem de programação tem seu modo de implementar módulos, dependendo, ainda, do paradigma adotado (procedural, orientado a objetos, funcional, etc.). Embora a sintaxe e construtos sejam diferentes (ex.: classes, rotinas, procedimentos, etc), a separação em arquivos (comum em todos os sistemas operacionais) está em praticamente todas as linguagens modernas.
 
-JavaScript suporta diferentes formas de módulos como CommonJS (usado no Node.js). Neste guia, focaremos na sintaxe de módulos ES6 que é padrão em ambientes modernos e utiliza as instruções `import` e `export` para importar e exportar funcionalidades entre módulos.
+JavaScript organiza os módulos na forma de arquivos separados, onde cada arquivo pode conter uma ou mais funções, classes ou variáveis. A interface do módulo é definida pelas funcionalidades (funções, dados, etc) que ele exporta, permitindo que outros módulos, por sua vez, importem e utilizem essas funcionalidades. Isto é, podem existir funções e variáveis privadas dentro do módulo que não são acessíveis externamente, promovendo o encapsulamento, enquanto as funcionalidades exportadas formam a interface pública do módulo.
 
-Considere o exemplo anterior da função `pluralizar`. Podemos organizá-la em um módulo separado para reutilização:
+JavaScript suporta diferentes formas de módulos, tais como: CommonJs e ES Modules. Neste guia, focaremos na sintaxe de módulos ES6, que é concordante com o padrão ECMA e usado em ambientes modernos. Módulos ES6 são basicamente utilizados com duas simples instruções: `export` e `import`. A primeira define o que o módulo disponibiliza para outros módulos, enquanto a segunda permite que um módulo utilize funcionalidades exportadas por outro módulo.
+
+Considere o exemplo visto anteriormente neste guia, da função `pluralizar`. Podemos organizá-la em um módulo separado para reutilização criando um arquivo separado chamado `pluralizar.js` e movendo a função para lá. Em seguida, podemos exportar a função usando a palavra-chave `export` e importá-la em outro arquivo, como `index.js`, para usá-la. Ver exemplo abaixo:
 
 ```javascript
 // arquivo: pluralizar.js
@@ -1393,9 +1408,9 @@ console.log(pluralizar("carro")); // "carros"
 console.log(pluralizar("coração")); // "corações"
 ```
 
-Neste exemplo, a função `pluralizar` é exportada do módulo `pluralizar.js` usando a palavra-chave `export`. No arquivo `index.js`, a função é importada usando a instrução `import`, permitindo seu uso no código principal.
+Neste exemplo, a função `pluralizar` é exportada do módulo `pluralizar.js` usando a palavra-chave `export`. No arquivo `index.js`, a função é importada usando a instrução `import`, permitindo seu uso no código principal. Note que ao exportar uma função, ela se torna parte da interface pública do módulo. Qualquer mudança no nome da função ou na sua assinatura exigirá que todos os módulos que a importam sejam atualizados para refletir essas mudanças, o que pode ser um ponto de atenção ao projetar módulos.
 
-Agora, considere uma função `singularizar`. Ela poderia ser implementada em outro módulo (`singularizar.js`), ou junto com a função `pluralizar`, pois não afetaria a coesão do módulo, sendo que ambas lidam com a manipulação de formas plurais e singulares de palavras. A seguir o exemplo com ambas as funções no mesmo módulo: 
+Agora, considere uma função `singularizar`. Ela poderia ser implementada em outro módulo (`singularizar.js`). No entando, transformar palavras para o plural ou singular são parte de um tema mais abrangente, a flexão de palavras. Portanto, implementar junto com a função `pluralizar` não afetaria a coesão do módulo. A noção de responsabilidade única do módulo ainda se mantém, de flexionar palavras -- responsabilidade única não quer dizer uma função por módulo! A seguir o exemplo com ambas as funções no mesmo módulo: 
 
 ```javascript
 // arquivo: flexoes.js
@@ -1414,9 +1429,8 @@ export function singularizar(palavra) {
     if (palavra.endsWith("ns")) return palavra.slice(0, -2) + "m"; // ex.: "homens" -> "homem"
     if (palavra.endsWith("is")) return palavra.slice(0, -2) + "l"; // ex.: "animais" -> "animal"
     if (palavra.endsWith("es")) {
-        const semS = palavra.slice(0, -2);
-        if (semS.endsWith("r") || semS.endsWith("z")) return semS;
-        else return semS;
+        const palavraSemS = palavra.slice(0, -2);
+        if (palavraSemS.endsWith("r") || palavraSemS.endsWith("z")) return palavraSemS;
     }
     return palavra.slice(0, -1);
 }
@@ -1431,7 +1445,7 @@ Para exemplificar a interface pública e o encapsulamento, considere o exemplo d
 
 ```javascript
 // arquivo: expressoes.js
-function expressar(vogal = 'a', nivel = 5) {
+function expressar(vogal = 'a', nivel = 5) { // esta função é invisível fora do módulo
     if (typeof nivel !== 'number') return NaN;
     if (nivel <= 0) return "Nenhuma expressão, na verdade"
     if (nivel > 100) return "Expressão demais!";
@@ -1450,16 +1464,19 @@ console.log(expressarSurpresa(10)); // "ahhhhhhhhh!"
 console.log(expressarDecepcao(7)); // "ohhhhhhh!"
 ```
 
-As importações podem ser renomeadas durante a importação para evitar conflitos de nomes ou para melhorar a clareza do código:
+As importações podem ser renomeadas durante a importação para evitar conflitos de nomes ou para melhorar a clareza do código, usando a palavra-chave `as` (como), assim:
 
 ```javascript
+// arquivo: index.js
+
+// importar { expressarSurpresa como surpresa, expressarDecepcao como decepcao } de './expressoes.js';
 import { expressarSurpresa as surpresa, expressarDecepcao as decepcao } from './expressoes.js';
 
 console.log(surpresa(8)); // "ahhhhhhh!"
 console.log(decepcao(4)); // "ohhh!"
 ``` 
 
-Quando um módulo exporta muitas funcionalidades, pode ser útil importar tudo de uma vez usando o caractere curinga `*` e atribuindo a um objeto:
+Quando um módulo exporta muitas funcionalidades, pode ser útil importar todas de uma vez usando o caractere coringa `*` e atribuindo a um objeto. No exemplo abaixo, todas as exportações do módulo `expressoes.js` são importadas e acessadas como propriedades do objeto `expressoes`:
 
 ```javascript
 import * as expressoes from './expressoes.js';
@@ -1468,7 +1485,7 @@ console.log(expressoes.expressarSurpresa(10)); // "ahhhhhhhhh!"
 console.log(expressoes.expressarDecepcao(10)); // "ohhhhhhhhh!"
 ```
 
-Quando um módulo exporta uma única funcionalidade principal, é comum usar a exportação padrão (`default export`). Isso permite importar o módulo sem usar chaves `{}`. Aqui está um exemplo com a função `pluralizar` como exportação padrão:
+Quando um módulo exporta uma única funcionalidade principal, é comum usar a exportação padrão (`default export`). Isso permite importar o módulo sem usar chaves `{}` (que determinaria, por outro lado, um conjunto de importações). Aqui está um exemplo com a função `pluralizar` como exportação padrão:
 
 ```javascript
 // arquivo: pluralizar.js
@@ -1501,7 +1518,7 @@ console.log(pluralizar("carro")); // "carros"
 console.log(singularizar("corações")); // "coração"
 ``` 
 
-Os módulos podem reter estado entre importações, pois são carregados apenas uma vez e suas variáveis internas mantêm seus valores. Isso pode ser útil para criar singletons ou gerenciar configurações globais. Aqui está um exemplo simples de um módulo que mantém um contador:
+Os módulos podem reter estado entre importações, pois são carregados apenas uma vez e suas variáveis internas mantêm seus valores. Isso pode ser útil para criar lembrar de configurações ou realizar um controle de uso de memória. Aqui está um exemplo simples de um módulo que mantém um contador:
 
 ```javascript
 // arquivo: contador.js
@@ -1520,14 +1537,43 @@ export function obterContador(prefixo = 'default') {
     return { prefixo, contador: contadores.get(prefixo) };
 }
 
+export function resetarContador(prefixo = 'default') {
+    contadores.set(prefixo, 0);
+    return { prefixo, contador: 0 };
+}
+
 // arquivo: index.js
-import { incrementar, obterContador } from './contador.js';
+import { incrementar, obterContador, resetarContador } from './contador.js';
+
 console.log(obterContador()); // { prefixo: "default", contador: 0 }
 console.log(incrementar()); // { prefixo: "default", contador: 1 }
 console.log(incrementar()); // { prefixo: "default", contador: 2 }
 console.log(obterContador()); // { prefixo: "default", contador: 2 }
+console.log(resetarContador()); // { prefixo: "default", contador: 0 }
+
 console.log(incrementar('user')); // { prefixo: "user", contador: 1 }
 console.log(obterContador('user')); // { prefixo: "user", contador: 1 }
+```
+
+Finalmente, é importante mencionar que módulos podem importar outros módulos, criando uma rede de dependências. Isso permite a construção de sistemas complexos e modulares, onde cada módulo pode se concentrar em uma responsabilidade específica, promovendo a reutilização e a manutenção do código. Mas cuidado com dependências circulares, que podem levar a comportamentos inesperados ou erros de execução, como no exemplo abaixo:
+
+```javascript
+// arquivo: moduloA.js
+import { funcaoB } from './moduloB.js';
+export function funcaoA() {
+    console.log("Função A chamada");
+    funcaoB();
+}
+
+// arquivo: moduloB.js
+import { funcaoA } from './moduloA.js';
+export function funcaoB() {
+    console.log("Função B chamada");
+    funcaoA();
+}
+// arquivo: index.js
+import { funcaoA } from './moduloA.js';
+funcaoA(); // Isso causará um erro de chamada circular
 ```
 
 
