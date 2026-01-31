@@ -26,6 +26,7 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
   - [Funções](#funções)
     - [Declaração de Funções o/](#declaração-de-funções-o)
     - [Retorno de Funções o/](#retorno-de-funções-o)
+    - [Funções Polimórficas](#funções-polimórficas)
     - [Composição de Funções o/](#composição-de-funções-o)
     - [Funções Anônimas e _Arrow Functions_ o/](#funções-anônimas-e-arrow-functions-o)
   - [Programação Modular o/](#programação-modular-o)
@@ -1055,6 +1056,43 @@ console.log(usuario); // null é mais útil neste caso pois indica que o usuári
 
 Valores `null` não retornam por padrão, a menos que sejam explicitamente retornados pela função. A escolha entre retornar `undefined` ou `null` depende do contexto e da intenção do programador. Com `undefined` geralmente indica que algo não foi definido ou não existe, enquanto `null` é usado para indicar a ausência intencional de um valor.
 
+Por fim, é possível retornar diferentes tipos de dados na mesma função. Não é uma práticam recomendada, pois as funções devem ser previsíveis para quem as chamam, isto é, funções que retornam dados numéricos, além de `undefined` ou `null` não deveriam retornar outros tipos de dados, como strings ou arrays. A seguir está um exemplo:
+
+```js
+// considere a função comprimento
+function comprimento(str) {
+    if (typeof str !== 'string') return 'Parâmetro não é string';
+
+    for (var comprimento = 0; str[comprimento] !== undefined; comprimento++);
+    
+    return comprimento;
+}
+
+let teste = 'teste';
+if (comprimento(teste)) // Comprimento de teste é 5
+    console.log(`Comprimento de ${teste} é ${comprimento(teste)}`);
+
+teste = 123;
+if (comprimento(teste)) // Comprimento de 123 é Parâmetro não é string
+    console.log(`Comprimento de ${teste} é ${comprimento(teste)}`);
+```
+
+A segunda chamada gerou um print estranho porque o teste `if (comprimento(teste))` espera um retorno numérico `> 0`. No entanto, uma string não-vazia avalia como `true`. Para consertar este código, o chamador da função deve testar se o retorno foi numérico (com o comprimento da string) ou string (com o erro):
+
+```js
+let teste = 123;
+if (typeof comprimento(teste) == 'number') // Comprimento de 123 é Parâmetro não é string
+    console.log(`Comprimento de ${teste} é ${comprimento(teste)}`);
+else
+    console.log(`Houve um erro ao processar a entrada ${teste}: "${comprimento(teste)}"`);
+```
+
+O bom senso diz, normalmente, para não misturar tipos. No entanto, há um caso onde pode ser útil, quando o tipo de saída (o `return`) varia de acordo com o tipo de entrada (os parâmetros), criando funções que aceitam mais de uma forma ou funções polimórficas, vistas a seguir.
+
+
+### Funções Polimórficas 
+
+TODO
 
 ### Composição de Funções o/
 
@@ -1579,9 +1617,9 @@ funcaoA(); // Isso causará um erro de chamada circular
 
 ### Biblioteca Padrão do JavaScript
 
-A Biblioteca Padrão do JavaScript, também conhecida como API padrão, é um conjunto de objetos, funções e métodos integrados que fornecem funcionalidades básicas para manipulação de dados, operações matemáticas, manipulação de strings, datas, arrays, entre outros. Esses recursos estão disponíveis em qualquer ambiente JavaScript, seja no navegador ou no Node.js.
+A Biblioteca Padrão (_standard library_ em Inglês) do JavaScript, também conhecida como _standard built-in objects_, é um conjunto de objetos, funções e métodos integrados e globais que fornecem funcionalidades básicas para manipulação de dados, operações matemáticas, manipulação de strings, datas, arrays, entre outros. Esses recursos estão disponíveis em qualquer ambiente JavaScript, seja no navegador ou no Node.js, porém variando a disponibilidade de acordo com o ambiente.
 
-Alguns dos principais componentes da Biblioteca Padrão do JavaScript incluem:
+Alguns dos principais componentes da biblioteca do JavaScript incluem:
 
 - `Math`: fornece propriedades e métodos para operações matemáticas, como arredondamento, geração de números aleatórios, cálculos trigonométricos, etc.
 - `Date`: permite criar, manipular e formatar datas e horas.
@@ -1590,7 +1628,9 @@ Alguns dos principais componentes da Biblioteca Padrão do JavaScript incluem:
 - `Object`: oferece métodos para manipulação de objetos, como criação, cópia, verificação de propriedades, etc.
 - `JSON`: fornece métodos para conversão entre objetos JavaScript e strings JSON.
 
-Operações comuns de strings incluem:
+Esses objetos estão disponíveis globalmente, sendo que podem ser utilizados sem necessidade de importação. Por consequência, não podemos (devemos) nomear variáveis, funções, classes usando os mesmos nomes sob o risco de sobrescrever os originais, inutilizando-os e até causando bugs. 
+
+Por exemplo, a seguir são apresentadas as operações comuns de strings, a partir de variáveis e do próprio módulo String:
 
 ```javascript
 var texto = "Olá, mundo!";
@@ -1603,23 +1643,14 @@ console.log(texto.split(", ")); // ["Olá", "mundo!"] (divisão em array)
 console.log(texto.substring(0, 5)); // "Olá, " (substring do índice 0 ao 5)
 console.log(texto.trim()); // "Olá, mundo!" (remove espaços em branco nas extremidades)
 console.log(texto.endsWith("!")); // true (verifica se termina com "!")
+
+console.log(String.fromCharCode(74)); // "J"
+console.log(String.fromCharCode(83)); // "S"
+console.log(String.fromCharCode(65)); // "A"
 ```
 
-Arrays são listas ordenadas de valores e possuem diversos métodos úteis:
+A referência de String pode ser encontrada aqui: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String>. Discorrer sobre a biblioteca padrão está fora do escopo deste material. Mas você pode consultar os demais objetos, Math, JSON, Date e outros, na referência de Global Objects, mantida pelo Mozilla Developer Network (MDN) aqui: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects>.
 
-```javascript
-var frutas = ["maçã", "banana", "laranja"];
-frutas.push("uva"); // adiciona "uva" ao final
-console.log(frutas); // ["maçã", "banana", "laranja", "uva"]
-frutas.pop(); // remove o último elemento
-console.log(frutas); // ["maçã", "banana", "laranja"]
-frutas.shift(); // remove o primeiro elemento
-console.log(frutas); // ["banana", "laranja"]
-frutas.unshift("morango"); // adiciona "morango" no início
-console.log(frutas); // ["morango", "banana", "laranja"]
-console.log(frutas.indexOf("banana")); // 1 (posição de "banana")
-console.log(frutas.slice(0, 2)); // ["morango", "banana"] (subarray do índice 0 ao 2, exclusivo)
-```
 
 
 ## Estruturas de Dados em JavaScript
