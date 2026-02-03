@@ -1,12 +1,87 @@
 # LISTA DE EXERCÍCIOS
 
-Essa lista de exercícios é dividida em seções que abrangem números, strings, parâmetros mistos e estruturas de dados. Cada seção é subdividida em níveis de dificuldade crescente: Nível 1 (básico), Nível 2 (intermediário) e Nível 3 (avançado). Cada exercício inclui exemplos de entrada e saída, bem como casos especiais para garantir uma compreensão completa do problema.
+Essa lista de exercícios é dividida em seções que abrangem números, strings, parâmetros mistos e estruturas de dados. Cada seção é subdividida em níveis de dificuldade crescente: Básico, Intermediário e Avançado. Cada exercício inclui exemplos de entrada e saída, bem como casos especiais para garantir uma compreensão completa do problema.
 
 Regra de ouro: NÃO USAR INTELIGÊNCIA ARTIFICIAL PARA RESOLVER OS EXERCÍCIOS. O OBJETIVO É APRENDER PROGRAMANDO. Desative o Copilot, ChatGPT, Bard, ou qualquer outra ferramenta de IA que você utilize.
 
+## Sumário
+
+- [LISTA DE EXERCÍCIOS](#lista-de-exercícios)
+  - [Sumário](#sumário)
+  - [Números](#números)
+    - [Básico](#básico)
+      - [Soma de Dois Números](#soma-de-dois-números)
+      - [Média Aritmética](#média-aritmética)
+      - [Maior de Dois Valores](#maior-de-dois-valores)
+      - [Menor de Três Valores](#menor-de-três-valores)
+      - [Verificar Número Par](#verificar-número-par)
+      - [Verificar Número Positivo, Negativo ou Zero](#verificar-número-positivo-negativo-ou-zero)
+      - [Conversão Fahrenheit para Celsius](#conversão-fahrenheit-para-celsius)
+      - [Conversão Celsius para Fahrenheit](#conversão-celsius-para-fahrenheit)
+    - [Intermediário](#intermediário)
+      - [Potência de um Número](#potência-de-um-número)
+      - [Soma dos Dígitos de um Número](#soma-dos-dígitos-de-um-número)
+      - [Inverter Número Inteiro](#inverter-número-inteiro)
+      - [Contar Dígitos de um Número](#contar-dígitos-de-um-número)
+      - [Soma de Números Pares em um Intervalo](#soma-de-números-pares-em-um-intervalo)
+      - [Soma de Números Ímpares em um Intervalo](#soma-de-números-ímpares-em-um-intervalo)
+    - [Avançado](#avançado)
+      - [Verificar Número Primo](#verificar-número-primo)
+      - [Máximo Divisor Comum (MDC)](#máximo-divisor-comum-mdc)
+      - [Mínimo Múltiplo Comum (MMC)](#mínimo-múltiplo-comum-mmc)
+      - [Verificar Número Perfeito](#verificar-número-perfeito)
+      - [Verificar Número Palíndromo](#verificar-número-palíndromo)
+      - [Calcular Raiz Quadrada Inteira](#calcular-raiz-quadrada-inteira)
+      - [Converter Número Decimal para Binário](#converter-número-decimal-para-binário)
+      - [Converter Número Binário para Decimal](#converter-número-binário-para-decimal)
+      - [Calcular Juros Simples](#calcular-juros-simples)
+      - [Calcular Juros Compostos](#calcular-juros-compostos)
+  - [Strings](#strings)
+    - [Básico](#básico-1)
+      - [Contar Caracteres de uma String](#contar-caracteres-de-uma-string)
+      - [Converter String para Maiúsculas](#converter-string-para-maiúsculas)
+      - [Converter String para Minúsculas](#converter-string-para-minúsculas)
+      - [Verificar String Vazia](#verificar-string-vazia)
+      - [Retornar Primeiro Caractere](#retornar-primeiro-caractere)
+      - [Retornar Último Caractere](#retornar-último-caractere)
+      - [Verificar se Contém Substring](#verificar-se-contém-substring)
+      - [Remover Espaços das Extremidades (trim)](#remover-espaços-das-extremidades-trim)
+    - [Intermediário](#intermediário-1)
+      - [Contar Vogais em uma String](#contar-vogais-em-uma-string)
+      - [Contar Consoantes em uma String](#contar-consoantes-em-uma-string)
+      - [Inverter uma String](#inverter-uma-string)
+      - [Verificar Palíndromo (String)](#verificar-palíndromo-string)
+      - [Remover Caracteres Repetidos](#remover-caracteres-repetidos)
+      - [Substituir Caracteres](#substituir-caracteres)
+      - [Contar Palavras em uma String](#contar-palavras-em-uma-string)
+      - [Capitalizar Primeira Letra de Cada Palavra](#capitalizar-primeira-letra-de-cada-palavra)
+      - [Remover Caracteres Especiais](#remover-caracteres-especiais)
+    - [Avançado](#avançado-1)
+      - [Verificar Anagrama](#verificar-anagrama)
+      - [Encontrar a Palavra Mais Longa](#encontrar-a-palavra-mais-longa)
+      - [Encontrar a Palavra Mais Curta](#encontrar-a-palavra-mais-curta)
+      - [Contar Frequência de Cada Caractere](#contar-frequência-de-cada-caractere)
+      - [Verificar se String Possui Apenas Dígitos](#verificar-se-string-possui-apenas-dígitos)
+      - [Validar Endereço de E-mail](#validar-endereço-de-e-mail)
+      - [Validar CPF (Formato)](#validar-cpf-formato)
+      - [Comprimir String (Run-Length Encoding)](#comprimir-string-run-length-encoding)
+      - [Encontrar Substring Mais Frequente](#encontrar-substring-mais-frequente)
+      - [Normalizar String (Remover Acentos e Padronizar)](#normalizar-string-remover-acentos-e-padronizar)
+  - [Parâmetros e Tipos Mistos](#parâmetros-e-tipos-mistos)
+    - [Básico](#básico-2)
+    - [Intermediário](#intermediário-2)
+    - [Avançado](#avançado-2)
+  - [Estruturas de Dados](#estruturas-de-dados)
+    - [Com Arrays](#com-arrays)
+    - [Com Objetos](#com-objetos)
+    - [Com Sets](#com-sets)
+    - [Com Maps](#com-maps)
+    - [Com Estruturas Compostas](#com-estruturas-compostas)
+
+
 ## Números
 
-### Nível 1
+### Básico
 
 #### Soma de Dois Números
 
@@ -116,7 +191,7 @@ console.log(fahrenheitCelsius(-40) === -40);
 
 Mesmo que anterior, mas invertido.
 
-### Nível 2
+### Intermediário
 
 #### Potência de um Número
 
@@ -244,7 +319,7 @@ console.log(somaParesEntre(4, 8)); // null
 Mesmo que anterior, mas com ímpares.
 
 
-### Nível 3
+### Avançado
 
 #### Verificar Número Primo
 
@@ -462,7 +537,7 @@ console.log(jurosCompostos()); // undefined
 
 ## Strings
 
-### Nível 1
+### Básico
 
 #### Contar Caracteres de uma String
 
@@ -571,7 +646,7 @@ console.log(trim()); // undefined
 console.log(trim(123)); // undefined
 ```
 
-### Nível 2
+### Intermediário
 
 #### Contar Vogais em uma String
 
@@ -713,7 +788,7 @@ console.log(removerEspeciais()); // undefined
 console.log(removerEspeciais(12345)); // undefined
 ```
 
-### Nível 3
+### Avançado
 
 #### Verificar Anagrama
 
@@ -887,9 +962,9 @@ console.log(normalizarString(12345)); // undefined
 console.log(normalizarString("123 ÁBC!")); // "123 abc!"
 ```
 
-## Parâmetros Mistos
+## Parâmetros e Tipos Mistos
 
-### Nível 1
+### Básico
 
 Comparar Tamanho de String e Número
 
@@ -901,7 +976,7 @@ Preencher String
 
 Limitar String por Tamanho Máximo
 
-### Nível 2
+### Intermediário
 
 Contar Ocorrências de Caractere com Limite
 
@@ -917,7 +992,7 @@ Truncar Texto com Infixo
 
 Truncar Texto
 
-### Nível 3
+### Avançado
 
 Validar Senha com Tamanho e Regras
 
