@@ -1618,7 +1618,7 @@ funcaoA(); // Isso causará um erro de chamada circular
 
 ### Biblioteca Padrão do JavaScript
 
-A Biblioteca Padrão (_standard library_ em Inglês) do JavaScript, também conhecida como _standard built-in objects_, é um conjunto de objetos, funções e métodos integrados e globais que fornecem funcionalidades básicas para manipulação de dados, operações matemáticas, manipulação de strings, datas, arrays, entre outros. Esses recursos estão disponíveis em qualquer ambiente JavaScript, seja no navegador ou no Node.js, porém variando a disponibilidade de objetos e funções de acordo com o ambiente.
+A Biblioteca Padrão (_standard library_ em Inglês) do JavaScript, mais conhecida como _standard built-in objects_, é um conjunto de objetos, funções e métodos integrados e globais que fornecem funcionalidades básicas para manipulação de dados, operações matemáticas, manipulação de strings, datas, arrays, entre outros. Esses recursos estão disponíveis em qualquer ambiente JavaScript, seja no navegador ou no Node.js, porém variando a disponibilidade de objetos e funções de acordo com o ambiente.
 
 Alguns dos principais componentes da biblioteca do JavaScript incluem:
 
