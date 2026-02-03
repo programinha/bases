@@ -1618,7 +1618,7 @@ funcaoA(); // Isso causará um erro de chamada circular
 
 ### Biblioteca Padrão do JavaScript
 
-A Biblioteca Padrão (_standard library_ em Inglês) do JavaScript, também conhecida como _standard built-in objects_, é um conjunto de objetos, funções e métodos integrados e globais que fornecem funcionalidades básicas para manipulação de dados, operações matemáticas, manipulação de strings, datas, arrays, entre outros. Esses recursos estão disponíveis em qualquer ambiente JavaScript, seja no navegador ou no Node.js, porém variando a disponibilidade de acordo com o ambiente.
+A Biblioteca Padrão (_standard library_ em Inglês) do JavaScript, também conhecida como _standard built-in objects_, é um conjunto de objetos, funções e métodos integrados e globais que fornecem funcionalidades básicas para manipulação de dados, operações matemáticas, manipulação de strings, datas, arrays, entre outros. Esses recursos estão disponíveis em qualquer ambiente JavaScript, seja no navegador ou no Node.js, porém variando a disponibilidade de objetos e funções de acordo com o ambiente.
 
 Alguns dos principais componentes da biblioteca do JavaScript incluem:
 
@@ -1652,6 +1652,7 @@ console.log(String.fromCharCode(65)); // "A"
 
 A referência de String pode ser encontrada aqui: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String>. Discorrer sobre a biblioteca padrão está fora do escopo deste material. Mas você pode consultar os demais objetos, Math, JSON, Date e outros, na referência de Global Objects, mantida pelo Mozilla Developer Network (MDN) aqui: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects>.
 
+O ambiente afeta a quantidade de _built-in objects_ disponíveis. Por exemplo, enquanto no navegador nós temos disponível o objeto `navigator`, este não está disponível no Node.JS. Por outro lado, encontramos no Node o módulo `fs` (_filesystem_, sistema de arquivos) que permite acessar e escrever pastas e arquivos.
 
 
 ## Estruturas de Dados em JavaScript
