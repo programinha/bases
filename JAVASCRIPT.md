@@ -1687,7 +1687,7 @@ function imc_v1(peso, altura) {
 // usando o IMC e verificando a classificação com variáveis e retornos separados
 const peso = 85; // em kg
 const altura = 175; // em cm
-const imc1 = imc_v1(peso, altura);
+const imc1 = imc_v1(peso, altura); // dois parâmetros
 const classif1 = classificacao(imc1);
 console.log(`IMC: ${imc1} - Classificação: ${classif1}`);
 
