@@ -13,7 +13,7 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
     - [Linguagem de Tipagem Fraca o/](#linguagem-de-tipagem-fraca-o)
     - [Ambiente de Execução o/](#ambiente-de-execução-o)
     - [Instalando o Node.js o/](#instalando-o-nodejs-o)
-  - [Estado e Computação](#estado-e-computação)
+  - [Estado e Computação o/](#estado-e-computação-o)
     - [Valores o/](#valores-o)
     - [Não-Valores](#não-valores)
     - [Variáveis e Constantes o/](#variáveis-e-constantes-o)
@@ -23,7 +23,7 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
     - [Estruturas Condicionais o/](#estruturas-condicionais-o)
     - [Estruturas de Repetição o/](#estruturas-de-repetição-o)
     - [Estruturas para o Tratamento de Exceções o/](#estruturas-para-o-tratamento-de-exceções-o)
-  - [Funções](#funções)
+  - [Funções o/](#funções-o)
     - [Declaração de Funções o/](#declaração-de-funções-o)
     - [Retorno de Funções o/](#retorno-de-funções-o)
     - [Funções Polimórficas](#funções-polimórficas)
@@ -42,7 +42,8 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
       - [Conjuntos](#conjuntos)
       - [Mapas](#mapas)
     - [Estruturas de Dados Compostas](#estruturas-de-dados-compostas)
-    - [Estruturas de Dados Inexistentes em JavaScript](#estruturas-de-dados-inexistentes-em-javascript)
+    - [Estruturas de Dados Inexistentes em JavaScript o/](#estruturas-de-dados-inexistentes-em-javascript-o)
+    - [Mais sobre JavaScript, que ficou de fora deste guia, mas que seria necessário para tornar-se Programador JS](#mais-sobre-javascript-que-ficou-de-fora-deste-guia-mas-que-seria-necessário-para-tornar-se-programador-js)
   - [Considerações Finais](#considerações-finais)
 
 
@@ -63,7 +64,7 @@ JavaScript ainda veio a ter um segundo salto de popularidade quando quando Ryan 
 Nos dias atuais, JavaScript é amplamente utilizada¹, tornando-se uma linguagem de programação multipropósito, permitindo o desenvolvimento para Web, Desktop (para Windows, Mac OS, Linux, através do Electron, ex.: Discord e Slack), Server-Side (aplicações no servidor) e Mobile (celular, tablets e dispositvos móveis e geral).
 rd, Slack, etc.
 
-¹ _Most popular technologies_, em: https://survey.stackoverflow.co/2025/technology
+¹ _Most popular technologies_, disponível em: <https://survey.stackoverflow.co/2025/technology>
 
 ### Linguagem interpretada o/
 
@@ -71,7 +72,7 @@ JavaScript é uma linguagem interpretada, assim como PHP, Python e Ruby, em opos
 
 No navegador, o interpretador de JavaScript é parte do motor do navegador (como V8 no Google Chrome e Node.js, SpiderMonkey no Firefox, JavaScriptCore no Safari, etc.). Em ambientes fora do navegador, como o Node.js, o interpretador é parte do ambiente de execução.
 
-Experimente o interpretador agora mesmo abrindo o console do seu navegador (geralmente com F12 ou Ctrl+Shift+J) e digite:
+Experimente o interpretador agora mesmo abrindo o console do seu navegador (geralmente com `F12` ou `CTRL + SHIFT + J`) e digite:
 
 ```javascript
 alert(`Olá, ${prompt("Qual é o seu nome?")}!`);
@@ -89,7 +90,7 @@ var valor = 42; // valor é um número
 console.log(typeof valor); // "number"
 valor = "Olá, mundo!"; // agora valor é uma string
 console.log(typeof valor); // "string"
-valor = {};
+valor = {}; // e agora ele é um objeto
 console.log(typeof valor); // "object"
 ```
 
@@ -236,7 +237,7 @@ console.log("Um programinha JavaScript") // o ; é opcional, mas recomendado!
 Recortes pequenos de código neste guia podem ser testados diretamente no console do navegador, no REPL do Node.js ou diretamente no terminal (3ra opção acima). Exemplos maiores podem ser salvos em arquivos `.js` e executados com o Node.js. Os projetos mais complexos serão criados usando o gerenciador de pacotes `npm` (Node Package Manager), que é instalado automaticamente junto com o Node.js (e que será explicado mais adiante nesse guia).
 
 
-## Estado e Computação
+## Estado e Computação o/
 
 Esta seção apresenta os conceitos básicos de valores, variáveis, operadores, expressões, sentenças, declarações e blocos em JavaScript.
 
@@ -697,12 +698,12 @@ let caractere = 'I';
 switch (caractere) {
     case 'A':
     case 'E':
-    case 'I': // fall through intencional
+    case 'I': // fall-through intencional
     case 'O':
     case 'U':
         console.log(`${caractere} é uma vogal.`);
         break;
-    default:
+    default: // fall-back, se nenhum dos casos anteriores
         console.log(`${caractere} é uma consoante.`);
 }
 ```
@@ -834,7 +835,7 @@ function exemploFinally() { // abrindo, executando um sql e fechando uma conexã
 }
 ```
 
-## Funções
+## Funções o/
 
 Praticamente todas as linguagens de programação suportam o conceito de funções, que são blocos reutilizáveis de código que realizam uma tarefa específica. As funções também são conhecidas como métodos, procedimentos ou sub-rotinas em outras linguagens. Estes são conceitos um pouco diferentes, mas para os propósitos deste material, usaremos o termo "função" de forma genérica, já que a essência permanece a mesma: declarar um bloco de código que pode ser reutilizado em diferentes partes do programa.
 
@@ -1655,11 +1656,11 @@ A referência de String pode ser encontrada aqui: <https://developer.mozilla.org
 
 ## Estruturas de Dados em JavaScript
 
-Não é possível escrever programas mais complexos sem o uso de estruturas de dados adequadas. Estruturas de dados são formas específicas de organizar e armazenar dados na memória do computador, permitindo acesso e manipulação eficientes. Cada estrutura de dados é projetada para atender a diferentes necessidades e requisitos de desempenho, dependendo do tipo de dados e das operações que serão realizadas sobre eles. Enquanto algumas estruturas de dados são fornecidas diretamente pela linguagem de programação, outras podem ser implementadas pelo programador conforme necessário. As estruturas de dados podem ser heterogêneas ou homogêneas, dependendo do tipo de dados que armazenam. Estruturas de dados heterogêneas podem conter elementos de diferentes tipos, enquanto estruturas de dados homogêneas armazenam apenas elementos do mesmo tipo. JavaScript por ser uma linguagem de tipagem dinâmica, todas as suas estruturas de dados são heterogêneas por padrão, ou seja, é possível armazenar diferentes tipos de dados em arrays e objetos.
+Não é possível escrever programas maiores e mais complexos sem o uso de estruturas de dados adequadas. Estruturas de dados são formas específicas de organizar e armazenar dados na memória do computador, permitindo acesso e manipulação eficientes. Cada estrutura de dados é projetada para atender a diferentes necessidades e requisitos de desempenho, dependendo do tipo de dados e das operações que serão realizadas sobre eles. Enquanto algumas estruturas de dados são fornecidas diretamente pela linguagem de programação, outras podem ser implementadas conforme necessário. As estruturas de dados podem ser heterogêneas ou homogêneas, dependendo do tipo de dados que armazenam. Estruturas de dados heterogêneas podem conter elementos de diferentes tipos, enquanto estruturas de dados homogêneas armazenam apenas elementos do mesmo tipo. JavaScript por ser uma linguagem de tipagem dinâmica, todas as suas estruturas de dados são heterogêneas por padrão, ou seja, é possível armazenar diferentes tipos de dados em arrays e objetos, por exemplo. Nos tópicos a seguir serão vistas as estruturas de dados mínimas para trabalhar em JavaScript (e demais linguagens, em casos equivalentes).
 
 ### Estruturas de Dados Elementares
 
-A maioria das linguagens de programação modernas, incluindo JavaScript, oferecem uma variedade de estruturas de dados embutidas que facilitam o desenvolvimento de software, como objetos, registros, arrays, listas, conjuntos e mapas, sendo essas as estruturas de dados mais comuns e elementares. Este capítulo aborda essas estruturas de dados elementares em JavaScript.
+A maioria das linguagens de programação modernas, incluindo JavaScript, oferecem uma variedade de estruturas de dados embutidas (disponíveis na Biblioteca Padrão ou como _built-in objects_) que facilitam o desenvolvimento de software, como objetos, registros, arrays, listas, conjuntos e mapas, sendo essas as estruturas de dados mais comuns e elementares. Este capítulo aborda essas estruturas de dados elementares em JavaScript.
 
 #### Notação Literal de Objetos em JavaScript
 
@@ -1727,6 +1728,8 @@ const pessoa = {
 
 console.log(pessoa.saudacao()); // "Olá, meu nome é João Silva e eu moro em Rio Grande/RS."
 ```
+
+Os métodos são recursos para Programação Orientada a Objetos. O `this`, por exemplo, no método saudação, se refere ao objeto `pessoa`. A palavra-chave `this` (este (objeto)) é usada, então, para acessar a propriedade `pessoa.nome` de dentro da função do objeto.
 
 
 #### Classes e Objetos em JavaScript
@@ -2130,9 +2133,13 @@ const turma = {
 
 É possível combinar conjuntos, arrays, mapas e objetos literais para criar estruturas mais complexas. Outras estruturas de dados, como filas, pilhas, árvores e grafos, podem ser implementadas usando essas estruturas básicas como blocos de construção.
 
-### Estruturas de Dados Inexistentes em JavaScript
+### Estruturas de Dados Inexistentes em JavaScript o/
 
-JavaScript não possui record ou structs, como em outras linguagens de programação. Também não possui filas (queues) e pilhas (stacks) como estruturas de dados nativas. Por ser fracamente tipada, não há tuplas (tuples) nem outras estruturas homogêneas. Para esses casos de uso, existem linguagens de programacão mais adequadas, ou então é possível implementar essas estruturas manualmente em JavaScript, usando as estruturas de dados elementares disponíveis.
+JavaScript não possui `record` (registro) ou `struct` (estrutura), como em outras linguagens de programação (C, Java, C#). Também não possui filas (_queues_) e pilhas (_stacks_) como estruturas de dados nativas. Por ser fracamente tipada, não há tuplas (_tuples_) nem outras estruturas homogêneas. Para esses casos de uso, existem linguagens de programacão mais adequadas, ou então é possível implementar essas estruturas manualmente em JavaScript, compondo sobre as estruturas de dados elementares disponíveis.
+
+### Mais sobre JavaScript, que ficou de fora deste guia, mas que seria necessário para tornar-se Programador JS
+
+TODO
 
 ## Considerações Finais
 
