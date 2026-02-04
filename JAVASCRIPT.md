@@ -38,7 +38,8 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
     - [Estruturas de Dados Elementares](#estruturas-de-dados-elementares)
       - [Notação Literal de Objetos em JavaScript o/](#notação-literal-de-objetos-em-javascript-o)
       - [Classes e Objetos em JavaScript o/](#classes-e-objetos-em-javascript-o)
-      - [Arrays (listas)](#arrays-listas)
+      - [Arrays (na verdade, listas em JS)](#arrays-na-verdade-listas-em-js)
+      - [Matrizes](#matrizes)
       - [Conjuntos](#conjuntos)
       - [Mapas](#mapas)
     - [Estruturas de Dados Compostas](#estruturas-de-dados-compostas)
@@ -1927,7 +1928,7 @@ console.log(horario.horas, horario.minutos, horario.segundosRestantes); // 3, 33
 ```
 
 
-#### Arrays (listas)
+#### Arrays (na verdade, listas em JS)
 
 Arrays em JavaScript são diferentes de arrays em linguagens de tipagem estática, como C, C++ e Java. Em JavaScript, arrays são objetos dinâmicos que podem crescer e encolher conforme necessário, e podem conter elementos de diferentes tipos, funcionando, na verdade, como LISTAS ordenadas.
 
@@ -2071,6 +2072,9 @@ console.log(numeros); // [1, 2, 2, 3, 4, 4, 4, 5]
 console.log(numeros.length); // 8
 ```
 
+#### Matrizes
+
+TODO
 
 #### Conjuntos
 
@@ -2125,7 +2129,7 @@ Os métodos mais comuns de conjuntos incluem:
 
 #### Mapas
 
-Os Mapas (map) são coleções de pares chave-valor, onde cada chave é única e está associada a um valor. Em JavaScript, os mapas são implementados pela classe `Map`, que também faz parte da Biblioteca Padrão do JavaScript desde o ECMAScript 2015 (ES6). Mapas são úteis quando você precisa armazenar dados associados a chaves específicas, permitindo acesso rápido aos valores com base nas chaves. É semelhante aos objetos, mas com algumas diferenças importantes, como a capacidade de usar qualquer tipo de valor (não apenas strings ou símbolos) como chave. Também é semelhante aos arrays, mas com chaves personalizadas em vez de índices numéricos.
+Os Mapas (map) são coleções de pares chave-valor, onde cada chave é única e está associada a um valor -- mapas também são conhecidos como dicionários em outras linguagens (`dict` em Python, `Dictionary` em C#). Em JavaScript, os mapas são implementados pela classe `Map`, que também faz parte da Biblioteca Padrão do JavaScript desde o ECMAScript 2015 (ES6). Mapas são úteis quando você precisa armazenar dados associados a chaves específicas, permitindo acesso rápido aos valores com base nas chaves. É semelhante aos objetos, mas com algumas diferenças importantes, como a capacidade de usar qualquer tipo de valor (não apenas strings ou símbolos) como chave. Também é semelhante aos arrays, mas com chaves personalizadas em vez de índices numéricos.
 
 Aqui está um exemplo de uso de mapas em JavaScript:
 
@@ -2209,7 +2213,7 @@ const turma = {
 
 ### Estruturas de Dados Inexistentes em JavaScript o/
 
-JavaScript não possui `record` (registro) ou `struct` (estrutura), como em outras linguagens de programação (C, Java, C#). Também não possui filas (_queues_) e pilhas (_stacks_) como estruturas de dados nativas. Por ser fracamente tipada, não há tuplas (_tuples_) nem outras estruturas homogêneas. Para esses casos de uso, existem linguagens de programacão mais adequadas, ou então é possível implementar essas estruturas manualmente em JavaScript, compondo sobre as estruturas de dados elementares disponíveis.
+JavaScript não possui `record` (registro) ou `struct` (estrutura), como em outras linguagens de programação (como em C, Java, C#). JS também não possui filas (_queues_) e pilhas (_stacks_) como estruturas de dados nativas. Por ser fracamente tipada, não há tuplas (_tuples_) nem outras estruturas homogêneas. Para esses casos de uso, existem linguagens de programacão mais adequadas, ou então é possível implementar essas estruturas manualmente em JavaScript, compondo sobre as estruturas de dados elementares disponíveis -- mas sempre tendo em consideração a natureza dinâmica da linguagem.
 
 ### Mais sobre JavaScript, que ficou de fora deste guia, mas que seria necessário para tornar-se Programador JS
 
