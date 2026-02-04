@@ -33,11 +33,11 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
     - [O que é um Módulo? o/](#o-que-é-um-módulo-o)
     - [Projetos JavaScript o/](#projetos-javascript-o)
     - [Programação Modular em JavaScript o/](#programação-modular-em-javascript-o)
-    - [Biblioteca Padrão do JavaScript](#biblioteca-padrão-do-javascript)
+    - [Biblioteca Padrão do JavaScript o/](#biblioteca-padrão-do-javascript-o)
   - [Estruturas de Dados em JavaScript](#estruturas-de-dados-em-javascript)
     - [Estruturas de Dados Elementares](#estruturas-de-dados-elementares)
-      - [Notação Literal de Objetos em JavaScript](#notação-literal-de-objetos-em-javascript)
-      - [Classes e Objetos em JavaScript](#classes-e-objetos-em-javascript)
+      - [Notação Literal de Objetos em JavaScript o/](#notação-literal-de-objetos-em-javascript-o)
+      - [Classes e Objetos em JavaScript o/](#classes-e-objetos-em-javascript-o)
       - [Arrays (listas)](#arrays-listas)
       - [Conjuntos](#conjuntos)
       - [Mapas](#mapas)
@@ -163,16 +163,19 @@ Considere as seguintes comparações:
 ```javascript
 var valor;
 
-if (valor) console.log("valor é verdadeiro"); // não é
+if (valor) console.log("valor é verdadeiro:", valor); // não é
 
 valor = "";
-if (valor) console.log("valor é verdadeiro"); // não é
+if (valor) console.log("valor é verdadeiro:", valor); // não é
 
 valor = 0;
-if (valor) console.log("valor é verdadeiro"); // não é
+if (valor) console.log("valor é verdadeiro:", valor); // não é
+
+valor = null;
+if (valor) console.log("valor é verdadeiro:", valor); // não é
 
 valor = "JavaScript";
-if (valor) console.log("valor é verdadeiro"); // é
+if (valor) console.log("valor é verdadeiro:", valor); // é: valor é verdadeiro JavaScript
 ```
 
 
@@ -1616,7 +1619,7 @@ funcaoA(); // Isso causará um erro de chamada circular
 ```
 
 
-### Biblioteca Padrão do JavaScript
+### Biblioteca Padrão do JavaScript o/
 
 A Biblioteca Padrão (_standard library_ em Inglês) do JavaScript, mais conhecida como _standard built-in objects_, é um conjunto de objetos, funções e métodos integrados e globais que fornecem funcionalidades básicas para manipulação de dados, operações matemáticas, manipulação de strings, datas, arrays, entre outros. Esses recursos estão disponíveis em qualquer ambiente JavaScript, seja no navegador ou no Node.js, porém variando a disponibilidade de objetos e funções de acordo com o ambiente.
 
@@ -1657,15 +1660,26 @@ O ambiente afeta a quantidade de _built-in objects_ disponíveis. Por exemplo, e
 
 ## Estruturas de Dados em JavaScript
 
-Não é possível escrever programas maiores e mais complexos sem o uso de estruturas de dados adequadas. Estruturas de dados são formas específicas de organizar e armazenar dados na memória do computador, permitindo acesso e manipulação eficientes. Cada estrutura de dados é projetada para atender a diferentes necessidades e requisitos de desempenho, dependendo do tipo de dados e das operações que serão realizadas sobre eles. Enquanto algumas estruturas de dados são fornecidas diretamente pela linguagem de programação, outras podem ser implementadas conforme necessário. As estruturas de dados podem ser heterogêneas ou homogêneas, dependendo do tipo de dados que armazenam. Estruturas de dados heterogêneas podem conter elementos de diferentes tipos, enquanto estruturas de dados homogêneas armazenam apenas elementos do mesmo tipo. JavaScript por ser uma linguagem de tipagem dinâmica, todas as suas estruturas de dados são heterogêneas por padrão, ou seja, é possível armazenar diferentes tipos de dados em arrays e objetos, por exemplo. Nos tópicos a seguir serão vistas as estruturas de dados mínimas para trabalhar em JavaScript (e demais linguagens, em casos equivalentes).
+Não é possível escrever programas maiores e mais complexos sem o uso de estruturas de dados adequadas. Estruturas de dados são formas específicas de organizar e armazenar dados na memória do computador, permitindo acesso e manipulação eficientes. Cada estrutura de dados é projetada para atender a diferentes necessidades e requisitos de desempenho, dependendo do tipo de dados e das operações que serão realizadas sobre eles. Enquanto algumas estruturas de dados são fornecidas diretamente pela linguagem de programação, outras podem ser implementadas conforme necessário. As estruturas de dados podem ser heterogêneas ou homogêneas, dependendo do tipo de dados que armazenam. Estruturas de dados heterogêneas podem conter elementos de diferentes tipos, enquanto estruturas de dados homogêneas armazenam apenas elementos do mesmo tipo. JavaScript por ser uma linguagem de tipagem dinâmica, todas as suas estruturas de dados são heterogêneas por padrão, ou seja, é possível armazenar diferentes tipos de dados em arrays e objetos. Nos tópicos a seguir serão vistas as estruturas de dados mínimas para trabalhar em JavaScript (e demais linguagens, em casos equivalentes).
 
 ### Estruturas de Dados Elementares
 
-A maioria das linguagens de programação modernas, incluindo JavaScript, oferecem uma variedade de estruturas de dados embutidas (disponíveis na Biblioteca Padrão ou como _built-in objects_) que facilitam o desenvolvimento de software, como objetos, registros, arrays, listas, conjuntos e mapas, sendo essas as estruturas de dados mais comuns e elementares. Este capítulo aborda essas estruturas de dados elementares em JavaScript.
+A maioria das linguagens de programação modernas, incluindo JavaScript, oferecem uma variedade de estruturas de dados embutidas (disponíveis na Biblioteca Padrão ou como _built-in objects_) que facilitam o desenvolvimento de software, tais como: 
 
-#### Notação Literal de Objetos em JavaScript
+- objetos, 
+- registros (_record_) e/ou estruturas (_struct_), 
+- arrays (arranjos, vetores), 
+- matrizes (_matrix_),
+- listas (_list_), 
+- conjuntos (_set_) e
+- mapas (_map_, também conhecido como dicionário ou _dict_).
+  
+Essas são as estruturas de dados mais comuns e, portanto, elementares para o desenvolvimento de softwares ou até construir estruturas de dados mais complexas. Este capítulo aborda essas estruturas de dados elementares em JavaScript, com exceção dos registros e estruturas que não existem em JS.
 
-O modo mais simples de representar um objeto em JavaScript é usando a notação literal de objetos, que utiliza chaves `{}` para definir um objeto e pares chave-valor para representar suas propriedades, agrupando um conjunto de características relacionadas em uma única entidade. Neste sentido, é possível armazenar múltiplas informações usando uma única variávels e passá-las às funções como um único argumento.
+
+#### Notação Literal de Objetos em JavaScript o/
+
+O modo mais simples de representar um objeto em JavaScript é usando a notação literal de objetos, que utiliza chaves `{}` para definir um objeto e pares chave-valor para representar suas propriedades, agrupando um conjunto de características relacionadas em uma única entidade. Neste sentido, é possível armazenar múltiplas informações usando uma única variável e passá-las às funções como um único argumento.
 
 Por exemplo, considere uma função para calcular o índice de massa corporal (IMC) de uma pessoa. Em vez de passar vários parâmetros separados para a função, podemos agrupar as informações relevantes (a antropometria) em um objeto e passá-lo como um único argumento. A seguir um exemplo da função `imc` com parâmetros separados e com um objeto:
 
@@ -1720,20 +1734,69 @@ const pessoa = {
         numero: 123,
         cidade: "Rio Grande",
         estado: "RS"
+    }
+};
+
+console.log(pessoa); 
+// { nome: "João Silva", idade: 30, endereco: { rua: "Rua das Flores", numero: 123, cidade: "Rio Grande", estado: "RS" } }
+```
+
+As propriedades podem ser acessar usando a **notação ponto** (_dot notation_) ou **notação colchetes** (_backet notation_), usadas para navegar no grafo (estrutura) do objeto. Considere o mesmo objeto `pessoa` descrito acima:
+
+```JavaScript
+// Obter o estado da pessoa usando o ponto:
+console.log(pessoa.endereco.estado); // RS
+
+// Obter o estado da pessoa usando os colchetes:
+console.log(pessoa["endereco"]["estado"]); // RS
+
+// Propriedades não existentes retornarão undefined, como:
+console.log(pessoa.endereco.logradouro); // undefined (não foi definido o logradouro em endereço)
+
+// porém, navegar sobre uma propriedade indefinida causará um erro:
+console.log(pessoa.telefone.ddd); // Uncaught TypeError: Cannot read properties of undefined (reading 'telefone')
+// como não há propriedade telefone, portanto não é possível solicitar ddd
+
+// É possível navegar seguramente por propriedades usando o .? (null coalescing)
+console.log(pessoa.telefone?.ddd); // undefined (vai retornar o undefined de telefone, evitando navegar até ddd)
+
+// O mesmo pode ser estendido para propriedades aninhadas ad-infinitum
+console.log(pessoa.telefone?.operadora?.endereco?.cidade); // se houver telefone, traz a operadora, se houver operador, traz o endereço da operadora, ...)
+```
+
+Objetos podem ter lógica além de propriedades. A lógica é codificada em _funções de objetos_ ou, como são melhor conhecidas: MÉTODOS. Os métodos são recursos para A Programação Orientada a Objetos (POO). Os métodos acessam dados internos do objeto através da palavra-chave `this`. Por exemplo, no método saudação abaixo, se refere ao objeto `pessoa`. A palavra-chave `this` (este (objeto)) é usada, então, para acessar a propriedade `pessoa.nome` de dentro da função do objeto.
+
+```javascript
+const pessoa = {
+    nome: "João Silva",
+    idade: 30,
+    endereco: {
+        rua: "Rua das Flores",
+        numero: 123,
+        cidade: "Rio Grande",
+        estado: "RS"
     },
     // os objetos literais também podem conter métodos (funções associadas ao objeto)
     saudacao: function() {
         return `Olá, meu nome é ${this.nome} e eu moro em ${this.endereco.cidade}/${this.endereco.estado}.`;
+    },
+    // e propriedades computadas (métodos "disfarçados" de propriedades como este getter)
+    get enderecoCompleto() {
+        return `${this.endereco.rua}, ${this.endereco.numero} - ${this.endereco.cidade}/${this.endereco.estado}.`;
     }
 };
 
+// Invocando o método saudação:
 console.log(pessoa.saudacao()); // "Olá, meu nome é João Silva e eu moro em Rio Grande/RS."
+
+// Obtendo a propriedade enderecoCompleto (note que não há parênteses)
+console.log(pessoa.enderecoCompleto); // "Rua das Flores, 123 - Rio Grande/RS."
 ```
 
-Os métodos são recursos para Programação Orientada a Objetos. O `this`, por exemplo, no método saudação, se refere ao objeto `pessoa`. A palavra-chave `this` (este (objeto)) é usada, então, para acessar a propriedade `pessoa.nome` de dentro da função do objeto.
+A POO está fora do escopo deste guia, porém com o básico sobre métodos e propriedades já é possível criar blocos de dados+lógica (ou estado e comportamento no linguajar orientado a objetos).
 
 
-#### Classes e Objetos em JavaScript
+#### Classes e Objetos em JavaScript o/
 
 JavaScript é uma linguagem orientada a objetos baseada em protótipos, o que significa que os objetos podem herdar propriedades e métodos diretamente de outros objetos. No entanto, a partir do ECMAScript 6 (ES6), JavaScript introduziu a sintaxe de classes, que fornece uma maneira mais familiar e estruturada de criar objetos e lidar com herança.
 
@@ -1748,7 +1811,7 @@ export default class Horario {
     #segundos = 0; // o símbolo # torna o atributo privado
 
     constructor(horas = 0, minutos = 0, segundos = 0) {
-        if (typeof (horas) !== 'number' || typeof (minutos) !== 'number' || typeof (segundos) !== 'number') {
+        if (Number.isInteger(horas) || Number.isInteger(minutos) || Number.isInteger(segundos)) {
             throw new Error('Horas, minutos e segundos devem ser números inteiros');
         }
         // converter horas e minutos em segundos para armazenamento
@@ -1807,7 +1870,7 @@ export default class Horario {
         return `${this.#pad(this.horas)}:${this.#pad(this.minutos)}:${this.#pad(this.segundos)}`;
     }
 
-    // este método é privado, acessível apenas internamente
+    // este método é privado, acessível apenas internamente:
     #pad(valor) {
         return valor < 10 ? `0${valor}` : `${valor}`;
     }
@@ -1828,9 +1891,18 @@ console.log(h.horas, h.minutos, h.segundos); // 3, 25, 37
 console.log(h.toString()); // '03:25:37'
 ```
 
-O exemplo anterior apresenta diversos conceitos da POO. A classe `Horario` introduz um novo tipo customizado. O estado é armazenado em segundos totais no atributo `#segundos` -- o símbolo `#` protege o atributo (um tipo de variável) de acesso externo. O construtor recebe os parâmetros para inicializar um objeto horário, na forma de `new Horario(13, 45, 12)`. O construtor é sempre invocado na instanciação de objetos, isto é, o uso do `new`. Para ler a quantidade de horas, minutos e segundos são disponibilizadas as propriedades `horas`, `minutos` e `segundos` na forma de `get horas()`, etc. As propriedades parecem funções, por causa dos parênteses, assim como os métodos `adicionaHoras()` e outros, mas não são declarados com a palavra-chave `function`. Por fim, o método `#pad(valor)` também é como uma função, porém privada, isto é, só pode ser invocada dentro da classe `Horario` -- é parte do encapsulamento, não faz sentido expor o método `pad`. 
+O exemplo anterior apresenta diversos conceitos da POO. A classe `Horario` introduz um novo tipo customizado. O estado é armazenado em segundos totais no atributo `#segundos` -- o símbolo `#` protege o atributo de acesso externo (fora da classe Horario) -- atributos são variáveis no escopo de uma classe/objeto. O construtor recebe os parâmetros para inicializar um objeto horário na forma de `new Horario(13, 45, 12)`. O construtor é sempre invocado na instanciação de objetos usando a palavra-chave `new` (novo -- novo objeto). Para ler a quantidade de horas, minutos e segundos são disponibilizadas as propriedades `horas`, `minutos` e `segundos` na forma de `get horas()`, etc. As propriedades parecem funções, por causa dos parênteses, assim como os métodos `adicionaHoras()` e outros, mas não são declarados com a palavra-chave `function`. Por fim, o método `#pad(valor)` também é como uma função, porém privada, isto é, só pode ser invocada dentro da classe `Horario` -- é parte do encapsulamento, não faz sentido expor o método `pad`.
 
-A mesma representação de horário poderia ser implementada usando a notação literal de objetos, mas a implementação com classes oferece uma estrutura mais clara e organizada, especialmente quando se trata de criar múltiplas instâncias do mesmo tipo de objeto, cada uma com seu próprio estado e comportamento. Usar a notação literal seria útil, no entanto, para representar um horário de uso único, sem a necessidade de criar múltiplas instâncias ou reutilizar o código, como a seguir:
+A vantagem de usar classes em vez de notações literais de objetos é a reutilização do mesmo _modelo_ (a classe) para construir diversas instâncias particulares, por exemplo:
+
+```js
+// Três objetos do tipo horário:
+const h1 = new Horario(13, 55, 34);
+const h2 = new Horario(2, 9, 12);
+const h3 = new Horario(23, 59, 59);
+```
+
+A implementação com classes oferece uma estrutura mais clara e organizada, especialmente quando se trata de criar múltiplas instâncias do mesmo tipo de objeto, cada uma com seu próprio estado e comportamento, mas usar a notação literal seria útil, no entanto, para representar um horário de uso único, sem a necessidade de criar múltiplas instâncias ou reutilizar o código, como a seguir:
 
 ```javascript
 const horario = {
@@ -1853,6 +1925,7 @@ console.log(horario.horas, horario.minutos, horario.segundosRestantes); // 3, 25
 horario.adicionaSegundos(500);
 console.log(horario.horas, horario.minutos, horario.segundosRestantes); // 3, 33, 5
 ```
+
 
 #### Arrays (listas)
 
