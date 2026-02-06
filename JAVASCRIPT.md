@@ -2270,6 +2270,7 @@ Ou, podes pesquisar sobre os seguintes tópicos que não foram abordados neste g
 
 - [Closures](https://www.google.com/search?q=js+closures);
 - [Prototypes](https://www.google.com/search?q=js+prototypes);
+- [IIFE](https://www.google.com/search?q=js+iife);
 - [Promisses](https://www.google.com/search?q=js+promisses);
 - [async/await](https://www.google.com/search?q=js+async+await);
 - [Generators e Yield](https://www.google.com/search?q=js+generator+yield);
