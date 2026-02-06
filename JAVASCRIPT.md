@@ -45,7 +45,7 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
       - [Mapas](#mapas)
     - [Estruturas de Dados Compostas](#estruturas-de-dados-compostas)
     - [Estruturas de Dados não existentes em JavaScript](#estruturas-de-dados-não-existentes-em-javascript)
-    - [Mais sobre JavaScript, que ficou de fora deste guia, mas que seria necessário para tornar-se Programador JS](#mais-sobre-javascript-que-ficou-de-fora-deste-guia-mas-que-seria-necessário-para-tornar-se-programador-js)
+    - [O que ficou de fora deste guia](#o-que-ficou-de-fora-deste-guia)
   - [Considerações Finais](#considerações-finais)
 
 
@@ -876,14 +876,13 @@ console.log(somar(10, 15)); // 25
 
 A seguinte simbologia é usada para descrever a sintaxe das funções:
 
-```plain
+```text
 | Símbolo | Significado                    |
 | ------- | ------------------------------ |
 | `< >`   | Elemento obrigatório           |
 | `[ ]`   | Elemento opcional              |
 | `...`   | Continuação / repetição        |
 ```
-
 
 A sintaxe geral para declarar uma função é:
 
@@ -2263,7 +2262,7 @@ console.log(turma.alunos.get("2026003").nome); // Carlos Souza
 
 Existem diversas estruturas de dados e inúmeras formas de combiná-las. Algumas são mais populares e, portanto, estão disponíveis por padrão nas linguagens e plataformas de programação. No entanto, nenhuma linguagem ou plataforma suporta todas nativamente. É o caso de JavaScript, que não possui nem algumas estruturas de dados populares `record` (registro) ou `struct` (estrutura), como em outras linguagens de programação (como em C, Java, C#). JS também não possui filas (_queues_) e pilhas (_stacks_) como estruturas de dados nativas. Por ser fracamente tipada, não há tuplas (_tuples_) nem outras estruturas homogêneas -- aquelas cujos todos os elementos são do mesmo tipo ou tipo derivado. Para todos esses casos de uso, existem linguagens de programacão mais adequadas, ou então é possível implementar algumas dessas estruturas manualmente em JavaScript, compondo sobre as estruturas de dados elementares disponíveis -- mas sempre tendo em consideração a natureza dinâmica da linguagem.
 
-### Mais sobre JavaScript, que ficou de fora deste guia, mas que seria necessário para tornar-se Programador JS
+### O que ficou de fora deste guia
 
 Diversos conceitos, técnicas e práticas ficaram de fora deste guia. Para um conteúdo abrangente, considere o livro JavaScript: O guia definitivo <https://www.amazon.com.br/JavaScript-guia-definitivo-David-Flanagan/dp/8582606990>.
 
@@ -2284,4 +2283,4 @@ Ou, podes pesquisar sobre os seguintes tópicos que não foram abordados neste g
 
 ## Considerações Finais
 
-Este guia abordou os conceitos fundamentais de programação com JavaScript. Estes conceitos são basicamente os mesmos em outras linguagens de programação, com variações na sintaxe, formas de organizar o código e nas bibliotecas padrão. É recomendado que qualquer programador domine pelo menos uma linguagem dinâmica (como JavaScript, Python ou Ruby) e uma linguagem estática (como Rust, TypeScript, C# ou Java), para compreender as diferenças entre os paradigmas e estilos de programação. Liguagens tipadas adicionam uma camada extra de complexidade, mas também oferecem benefícios em termos de segurança e desempenho. A escolha da linguagem deve ser baseada nos requisitos do projeto, na experiência da equipe e nas características específicas de cada linguagem.
+Este guia abordou os conceitos fundamentais de programação com JavaScript. Estes conceitos são basicamente os mesmos em outras linguagens de programação, com variações na sintaxe, formas de organizar o código e nas bibliotecas padrão. É recomendado que qualquer programador domine pelo menos uma linguagem dinâmica (como JavaScript, Python ou Ruby) e uma linguagem estática (como Rust, TypeScript, C# ou Java), para compreender as diferenças entre os paradigmas e estilos de programação. Liguagens compiladas e tipadas adicionam uma camada extra de complexidade, mas também oferecem benefícios em termos de segurança e desempenho. A escolha da linguagem deve ser baseada nos requisitos do projeto, na experiência da equipe e nas características específicas de cada linguagem.
