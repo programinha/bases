@@ -51,6 +51,8 @@ As linguagens de programação servem para nós expressarmos o que queremos que 
 
 ## Prelúdio
 
+Por que mais um livro sobre as bases da programação na era quando podemos escrever um prompt para uma Inteligência Artifical escrever o código por nós? 
+
 TODO
 
 ## Introdução
